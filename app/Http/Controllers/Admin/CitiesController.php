@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Car;
 use App\City;
-use App\Inquiry;
 use Flash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 
 class CitiesController extends Controller
 {

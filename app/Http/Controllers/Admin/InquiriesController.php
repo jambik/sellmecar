@@ -7,7 +7,6 @@ use App\Inquiry;
 use Flash;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 
 class InquiriesController extends Controller
 {
@@ -18,7 +17,7 @@ class InquiriesController extends Controller
      */
     public function index()
     {
-        $items = Inquiry::all();
+        $items = Inquiry::with('car')->orderBy('created_at', 'desc')->get();
 
         return view('admin.inquiries.index', compact('items'));
     }

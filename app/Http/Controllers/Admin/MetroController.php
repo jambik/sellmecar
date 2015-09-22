@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\City;
 use App\Metro;
+use Flash;
 use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
 class MetroController extends Controller
 {
@@ -16,17 +17,9 @@ class MetroController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $items = Metro::with('city')->get();
 
-    /**
-     * @param $city
-     * @return static
-     * @internal param $id
-     */
-    public function city($city)
-    {
-
+        return view('admin.metro.index', compact('items'));
     }
 
     /**
@@ -36,7 +29,9 @@ class MetroController extends Controller
      */
     public function create()
     {
-        //
+        $cities = City::lists('name', 'id')->all();
+
+        return view('admin.metro.create', compact('cities'));
     }
 
     /**
@@ -47,7 +42,13 @@ class MetroController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['name' => 'required']);
+
+        $item = Metro::create($request->all());
+
+        Flash::success("Запись - {$item->id} сохранена");
+
+        return redirect(route('admin.metro.index'));
     }
 
     /**
@@ -69,7 +70,10 @@ class MetroController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Metro::findOrFail($id);
+        $cities = City::lists('name', 'id')->all();
+
+        return view('admin.metro.edit', compact('item', 'cities'));
     }
 
     /**
@@ -81,17 +85,30 @@ class MetroController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, ['name' => 'required']);
+
+        $item = Metro::findOrFail($id);
+
+        $item->update($request->all());
+
+        Flash::success("Запись - {$id} обновлена");
+
+        return redirect(route('admin.metro.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
+     * @internal param Request $request
      */
     public function destroy($id)
     {
-        //
+        Metro::destroy($id);
+
+        Flash::success("Запись - {$id} удалена");
+
+        return redirect(route('admin.metro.index'));
     }
 }

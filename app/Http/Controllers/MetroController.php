@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Metro;
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 
 class MetroController extends Controller
@@ -26,7 +26,8 @@ class MetroController extends Controller
      */
     public function city($city)
     {
-        return Metro::where('city', $city)->orderBy('name')->get();
+        $city = City::whereName($city)->firstOrFail();
+        return Metro::where('city_id', $city->id)->orderBy('name')->get();
     }
 
     /**

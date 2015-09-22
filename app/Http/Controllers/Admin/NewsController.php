@@ -6,7 +6,6 @@ use App\News;
 use Carbon\Carbon;
 use Flash;
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class NewsController extends Controller
@@ -18,7 +17,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $items = News::all();
+        $items = News::orderBy('published_at', 'desc')->get();
 
         return view('admin.news.index', compact('items'));
     }

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Role;
 use App\User;
 use DB;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 
-class UsersController extends Controller
+class AdministratorsController extends Controller
 {
 
     /**
@@ -18,13 +19,12 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //$items = User::all();
         $items = DB::table('users')
                     ->leftJoin('role_user', 'role_user.user_id', '=', 'users.id')
-                    ->where('role_user.role_id', null)
+                    ->whereNotNull('role_user.role_id')
                     ->get();
 
-        return view('admin.users.index', compact('items'));
+        return view('admin.administrators.index', compact('items'));
     }
 
     /**
@@ -34,7 +34,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.administrators.create');
     }
 
     /**
@@ -59,8 +59,11 @@ class UsersController extends Controller
         $item->password = $passwordRule ? bcrypt($request->input('password')) : "";
         $item->save();
 
+        $adminRole = Role::where('name', 'admin')->first();
+        $item->attachRole($adminRole);
+
         Flash::success("Запись - {$item->id} сохранена");
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.administrators.index'));
     }
 
     /**
@@ -85,7 +88,7 @@ class UsersController extends Controller
         $item = User::findOrFail($id);
         $item->password = '';
 
-        return view('admin.users.edit', compact('item'));
+        return view('admin.administrators.edit', compact('item'));
     }
 
     /**
@@ -113,7 +116,7 @@ class UsersController extends Controller
             ($passwordRule ? ['password' => bcrypt($request->input('password'))] : []));
 
         Flash::success("Запись - {$id} обновлена");
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.administrators.index'));
     }
 
     /**
@@ -127,7 +130,7 @@ class UsersController extends Controller
         User::destroy($id);
 
         Flash::success("Запись - {$id} удалена");
-        return redirect(route('admin.users.index'));
+        return redirect(route('admin.administrators.index'));
     }
 
 }

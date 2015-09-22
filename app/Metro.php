@@ -8,7 +8,7 @@ class Metro extends Model
 {
     protected $table = 'metro';
 
-    protected $fillable = ['name', 'city'];
+    protected $fillable = ['name', 'city_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

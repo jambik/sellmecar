@@ -216,7 +216,11 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="form-group">
                         <label for="city">Город:</label>
-                        {!! Form::select('city', ['Москва' => 'Москва', 'Санкт-Петербург' => 'Санкт-Петербург'], null, ['class' => 'form-control input-lg', 'v-model' => 'city', 'v-on' => 'change: changeCity']) !!}
+                        <select name="city" placeholder="Выберите город" class="form-control input-lg" v-model="city" v-on="change: changeCity">
+                            @foreach($cities as $value)
+                                <option value="{{ $value }}">{{ $value }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
@@ -384,8 +388,9 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <select name="city" placeholder="Выберите город" class="form-control input-lg" v-model="city" v-on="change: changeCity">
                         <option value="">- Выберите город -</option>
-                        <option value="Москва">Москва</option>
-                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                        @foreach($cities as $value)
+                            <option value="{{ $value }}">{{ $value }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -412,7 +417,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
                         <select name="transmission" placeholder="Выберите город" class="form-control input-lg">
-                            <option value="">- Выберите трансмиссию -</option>
+                            <option value="0">- Выберите трансмиссию -</option>
                             <option value="0">Не важно</option>
                             <option value="1">Автомат</option>
                             <option value="2">Механика</option>

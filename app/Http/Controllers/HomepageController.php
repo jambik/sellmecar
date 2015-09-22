@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\City;
 use App\Inquiry;
 use App\News;
 use Auth;
@@ -27,7 +28,9 @@ class HomepageController extends Controller
         $lastNews = News::paginate(config('vars.newsPerPage'));
         $lastNews->setPath('news/index');
 
-        return view('homepage', compact('user', 'cars', 'carsList', 'carBrandsShow', 'lastInquiries', 'lastNews'));
+        $cities = City::lists('name', 'name')->all();
+
+        return view('homepage', compact('user', 'cars', 'carsList', 'carBrandsShow', 'lastInquiries', 'lastNews', 'cities'));
     }
 
     public function profile(Request $request)

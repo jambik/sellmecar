@@ -15,6 +15,7 @@
                 <th>Адрес</th>
 				<th>Контакты</th>
                 <th>Доп. информация</th>
+				<th>Дата объявления</th>
 				<th><i class="fa fa-edit text-primary"></i></th>
 				<th><i class="fa fa-remove text-danger"></i></th>
 			</tr>
@@ -32,6 +33,7 @@
 					<td>{{ $item->city }}{{ $item->metro ? ', метро '.$item->metro : '' }}{{ $item->street ? ', улица '.$item->street : '' }}</td>
 					<td>{{ $item->name }}{{ $item->email ? ', email - '.$item->email : '' }}{{ $item->phone ? ', телефон - '.$item->phone : '' }}</td>
                     <td>{{ $item->information ?: '-' }}</td>
+                    <td>{{ $item->created_at }}</td>
 					<td><a href="{{ route('admin.inquiries.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
 					<td>
 						{!! Form::open(['url' => route('admin.inquiries.destroy', $item->id), 'method' => 'DELETE']) !!}

@@ -113,6 +113,7 @@ Route::group(['prefix' => 'admin'], function()
         Route::resource('cities', 'Admin\CitiesController');
         Route::resource('metro', 'Admin\MetroController');
         Route::resource('users', 'Admin\UsersController');
+        Route::resource('administrators', 'Admin\AdministratorsController');
     });
 });
 
