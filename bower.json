@@ -1,0 +1,20 @@
+{
+  "name": "sellmecar",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jambik/smc",
+  "authors": [
+    "jambik <jambik@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "bootstrap-datepicker": "~1.4.0",
+    "jquery-ui": "~1.11.4"
+  }
+}
