@@ -110,6 +110,7 @@ Route::group(['prefix' => 'admin'], function()
         Route::resource('inquiries', 'Admin\InquiriesController');
         Route::resource('news', 'Admin\NewsController');
         Route::resource('cars', 'Admin\CarsController');
+        Route::resource('cities', 'Admin\CitiesController');
         Route::resource('metro', 'Admin\MetroController');
         Route::resource('users', 'Admin\UsersController');
     });

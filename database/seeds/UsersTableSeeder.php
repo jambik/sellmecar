@@ -1,5 +1,6 @@
 <?php
 
+use App\Role;
 use App\User;
 use Illuminate\Database\Seeder;
 
@@ -20,11 +21,18 @@ class UsersTableSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        for($i=0; $i<count($this->items); $i++)
-        {
-            $row = array_combine(['id', 'name', 'email', 'phone', 'avatar', 'provider', 'provider_id'], $this->items[$i]);
+        $row1 = array_combine(['id', 'name', 'email', 'phone', 'avatar', 'provider', 'provider_id'], $this->items[0]) + ['password' => bcrypt('111111')];
+        $user1 = User::create($row1);
 
-            User::create($row);
-        }
+        $row2 = array_combine(['id', 'name', 'email', 'phone', 'avatar', 'provider', 'provider_id'], $this->items[1]) + ['password' => bcrypt('111111')];
+        User::create($row2);
+
+        $admin = new Role();
+        $admin->name         = 'admin';
+        $admin->display_name = 'Администратор'; // optional
+        $admin->description  = ''; // optional
+        $admin->save();
+
+        $user1->attachRole($admin);
     }
 }

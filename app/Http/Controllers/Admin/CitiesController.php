@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\News;
-use Carbon\Carbon;
+use App\Car;
+use App\City;
+use App\Inquiry;
 use Flash;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 
-class NewsController extends Controller
+class CitiesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +19,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $items = News::all();
+        $items = City::all();
 
-        return view('admin.news.index', compact('items'));
+        return view('admin.cities.index', compact('items'));
     }
 
     /**
@@ -30,7 +31,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('admin.news.create');
+        return view('admin.cities.create');
     }
 
     /**
@@ -41,15 +42,13 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['title' => 'required']);
+        $this->validate($request, ['name' => 'required']);
 
-        $item = News::create($request->all() + ['published_at' => Carbon::now()]);
-
-        $item->saveImage($item, $request);
+        $item = City::create($request->all());
 
         Flash::success("Запись - {$item->id} сохранена");
 
-        return redirect(route('admin.news.index'));
+        return redirect(route('admin.cities.index'));
     }
 
     /**
@@ -71,9 +70,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        $item = News::findOrFail($id);
+        $item = City::findOrFail($id);
 
-        return view('admin.news.edit', compact('item'));
+        return view('admin.cities.edit', compact('item'));
     }
 
     /**
@@ -85,31 +84,30 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['title' => 'required']);
+        $this->validate($request, ['name' => 'required']);
 
-        $item = News::findOrFail($id);
+        $item = City::findOrFail($id);
 
         $item->update($request->all());
 
-        $item->saveImage($item, $request);
-
         Flash::success("Запись - {$id} обновлена");
 
-        return redirect(route('admin.news.index'));
+        return redirect(route('admin.cities.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return Response
+     * @internal param Request $request
      */
     public function destroy($id)
     {
-        News::destroy($id);
+        City::destroy($id);
 
         Flash::success("Запись - {$id} удалена");
 
-        return redirect(route('admin.news.index'));
+        return redirect(route('admin.cities.index'));
     }
 }

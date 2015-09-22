@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Car;
+use Flash;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
 class CarsController extends Controller
@@ -16,7 +17,9 @@ class CarsController extends Controller
      */
     public function index()
     {
-        //
+        $items = Car::all();
+
+        return view('admin.cars.index', compact('items'));
     }
 
     /**
@@ -26,7 +29,7 @@ class CarsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.cars.create');
     }
 
     /**
@@ -37,7 +40,15 @@ class CarsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['name' => 'required']);
+
+        $item = Car::create($request->all());
+
+        $item->saveImage($item, $request);
+
+        Flash::success("Запись - {$item->id} сохранена");
+
+        return redirect(route('admin.cars.index'));
     }
 
     /**
@@ -59,7 +70,9 @@ class CarsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Car::findOrFail($id);
+
+        return view('admin.cars.edit', compact('item'));
     }
 
     /**
@@ -71,7 +84,17 @@ class CarsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, ['name' => 'required']);
+
+        $item = Car::findOrFail($id);
+
+        $item->update($request->all());
+
+        $item->saveImage($item, $request);
+
+        Flash::success("Запись - {$id} обновлена");
+
+        return redirect(route('admin.cars.index'));
     }
 
     /**
@@ -82,6 +105,10 @@ class CarsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Car::destroy($id);
+
+        Flash::success("Запись - {$id} удалена");
+
+        return redirect(route('admin.cars.index'));
     }
 }

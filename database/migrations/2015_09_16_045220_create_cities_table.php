@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMetroTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,9 @@ class CreateMetroTable extends Migration
      */
     public function up()
     {
-        Schema::create('metro', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('city_id')->unsigned();
-            $table->foreign('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateMetroTable extends Migration
      */
     public function down()
     {
-        Schema::drop('metro');
+        Schema::drop('cities');
     }
 }

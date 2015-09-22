@@ -58,7 +58,7 @@ class Car extends Model
      */
     public function getImgSizeAttribute()
     {
-        $imgThumb['xs']    = '?w=50&h=50&fit=crop&'.$this->updated_at->timestamp;
+        $imgThumb['xs']    = '?w=50&h=50&'.$this->updated_at->timestamp;
         $imgThumb['icon']  = '?w=100&h=100&fit=crop&'.$this->updated_at->timestamp;
         $imgThumb['thumb'] = '?w=280&h=280&fit=crop&'.$this->updated_at->timestamp;
         return $imgThumb;

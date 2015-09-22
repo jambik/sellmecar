@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -15,6 +16,11 @@ class News extends Model
     protected $dates = ['created_at', 'updated_at', 'published_at'];
 
     protected $appends = ['img_url', 'img_size'];
+
+    /*public function setPublishedAtAttribute($value)
+    {
+        $this->attributes['published_at'] = Carbon::parse();
+    }*/
 
     /**
      * Get Image url path attribute
