@@ -58,6 +58,7 @@ header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
 
 #section_search { background: linear-gradient(to bottom,rgba(173,192,206,1) 0%,rgba(255,255,255,1) 50%,rgba(173,192,206,1) 100%); }
 .brands { margin: 20px 0 10px 0; }
+.brands .car-image { width: 50px; height: 50px; display: table-cell; vertical-align: bottom; }
 .brands .checkbox { font-size: 18px; }
 .brands .checkbox span { font-size: 14px; color: #c7254e; font-weight: bolder; }
 /*.brands .checkbox span:before { content: "("; }
@@ -70,7 +71,8 @@ header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
 
 #section_inquiries { background: url("../img/section-2.jpg") top center; }
 #section_inquiries .container { background: rgba(73,131,178,0.7); border-radius: 10px; }
-.inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); }
+.inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 340px; }
+.inquiry-block .car-image { height: 50px; text-align: center; }
 .block-line { margin: 0 0 2px 0; }
 .block-line .value { color: #c7254e; }
 

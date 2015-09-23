@@ -81,6 +81,13 @@ $(document).ready(function() {
                 });
             },
 
+            searchInfo: function(e)
+            {
+                e.preventDefault();
+
+                $('#search_car_info').toggle('fast');
+            },
+
             showCard: function(id)
             {
                 $.get('/page/show/' + id, function(data) {
