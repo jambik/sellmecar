@@ -8,9 +8,12 @@ $(document).ready(function() {
         {
             user: false,
             inquiryCreated: false,
+            inquiryShow: false,
             inquiries: [],
             inquiriesLoaded: [],
+            newsShow: false,
             newsLoaded: [],
+            pageShow: false,
             city: '',
             street: "",
             metro: "",
@@ -75,6 +78,49 @@ $(document).ready(function() {
                             formButton.prop('disabled', false);
                         }
                     }
+                });
+            },
+
+            showCard: function(id)
+            {
+                $.get('/page/show/' + id, function(data) {
+                    this.pageShow = data;
+                    $("#pageShowModal").modal('show');
+                }.bind(this))
+                .fail(function() {
+                    alert("Ошибка при запросе");
+                });
+            },
+
+            showNews: function(e) // Отображение объявления
+            {
+                e.preventDefault();
+                var element = e.target;
+                var id = $(element).closest('div.news-block').data('newsId');
+
+                $.get('/news/show/' + id, function(data) {
+                    console.log(data);
+                    this.newsShow = data;
+                    $("#newsShowModal").modal('show');
+                }.bind(this))
+                .fail(function() {
+                    alert("Ошибка при запросе");
+                });
+            },
+
+            showInquiry: function(e) // Отображение объявления
+            {
+                e.preventDefault();
+                var element = e.target;
+                var id = $(element).closest('div.inquiry-block').data('inquiryId');
+
+                $.get('/inquiry/show/' + id, function(data) {
+                    console.log(data.user);
+                    this.inquiryShow = data;
+                    $("#inquiryShowModal").modal('show');
+                }.bind(this))
+                .fail(function() {
+                    alert("Ошибка при запросе");
                 });
             },
 

@@ -1,7 +1,7 @@
 @extends('admin.page', ['title' => "Администрирование - Метро - Sellmecar"])
 
 @section('content')
-	<h1 class="text-center">Объявления</h1>
+	<h1 class="text-center">Метро</h1>
 	<p>
 		<a href="{{ route('admin.metro.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Добавить</a>
 	</p>

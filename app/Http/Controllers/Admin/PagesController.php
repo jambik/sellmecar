@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\News;
+use App\Page;
+use Flash;
 use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Controllers\Controller;
 
-class NewsController extends Controller
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +16,9 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(config('vars.newsPerPage'));
+        $items = Page::all();
 
-        return response()->json($news);
+        return view('admin.pages.index', compact('items'));
     }
 
     /**
@@ -27,7 +28,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.create');
     }
 
     /**
@@ -38,26 +39,24 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['title' => 'required']);
+
+        $item = Page::create($request->all());
+
+        Flash::success("Запись - {$item->id} сохранена");
+
+        return redirect(route('admin.pages.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @param Request $request
+     * @param  int  $id
      * @return Response
      */
-    public function show($id, Request $request)
+    public function show($id)
     {
-        $news = News::findOrFail($id);
-
-        if($request->ajax())
-        {
-            return response()->json($news);
-        }
-
-        return $news;
+        //
     }
 
     /**
@@ -68,7 +67,9 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Page::findOrFail($id);
+
+        return view('admin.pages.edit', compact('item'));
     }
 
     /**
@@ -80,7 +81,15 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, ['title' => 'required']);
+
+        $item = Page::findOrFail($id);
+
+        $item->update($request->all());
+
+        Flash::success("Запись - {$id} обновлена");
+
+        return redirect(route('admin.pages.index'));
     }
 
     /**
@@ -91,6 +100,10 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Page::destroy($id);
+
+        Flash::success("Запись - {$id} удалена");
+
+        return redirect(route('admin.pages.index'));
     }
 }

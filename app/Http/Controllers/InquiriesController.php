@@ -78,12 +78,24 @@ class InquiriesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
+     * @param Request $request
      * @return Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $inquiry = Inquiry::with('car')->findOrFail($id);
+        $user = User::find($inquiry->user_id);
+
+        if($request->ajax())
+        {
+            return response()->json([
+                'inquiry' => $inquiry,
+                'user' => $user
+            ]);
+        }
+
+        return $inquiry;
     }
 
     /**

@@ -32,12 +32,10 @@ header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
 #section_notification { background: #ddd; }
 #section_notification .alert { margin-top: 15px; }
 
-.pac-container { min-width: 400px; }
-
 #section_apply { background: url("../img/section-1.jpg") top center; }
 #section_apply .container { background: rgba(73,131,178,0.7); border-radius: 10px; }
 #section_apply label { color: #fff; text-shadow: 1px 1px 2px #555; }
-.card { border-radius: 20px; background: #fff; margin-bottom: 30px; }
+.card { border-radius: 20px; background: #fff; margin-bottom: 30px; cursor: pointer; }
 .card-inner { padding: 10px; min-height: 200px; background-position: right bottom; background-repeat: no-repeat; }
 .card-inner div { text-align: center; font-size: 22px; line-height: 20px; }
 .step-1 { background-image: url("../img/step-registration.png"); }
@@ -86,6 +84,7 @@ header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
 footer { background: url("../img/section-3.jpg") top center; }
 footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 
+.inquiry-show .data-avatar { height: 48px; width: 48px; vertical-align: middle; margin: 0 10px 0 0; }
 
 /* -------------------- Responsive classes ------------------- */
 

@@ -8,10 +8,10 @@
             </div>
             <div class="col-lg-7 col-md-8 col-sm-8 menu text-center">
                 <ul>
-                    <li><a href="#">Объявления</a></li>
-                    <li><a href="#">Покупателям</a></li>
-                    <li><a href="#">Продавцам</a></li>
-                    <li><a href="#">Новости</a></li>
+                    <li><a href="#" onclick="$('body').scrollTo('#section_inquiries', 500); return false;">Объявления</a></li>
+                    <li><a href="#" onclick="$('body').scrollTo('#section_apply', 500); return false;">Покупателям</a></li>
+                    <li><a href="#" onclick="$('body').scrollTo('#section_search', 500); return false;">Продавцам</a></li>
+                    <li><a href="#" onclick="$('body').scrollTo('#section_news', 500); return false;">Новости</a></li>
                 </ul>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2">
@@ -77,28 +77,28 @@
         <div>&nbsp;</div>
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="card">
+                <div class="card" v-on="click: showCard(1)">
                     <div class="card-inner step-1">
                         <div>Регистрация на сайте</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="card">
+                <div class="card" v-on="click: showCard(2)">
                     <div class="card-inner step-2">
                         <div>Какое авто хочу купить</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="card">
+                <div class="card" v-on="click: showCard(3)">
                     <div class="card-inner step-3">
                         <div>Продавец авто приедет к вам сам на осмотр</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="card">
+                <div class="card" v-on="click: showCard(4)">
                     <div class="card-inner step-4">
                         <div>Вы новый хозяин авто</div>
                     </div>
@@ -455,18 +455,18 @@
         <div class="row">
             @foreach ($lastInquiries as $item)
                 <div class="col-lg-3 col-md-3 col-sm-4">
-                    <div class="inquiry-block">
+                    <div class="inquiry-block" data-inquiry-id="{{ $item->id }}">
                         <div class="text-uppercase text-l">Куплю:</div>
                         <div class="block-line">автомобиль: <div class="value">{{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}</div></div>
                         <div class="block-line">года: <div class="value">{{ $item->year_from ? 'с '.$item->year_from.'г. ' : '' }}{{ $item->year_to ? 'по '.$item->year_to.'г. ' : '' }}{{ $item->year_from && $item->year_to ? '' : '-' }}</div></div>
                         <div class="block-line">трансмиссия: <div class="value">{{ $item->transmission_name }}</div></div>
                         <div class="block-line">город: <div class="value">{{ $item->city }}</div></div>
-                        <div class="btn btn-block btn-success">Подробнее</div>
+                        <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
                     </div>
                 </div>
             @endforeach
             <div class="col-lg-3 col-md-3 col-sm-4" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
-                <div class="inquiry-block">
+                <div class="inquiry-block" data-inquiry-id="@{{ item.id }}">
                     <div class="text-uppercase text-l">Куплю:</div>
                     <div class="block-line">
                         автомобиль:
@@ -484,7 +484,7 @@
                     </div>
                     <div class="block-line">трансмиссия: <div class="value">@{{ item.transmission_name }}</div></div>
                     <div class="block-line">город: <div class="value">@{{ item.city }}</div></div>
-                    <div class="btn btn-block btn-success">Подробнее</div>
+                    <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
                 </div>
             </div>
         </div>
@@ -510,17 +510,17 @@
         <div class="row">
             @foreach ($lastNews as $item)
                 <div class="col-lg-3 col-md-3 col-sm-6">
-                    <div class="news-block">
+                    <div class="news-block" data-news-id="{{ $item->id }}">
                         <div class="news-date">{{ $item->published_at->diffForHumans() }}</div>
-                        <div class="news-title"><a href="#">{{ $item->title }}</a></div>
+                        <div class="news-title"><a href="#" v-on="click: showNews($event)">{{ $item->title }}</a></div>
                         <div class="news-icon">@if($item->image) <img src='{{ $item->img_url.$item->image.$item->img_size['icon'] }}'> @else <img src='/img/noimg.png'> @endif</div>
                     </div>
                 </div>
             @endforeach
             <div class="col-lg-3 col-md-3 col-sm-4" v-repeat="item in newsLoaded" v-transition="bounceIn">
-                <div class="news-block">
+                <div class="news-block" data-news-id="@{{ item.id }}">
                     <div class="news-date">@{{ item.published_at }}</div>
-                    <div class="news-title"><a href="#">@{{ item.title }}</a></div>
+                    <div class="news-title"><a href="#" v-on="click: showNews($event)">@{{ item.title }}</a></div>
                     <div class="news-icon"><img v-attr="src: item.img_url + item.image + item.img_size['icon']"></div>
                 </div>
             </div>
@@ -575,5 +575,8 @@
 
 @include('partials._flash')
 @include('partials._profile')
+@include('partials._inquiry_show')
 @include('partials._inquiries_table')
+@include('partials._page_show')
+@include('partials._news_show')
 @include('partials._footer')

@@ -18,10 +18,14 @@ Route::post('/profile/save', ['as' => 'profileSave', 'uses' => 'HomepageControll
 
 Route::get('/inquiry/index', ['as' => 'inquiries', 'uses' => 'InquiriesController@index']);
 Route::get('/inquiry/private', ['as' => 'inquiriesPrivate', 'uses' => 'InquiriesController@privateIndex']);
+Route::get('/inquiry/show/{id}', ['as' => 'inquiryShow', 'uses' => 'InquiriesController@show']);
 Route::post('/inquiry/store', ['as' => 'inquiryStore', 'uses' => 'InquiriesController@store']);
 Route::get('/inquiry/delete/{id}', ['as' => 'inquiriesDestroy', 'uses' => 'InquiriesController@destroy']);
 
 Route::get('/news/index', ['as' => 'news', 'uses' => 'NewsController@index']);
+Route::get('/news/show/{id}', ['as' => 'newsShow', 'uses' => 'NewsController@show']);
+
+Route::get('/page/show/{id}', ['as' => 'pageShow', 'uses' => 'PagesController@show']);
 
 Route::get('metro/{id}', 'MetroController@city');
 
@@ -108,6 +112,7 @@ Route::group(['prefix' => 'admin'], function()
         Route::get('/', ['as' => 'admin', 'uses' =>'Admin\IndexController@index']);
 
         Route::resource('inquiries', 'Admin\InquiriesController');
+        Route::resource('pages', 'Admin\PagesController');
         Route::resource('news', 'Admin\NewsController');
         Route::resource('cars', 'Admin\CarsController');
         Route::resource('cities', 'Admin\CitiesController');

@@ -29,6 +29,7 @@ elixir(function(mix) {
         '../../../node_modules/select2/dist/js/select2.min.js',
         '../../../node_modules/select2/dist/js/i18n/ru.js',
         '../../../node_modules/noty/js/noty/packaged/jquery.noty.packaged.min.js',
+        '../../../node_modules/jquery.scrollto/jquery.scrollTo.min.js',
         '../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
         '../../../bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',

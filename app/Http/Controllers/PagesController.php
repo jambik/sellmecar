@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
+use App\Page;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-class NewsController extends Controller
+class PagesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(config('vars.newsPerPage'));
-
-        return response()->json($news);
+        //
     }
 
     /**
@@ -50,14 +48,14 @@ class NewsController extends Controller
      */
     public function show($id, Request $request)
     {
-        $news = News::findOrFail($id);
+        $page = Page::findOrFail($id);
 
         if($request->ajax())
         {
-            return response()->json($news);
+            return response()->json($page);
         }
 
-        return $news;
+        return $page;
     }
 
     /**
