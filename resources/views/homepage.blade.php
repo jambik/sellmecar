@@ -415,12 +415,6 @@
                 </div>
             </div>
 
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div class="more-search text-center"><a href="#" v-on="click: searchInfo($event)"><i class="fa fa-search"></i> Расширенный поиск</a></div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
-
             <div class="row" id="search_car_info" style="display: none;">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
@@ -501,6 +495,12 @@
                     </div>
                 </div>
             </div>
+
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
+            <div class="more-search text-center"><a href="#" v-on="click: searchInfo($event)"><i class="fa fa-search"></i> Расширенный поиск</a></div>
+            <div>&nbsp;</div>
+            <div>&nbsp;</div>
         </form>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
