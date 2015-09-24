@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="inquiryShowModalLabel"><i class="fa fa-list"></i> Объявление #@{{ inquiryShow.inquiry.id }}</h4>
+                <h4 class="modal-title" id="inquiryShowModalLabel"><i class="fa fa-list"></i> Объявление #@{{ inquiryShow.id }}</h4>
             </div>
             <div class="modal-body">
                 <div class="inquiry-show">
