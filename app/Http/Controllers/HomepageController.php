@@ -18,17 +18,17 @@ class HomepageController extends Controller
     {
         $user = Auth::user() ?: false;
         $cars = Car::with('inquiriesCount')->get();
-        $carsList = Car::all()->lists('name', 'id')->toArray();
+        $carsList = $cars->lists('name', 'id')->toArray();
         $carBrandsShow = 18;
 
-        $lastInquiries = Inquiry::paginate(config('vars.inquiriesPerPage'));
+        $lastInquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiriesPerPage'));
         $lastInquiries->setPath('inquiry/index');
 
         Carbon::setLocale(config('app.locale'));
         $lastNews = News::paginate(config('vars.newsPerPage'));
         $lastNews->setPath('news/index');
 
-        $cities = City::lists('name', 'name')->all();
+        $cities = City::lists('name', 'id')->all();
 
         return view('homepage', compact('user', 'cars', 'carsList', 'carBrandsShow', 'lastInquiries', 'lastNews', 'cities'));
     }

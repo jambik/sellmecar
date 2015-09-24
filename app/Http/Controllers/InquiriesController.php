@@ -18,7 +18,7 @@ class InquiriesController extends Controller
      */
     public function index()
     {
-        $inquiries = Inquiry::with('car')->paginate(config('vars.inquiriesPerPage'));
+        $inquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiriesPerPage'));
 
         return response()->json($inquiries);
     }
@@ -33,6 +33,51 @@ class InquiriesController extends Controller
         $inquiries = Inquiry::with('car')->byUser(Auth::user()->id)->get();
 
         return response()->json(["inquiries" => $inquiries]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param Request $request
+     * @return Response
+     */
+    public function search(Request $request)
+    {
+        $inquiries = Inquiry::query();
+
+        $search['model']      = $request->get('model');
+        $search['year_from']  = $request->get('year_from');
+        $search['year_to']    = $request->get('year_to');
+        $search['city_id']    = $request->get('city_id');
+        $search['metro']      = $request->has('metro') && $request->get('metro') ? $request->get('metro') : false;
+
+        if ($search['model'])     $inquiries->where('model', $search['model']);
+        if ($search['year_from']) $inquiries->where('year_from', '>=', $search['year_from']);
+        if ($search['year_to'])   $inquiries->where('year_to', '<=', $search['year_to']);
+        if ($search['city_id'])   $inquiries->where('city_id', $search['city_id']);
+        if ($search['metro'])     $inquiries->where('metro', $search['metro']);
+
+
+
+        $search['price_from'] = $request->get('price_from');
+        $search['price_to']   = $request->get('price_to');
+
+        if ($search['price_from']) $inquiries->where('price_from', '>=', $search['price_from']);
+        if ($search['price_to'])   $inquiries->where('price_to', '<=', $search['price_to']);
+
+
+
+        $inquiriesFound = $inquiries->with('car', 'user', 'city')->get();
+
+        if($request->ajax())
+        {
+            return response()->json([
+                'found' => $inquiriesFound,
+                'suggest' => []
+            ]);
+        }
+
+        return $inquiriesFound;
     }
 
     /**
@@ -84,14 +129,12 @@ class InquiriesController extends Controller
      */
     public function show($id, Request $request)
     {
-        $inquiry = Inquiry::with('car')->findOrFail($id);
-        $user = User::find($inquiry->user_id);
+        $inquiry = Inquiry::with('car', 'city', 'user')->findOrFail($id);
 
         if($request->ajax())
         {
             return response()->json([
-                'inquiry' => $inquiry,
-                'user' => $user
+                'inquiry' => $inquiry
             ]);
         }
 

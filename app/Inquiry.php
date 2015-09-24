@@ -39,6 +39,14 @@ class Inquiry extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
+
+    /**
      * @return int|string
      */
     public function getPriceFromFormattedAttribute()

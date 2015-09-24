@@ -11,6 +11,8 @@ $(document).ready(function() {
             inquiryShow: false,
             inquiries: [],
             inquiriesLoaded: [],
+            inquiriesSearch: false,
+            showInquiryInfoFields: false,
             newsShow: false,
             newsLoaded: [],
             pageShow: false,
@@ -81,11 +83,19 @@ $(document).ready(function() {
                 });
             },
 
-            searchInfo: function(e)
+            inquirySearchSuccess: function (data)
+            {
+                //console.log(data);
+                this.inquiriesSearch = { found: data.found, suggest: data.suggest };
+                console.log(this.inquiriesSearch);
+                $('body').scrollTo('#section_search_results', 500);
+            },
+
+            showInquirySearchInfo: function(e)
             {
                 e.preventDefault();
 
-                $('#search_car_info').toggle('fast');
+                this.showInquiryInfoFields = ! this.showInquiryInfoFields;
             },
 
             showCard: function(id)
@@ -119,11 +129,11 @@ $(document).ready(function() {
             {
                 e.preventDefault();
                 var element = e.target;
-                var id = $(element).closest('div.inquiry-block').data('inquiryId');
+                var id = $(element).closest('.inquiry-item').data('inquiryId');
 
                 $.get('/inquiry/show/' + id, function(data) {
-                    console.log(data.user);
-                    this.inquiryShow = data;
+                    console.log(data);
+                    this.inquiryShow = data.inquiry;
                     $("#inquiryShowModal").modal('show');
                 }.bind(this))
                 .fail(function() {
@@ -237,9 +247,10 @@ $(document).ready(function() {
             {
                 this.metroOptions = [];
 
-                $.get("/metro/" + (this.city ? this.city : 'Москва'), function(data) {
+                $.get("/metro/" + (this.city ? this.city : 1), function(data) {
                     $.each(data, function(index, value) {
                         this.metroOptions.push(value.name);
+                        //this.metroOptions.push({text: value.name, value: value.id });
                     }.bind(this));
                 }.bind(this))
                 .fail(function() {
@@ -333,17 +344,16 @@ $(document).ready(function() {
 });
 
 Vue.transition('bounceIn', {
-    enter: function (el) {
-        $(el).addClass('animated bounceIn');
-    },
-    enterCancelled: function (el) {
-        // handle cancellation
-    },
+    enter: function (el) { $(el).addClass('animated bounceIn'); },
+    leave: function (el) { $(el).removeClass('animated bounceIn'); }
+});
 
-    leave: function (el) {
-        $(el).removeClass('animated bounceIn');
-    },
-    leaveCancelled: function (el) {
-        // handle cancellation
-    }
+Vue.transition('flipInX', {
+    enter: function (el) { $(el).addClass('animated flipInX'); },
+    leave: function (el) { $(el).removeClass('animated flipInX').addClass('animated flipOutX'); }
+})
+
+Vue.transition('slide', {
+    enter: function (el) { $(el).show('fast'); },
+    leave: function (el) { $(el).hide('fast'); }
 })

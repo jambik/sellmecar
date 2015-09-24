@@ -24,7 +24,8 @@ class CreateInquiriesTable extends Migration
             $table->integer('price_to')->default(0);
             $table->integer('year_from')->default(0);
             $table->integer('year_to')->default(0);
-            $table->string('city')->default('');
+            $table->integer('city_id')->unsigned();
+            $table->foreign('city_id')->references('id')->on('cities');
             $table->string('metro')->default('');
             $table->string('street')->default('');
             $table->string('name')->default('');

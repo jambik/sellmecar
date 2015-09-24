@@ -20,14 +20,14 @@ class MetroController extends Controller
     }
 
     /**
-     * @param $city
+     * @param $id
      * @return static
+     * @internal param $city
      * @internal param $id
      */
-    public function city($city)
+    public function city($id)
     {
-        $city = City::whereName($city)->firstOrFail();
-        return Metro::where('city_id', $city->id)->orderBy('name')->get();
+        return Metro::where('city_id', $id)->orderBy('name')->get();
     }
 
     /**

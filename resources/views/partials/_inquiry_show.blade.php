@@ -10,26 +10,26 @@
                     <p class="text-uppercase text-center text-l">Параметры автомобиля:</p>
                     <dl class="dl-horizontal">
                         <dt>Марка</dt>
-                        <dd>@{{ inquiryShow.inquiry.car.name }}</dd>
+                        <dd>@{{ inquiryShow.car.name }}</dd>
 
                         <dt>Модель</dt>
-                        <dd>@{{ inquiryShow.inquiry.model }}</dd>
+                        <dd>@{{ inquiryShow.model }}</dd>
 
                         <dt>Трансмиссия</dt>
-                        <dd>@{{ inquiryShow.inquiry.transmission_name }}</dd>
+                        <dd>@{{ inquiryShow.transmission_name }}</dd>
 
                         <dt>Года</dt>
                         <dd>
-                            <span v-if="inquiryShow.inquiry.year_from">с @{{ inquiryShow.inquiry.year_from }}г.</span>
-                            <span v-if="inquiryShow.inquiry.year_to">по @{{ inquiryShow.inquiry.year_to }}г.</span>
-                            <span v-if="! inquiryShow.inquiry.year_from && ! inquiryShow.inquiry.year_to">-</span>
+                            <span v-if="inquiryShow.year_from">с @{{ inquiryShow.year_from }}г.</span>
+                            <span v-if="inquiryShow.year_to">по @{{ inquiryShow.year_to }}г.</span>
+                            <span v-if="! inquiryShow.year_from && ! inquiryShow.year_to">-</span>
                         </dd>
 
                         <dt>Цена</dt>
                         <dd>
-                            <span v-if="inquiryShow.inquiry.price_from">от @{{ inquiryShow.inquiry.price_from_formatted }}руб.</span>
-                            <span v-if="inquiryShow.inquiry.price_to">до @{{ inquiryShow.inquiry.price_to_formatted }}руб.</span>
-                            <span v-if="! inquiryShow.inquiry.price_from && ! inquiryShow.inquiry.price_to">-</span>
+                            <span v-if="inquiryShow.price_from">от @{{ inquiryShow.price_from_formatted }}руб.</span>
+                            <span v-if="inquiryShow.price_to">до @{{ inquiryShow.price_to_formatted }}руб.</span>
+                            <span v-if="! inquiryShow.price_from && ! inquiryShow.price_to">-</span>
                         </dd>
                     </dl>
                     <hr>
@@ -42,10 +42,13 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div v-if="inquiryShow.user.email"><i class="fa fa-envelope"></i> : @{{ inquiryShow.user.email }}</div>
                             <div v-if="inquiryShow.user.phone"><i class="fa fa-phone"></i> : @{{ inquiryShow.user.phone }}</div>
+                            <div>
+                                <i class="fa fa-globe"></i> : @{{ inquiryShow.city.name }}<span v-if="inquiryShow.metro">, метро @{{ inquiryShow.metro }}</span><span v-if="inquiryShow.street">, ул. @{{ inquiryShow.street }}</span>
+                            </div>
                         </div>
                     </div>
                     <hr>
-                    <div><i class="fa fa-calendar"></i> Дата объявления: @{{ inquiryShow.inquiry.created_at }}</div>
+                    <div><i class="fa fa-calendar"></i> Дата объявления: @{{ inquiryShow.created_at }}</div>
                 </div>
             </div>
             <div class="modal-footer">
