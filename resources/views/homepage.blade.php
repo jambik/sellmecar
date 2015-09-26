@@ -27,6 +27,11 @@
                                 <div class="form-group">
                                     <input type="password" name="password" placeholder="Пароль" class="form-control" />
                                 </div>
+                                <div class="form-group text-center">
+                                    <div class="checkbox">
+                                        <input type="checkbox" name="remember"> Запомнить меня
+                                    </div>
+                                </div>
                                 {!! Form::token() !!}
                                 <button type="submit" class="btn btn-block btn-warning">Вход</button>
                                 <div>&nbsp;</div>
