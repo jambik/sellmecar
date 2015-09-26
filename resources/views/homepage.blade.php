@@ -195,11 +195,11 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             {!! Form::label('price_from', 'Цена, от:') !!}
-                            {!! Form::text('price_from', null, ['class' => 'form-control input-lg', 'placeholder' => 'цена от']) !!}
+                            {!! Form::text('price_from', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'цена от']) !!}
                         </div>
                         <div class="form-group col-lg-6">
                             {!! Form::label('price_to', 'до:') !!}
-                            {!! Form::text('price_to', null, ['class' => 'form-control input-lg', 'placeholder' => 'цена до']) !!}
+                            {!! Form::text('price_to', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'цена до']) !!}
                         </div>
                     </div>
                     <div class="row">
@@ -215,8 +215,9 @@
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="form-group">
-                        <label for="city">Город:</label>
-                        <select name="city" placeholder="Выберите город" class="form-control input-lg" v-model="city" v-on="change: changeCity">
+                        <label>Город:</label>
+                        <select name="city_id" placeholder="Выберите город" class="form-control input-lg" v-model="city" v-on="change: changeCity">
+                            <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
@@ -224,10 +225,9 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class="form-group" v-show="metroOptions.length">
                                 <label for="metro">Метро:</label>
-                                <select name="metro" data-placeholder="Ближайшее метро" id="metro" class="form-control input-lg select2" v-model="metro" options="metroOptions">
-                                    <option value=""></option>
+                                <select name="metro" class="form-control input-lg select2" v-model="metro" options="metroOptions">
                                 </select>
                             </div>
                         </div>
@@ -242,13 +242,13 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="name">Имя:</label>
-                                <input type="text" name="name" id="name" class="form-control input-lg" v-model="user.name">
+                                <input type="text" name="name" class="form-control input-lg" v-model="user.name">
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="phone">Телефон:</label>
-                                <input type="text" name="phone" id="phone" class="form-control input-lg" v-model="user.phone">
+                                <input type="text" name="phone" class="form-control input-lg" v-model="user.phone">
                             </div>
                         </div>
                     </div>
@@ -314,9 +314,9 @@
                 <div class="row">
                     <div class="col-lg-6">Место проживания:</div>
                     <div class="col-lg-6">
-                        <span>@{{ inquiryCreated.city }}</span>
+                        <span>@{{ inquiryCreated.city.name }}</span>
                         <span v-if="inquiryCreated.metro">, метро @{{ inquiryCreated.metro }}</span>
-                        <span v-if="inquiryCreated.street">, ул. @{{ inquiryCreated.street }}</span>
+                        <span v-if="inquiryCreated.street">, @{{ inquiryCreated.street }}</span>
                     </div>
                 </div>
                 <div class="row">
@@ -410,21 +410,21 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="metro" data-placeholder="Ближайшее метро" id="metro" class="form-control input-lg select2" v-model="metro" options="metroOptions">
+                        <select name="metro" data-placeholder="- Ближайшее метро -" class="form-control input-lg select2" v-model="metro" options="metroOptions" v-if="metroOptions.length">
                             <option value=""></option>
                         </select>
                     </div>
                 </div>
             </div>
 
-            <div class="row" id="search_car_info" v-if="showInquiryInfoFields" v-transition="flipInX">
+            <div class="row" id="search_car_info" v-show="showInquiryInfoFields" v-transition="flipInX">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::text('price_from', null, ['class' => 'form-control input-lg', 'placeholder' => 'Цена, от']) !!}
+                            {!! Form::text('price_from', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'Цена, от']) !!}
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::text('price_to', null, ['class' => 'form-control input-lg', 'placeholder' => 'Цена, до']) !!}
+                            {!! Form::text('price_to', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'Цена, до']) !!}
                         </div>
                     </div>
 

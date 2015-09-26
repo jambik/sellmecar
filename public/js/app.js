@@ -17,8 +17,8 @@ $(document).ready(function() {
             newsLoaded: [],
             pageShow: false,
             city: '',
-            street: "",
-            metro: "",
+            street: '',
+            metro: '',
             metroOptions: [],
             autocomplete: false,
             API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo"
@@ -94,7 +94,6 @@ $(document).ready(function() {
             showInquirySearchInfo: function(e)
             {
                 e.preventDefault();
-
                 this.showInquiryInfoFields = ! this.showInquiryInfoFields;
             },
 
@@ -245,20 +244,24 @@ $(document).ready(function() {
 
             changeCity: function() // Изменение города
             {
+                this.metro = "";
                 this.metroOptions = [];
+                $("select[name='metro']").val('');
 
-                $.get("/metro/" + (this.city ? this.city : 1), function(data) {
-                    $.each(data, function(index, value) {
-                        this.metroOptions.push(value.name);
-                        //this.metroOptions.push({text: value.name, value: value.id });
-                    }.bind(this));
-                }.bind(this))
-                .fail(function() {
-                    alert("Ошибка при запросе");
-                });
+                if (this.city)
+                {
+                    $.get("/metro/" + this.city, function (data) {
+                        $.each(data, function (index, value) {
+                            this.metroOptions.push(value.name);
+                            //this.metroOptions.push({text: value.name, value: value.id });
+                        }.bind(this));
+                        setTimeout("$(\"select[name='metro']\").select2({language: 'ru', allowClear: true, placeholder: '- Ближайшее метро -'})", 1);
+                    }.bind(this))
+                    .fail(function () {
+                        alert("Ошибка при запросе");
+                    });
+                }
 
-                $("#metro").val('');
-                $("#metro").select2({language: 'ru'});
                 this.initAutocomplete();
             },
 
@@ -306,18 +309,16 @@ $(document).ready(function() {
             {
                 $("#btn_inquiry_create").on( "click", function() {
                     $("#container_step0").effect('slide', { direction: 'left', mode: 'hide' }, 300, function(){
-                        if($('#user_menu').is(':visible')) {
+                        if($('#user_menu').is(':visible'))
+                        {
                             this.profileLoad();
+                            this.changeCity();
                             $("#container_step2").effect('slide', {direction: 'right', mode: 'show'}, 500);
                         }
-                        else {
-                            this.profileLoad();
+                        else
+                        {
                             $("#container_step1").effect('slide', {direction: 'right', mode: 'show'}, 500);
-
                         }
-
-                        $("#metro").val('');
-                        $("#metro").select2();
                     }.bind(this));
                 }.bind(this));
             }
@@ -337,6 +338,18 @@ $(document).ready(function() {
 
             // Инициализируем выбор годов автомобиля
             if ($('.yearpicker').length) $('.yearpicker').datepicker({ format: "yyyy", minViewMode: 2 });
+
+            // Добавляем маску полям
+            $('input.mask-price').inputmask({
+                alias: 'numeric',
+                groupSeparator: ' ',
+                autoGroup: true,
+                digits: 0,
+                digitsOptional: false,
+                suffix: ' руб.',
+                rightAlign: false,
+                autoUnmask: true
+            });
         }
 
     });
@@ -350,10 +363,5 @@ Vue.transition('bounceIn', {
 
 Vue.transition('flipInX', {
     enter: function (el) { $(el).addClass('animated flipInX'); },
-    leave: function (el) { $(el).removeClass('animated flipInX').addClass('animated flipOutX'); }
-})
-
-Vue.transition('slide', {
-    enter: function (el) { $(el).show('fast'); },
-    leave: function (el) { $(el).hide('fast'); }
-})
+    leave: function (el) { $(el).removeClass('animated flipInX'); }
+});

@@ -8,7 +8,7 @@ class Inquiry extends Model
 {
     protected $table = 'inquiries';
 
-    protected $fillable = ['user_id', 'car_id', 'model', 'transmission', 'price_from', 'price_to', 'year_from', 'year_to', 'city', 'metro', 'street', 'name', 'phone', 'information'];
+    protected $fillable = ['user_id', 'car_id', 'model', 'transmission', 'price_from', 'price_to', 'year_from', 'year_to', 'city_id', 'metro', 'street', 'name', 'phone', 'information'];
 
     protected $appends = ['price_from_formatted', 'price_to_formatted', 'transmission_name'];
 

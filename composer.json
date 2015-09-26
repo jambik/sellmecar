@@ -29,7 +29,8 @@
     "jhaoda/socialite-odnoklassniki": "^1.1",
     "datatables/datatables": "^1.10",
     "zizaco/entrust": "dev-laravel-5",
-    "ckeditor/ckeditor": "^4.5.3"
+    "ckeditor/ckeditor": "^4.5.3",
+    "robinherbots/jquery.inputmask": "^3.2.0"
   },
   "autoload": {
     "classmap": [

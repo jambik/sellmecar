@@ -101,11 +101,12 @@ class InquiriesController extends Controller
         $user = User::find(Auth::user()->id);
 
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'city_id' => 'required'
         ]);
 
         $item = Inquiry::create($request->all() + ['user_id' => $user->id]);
-        $inquiry = Inquiry::with('car')->findOrFail($item->id);
+        $inquiry = Inquiry::with('car', 'city')->findOrFail($item->id);
 
         if($request->ajax())
         {
