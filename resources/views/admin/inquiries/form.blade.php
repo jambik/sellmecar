@@ -1,6 +1,6 @@
 <div class="form-group">
     {!! Form::label('car_id', 'Автомобиль:') !!}
-    {!! Form::select('car_id', [0 => ''] + $cars, null, ['class' => 'form-control']) !!}
+    {!! Form::select('car_id', $cars, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -34,8 +34,8 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('city', 'Город:') !!}
-    {!! Form::text('city', null, ['class' => 'form-control']) !!}
+    {!! Form::label('city_id', 'Город:') !!}
+    {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">

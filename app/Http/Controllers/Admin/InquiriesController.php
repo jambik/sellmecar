@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Car;
+use App\City;
 use App\Inquiry;
 use Flash;
 use App\Http\Controllers\Controller;
@@ -17,7 +18,7 @@ class InquiriesController extends Controller
      */
     public function index()
     {
-        $items = Inquiry::with('car')->orderBy('created_at', 'desc')->get();
+        $items = Inquiry::with('car', 'city')->orderBy('created_at', 'desc')->get();
 
         return view('admin.inquiries.index', compact('items'));
     }
@@ -30,8 +31,9 @@ class InquiriesController extends Controller
     public function create()
     {
         $cars = Car::lists('name', 'id')->all();
+        $cities = City::lists('name', 'id')->all();
 
-        return view('admin.inquiries.create', compact('cars'));
+        return view('admin.inquiries.create', compact('cars', 'cities'));
     }
 
     /**
@@ -72,8 +74,9 @@ class InquiriesController extends Controller
     {
         $item = Inquiry::findOrFail($id);
         $cars = Car::lists('name', 'id')->all();
+        $cities = City::lists('name', 'id')->all();
 
-        return view('admin.inquiries.edit', compact('item', 'cars'));
+        return view('admin.inquiries.edit', compact('item', 'cars', 'cities'));
     }
 
     /**

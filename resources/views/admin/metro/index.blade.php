@@ -11,8 +11,8 @@
 				<th>Id</th>
 				<th>Название метро</th>
 				<th>Город</th>
-				<th><i class="fa fa-edit text-primary"></i></th>
-				<th><i class="fa fa-remove text-danger"></i></th>
+				<th class="td-edit"><i class="fa fa-edit text-primary"></i></th>
+				<th class="td-delete"><i class="fa fa-remove text-danger"></i></th>
 			</tr>
 		</thead>
 		<tbody>

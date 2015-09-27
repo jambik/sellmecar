@@ -13,8 +13,8 @@
                 <th>Заголовок</th>
 				<th>Текст новости</th>
 				<th>Дата публикации</th>
-				<th><i class="fa fa-edit text-primary"></i></th>
-				<th><i class="fa fa-remove text-danger"></i></th>
+				<th class="td-edit"><i class="fa fa-edit text-primary"></i></th>
+				<th class="td-delete"><i class="fa fa-remove text-danger"></i></th>
 			</tr>
 		</thead>
 		<tbody>

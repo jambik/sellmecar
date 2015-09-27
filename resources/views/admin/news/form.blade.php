@@ -9,6 +9,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('published_at', 'Текст новости:') !!}
+    {!! Form::text('published_at', null, ['class' => 'form-control input-datetime', 'rows' => 3]) !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('image', 'Фото:') !!}
     {!! Form::file('image', ['class' => 'form-control']) !!}
 </div>

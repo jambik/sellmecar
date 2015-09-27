@@ -17,11 +17,6 @@ class News extends Model
 
     protected $appends = ['img_url', 'img_size'];
 
-    /*public function setPublishedAtAttribute($value)
-    {
-        $this->attributes['published_at'] = Carbon::parse();
-    }*/
-
     /**
      * Get Image url path attribute
      *

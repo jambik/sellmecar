@@ -337,7 +337,7 @@ $(document).ready(function() {
             if ($('.select2').length) $('.select2').select2({language: "ru"});
 
             // Инициализируем выбор годов автомобиля
-            if ($('.yearpicker').length) $('.yearpicker').datepicker({ format: "yyyy", minViewMode: 2 });
+            if ($('.input-year').length) $('.input-year').datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY' });
 
             // Добавляем маску полям
             $('input.mask-price').inputmask({

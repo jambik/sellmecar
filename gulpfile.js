@@ -19,7 +19,7 @@ elixir(function(mix) {
         '../../../node_modules/font-awesome/css/font-awesome.min.css',
         '../../../node_modules/select2/dist/css/select2.min.css',
         '../../../node_modules/animate.css/animate.min.css',
-        '../../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css'
+        '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
     ], 'public/css/app.bundle.css');
 
     mix.scripts([
@@ -31,8 +31,8 @@ elixir(function(mix) {
         '../../../node_modules/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../../../node_modules/jquery.scrollto/jquery.scrollTo.min.js',
         '../../../vendor/robinherbots/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js',
-        '../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
-        '../../../bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js',
+        '../../../bower_components/moment/min/moment-with-locales.min.js',
+        '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect-slide.min.js'
     ], 'public/js/app.bundle.js');
@@ -49,7 +49,7 @@ elixir(function(mix) {
         '../../../node_modules/animate.css/animate.min.css',
         '../../../vendor/datatables/datatables/media/css/jquery.dataTables.min.css',
         '../../../vendor/datatables/datatables/media/css/dataTables.bootstrap.min.css',
-        '../../../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css'
+        '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
     ], 'public/css/admin.bundle.css');
 
     mix.scripts([
@@ -61,8 +61,8 @@ elixir(function(mix) {
         '../../../node_modules/noty/js/noty/packaged/jquery.noty.packaged.min.js',
         '../../../vendor/datatables/datatables/media/js/jquery.dataTables.min.js',
         '../../../vendor/datatables/datatables/media/js/dataTables.bootstrap.min.js',
-        '../../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
-        '../../../bower_components/bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js',
+        '../../../bower_components/moment/min/moment-with-locales.min.js',
+        '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect-slide.min.js'
     ], 'public/js/admin.bundle.js');

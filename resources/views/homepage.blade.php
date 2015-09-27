@@ -210,11 +210,11 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             {!! Form::label('year_from', 'Год выпуска, от:') !!}
-                            {!! Form::text('year_from', null, ['class' => 'form-control input-lg yearpicker', 'placeholder' => 'год от']) !!}
+                            {!! Form::text('year_from', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'год от']) !!}
                         </div>
                         <div class="form-group col-lg-6">
                             {!! Form::label('year_to', 'до:') !!}
-                            {!! Form::text('year_to', null, ['class' => 'form-control input-lg yearpicker', 'placeholder' => 'год до']) !!}
+                            {!! Form::text('year_to', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'год до']) !!}
                         </div>
                     </div>
                 </div>
@@ -398,10 +398,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::text('year_from', null, ['class' => 'form-control input-lg yearpicker', 'placeholder' => 'Год выпуска, с']) !!}
+                            {!! Form::text('year_from', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'Год выпуска, с']) !!}
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::text('year_to', null, ['class' => 'form-control input-lg yearpicker', 'placeholder' => 'Год выпуска, по']) !!}
+                            {!! Form::text('year_to', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'Год выпуска, по']) !!}
                         </div>
                     </div>
                 </div>

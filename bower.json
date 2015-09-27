@@ -14,7 +14,7 @@
     "tests"
   ],
   "devDependencies": {
-    "bootstrap-datepicker": "~1.4.0",
-    "jquery-ui": "~1.11.4"
+    "jquery-ui": "~1.11.4",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
   }
 }

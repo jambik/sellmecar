@@ -6,3 +6,6 @@
     border: none;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover { border: none; background: none; }
+
+.td-edit { width: 34px !important; padding: 8px 10px !important; }
+.td-delete { width: 34px !important; padding: 8px 10px !important; }
