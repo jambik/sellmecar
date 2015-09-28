@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <div class="inquiry-show">
-                    @{{ newsShow.text }}
+                    @{{{ newsShow.text }}}
                     <hr>
                     <div><i class="fa fa-calendar"></i> Дата : @{{ newsShow.published_at }}</div>
                 </div>
