@@ -11,6 +11,10 @@
             @include('admin.partials._status')
             @include('admin.partials._errors')
             @yield('content')
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
         </div>
     </div>
 </div>

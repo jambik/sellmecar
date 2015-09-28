@@ -5,7 +5,7 @@
 	<p>
 		<a href="{{ route('admin.metro.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Добавить</a>
 	</p>
-	<table class="table table-responsive table-striped table-bordered table-items">
+	<table class="table table-responsive table-striped table-bordered" id="table_items">
 		<thead>
 			<tr>
 				<th>Id</th>

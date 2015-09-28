@@ -10,7 +10,6 @@ return [
 
         'color' => [
 
-            ['hex' => '#FFFFFF', 'name' => 'Бежевый'],
             ['hex' => '#ffefd5', 'name' => 'Бежевый'],
             ['hex' => '#ffffff', 'name' => 'Белый'],
             ['hex' => '#0088ff', 'name' => 'Голубой'],

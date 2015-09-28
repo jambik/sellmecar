@@ -37,8 +37,16 @@ elixir(function(mix) {
         '../../../bower_components/jquery-ui/ui/minified/effect-slide.min.js'
     ], 'public/js/app.bundle.js');
 
-    mix.copy('node_modules/font-awesome/fonts', 'public/fonts');
-    mix.copy('node_modules/bootstrap/fonts', 'public/fonts');
+    mix.copy([
+        'node_modules/font-awesome/fonts',
+        'node_modules/bootstrap/fonts'
+    ], 'public/fonts');
+
+
+
+
+
+
 
     /* Admin files */
     mix.styles([
@@ -47,7 +55,9 @@ elixir(function(mix) {
         '../../../node_modules/font-awesome/css/font-awesome.min.css',
         '../../../node_modules/select2/dist/css/select2.min.css',
         '../../../node_modules/animate.css/animate.min.css',
-        '../../../vendor/datatables/datatables/media/css/jquery.dataTables.min.css',
+        '../../../node_modules/codemirror/lib/codemirror.css',
+        '../../../node_modules/codemirror/theme/monokai.css',
+        '../../../node_modules/summernote/dist/summernote.css',
         '../../../vendor/datatables/datatables/media/css/dataTables.bootstrap.min.css',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
     ], 'public/css/admin.bundle.css');
@@ -59,6 +69,10 @@ elixir(function(mix) {
         '../../../node_modules/select2/dist/js/select2.min.js',
         '../../../node_modules/select2/dist/js/i18n/ru.js',
         '../../../node_modules/noty/js/noty/packaged/jquery.noty.packaged.min.js',
+        '../../../node_modules/codemirror/lib/codemirror.js',
+        '../../../node_modules/codemirror/mode/xml/xml.js',
+        '../../../node_modules/summernote/dist/summernote.min.js',
+        '../../../node_modules/summernote/lang/summernote-ru-RU.js',
         '../../../vendor/datatables/datatables/media/js/jquery.dataTables.min.js',
         '../../../vendor/datatables/datatables/media/js/dataTables.bootstrap.min.js',
         '../../../bower_components/moment/min/moment-with-locales.min.js',

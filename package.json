@@ -2,14 +2,17 @@
   "private": true,
   "devDependencies": {
     "animate.css": "^3.4.0",
+    "bootswatch": "^3.3.5",
+    "codemirror": "^5.7.0",
     "font-awesome": "^4.0.0",
     "gulp": "^3.8.8",
     "gulp-watch": "^4.3.5",
     "jquery": "^2.0.0",
+    "jquery.scrollto": "2.1.1",
     "noty": "^2.3.6",
     "select2": "^4.0.0",
-    "vue": "^0.12.14",
-    "jquery.scrollto": "2.1.1"
+    "summernote": "^0.6.16",
+    "vue": "^0.12.14"
   },
   "dependencies": {
     "laravel-elixir": "^3.0.0",

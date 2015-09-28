@@ -5,7 +5,7 @@
 	<p>
 		<a href="{{ route('admin.inquiries.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Добавить</a>
 	</p>
-	<table class="table table-responsive table-striped table-bordered table-items">
+	<table class="table table-responsive table-striped table-bordered" id="table_items">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -15,7 +15,7 @@
                 <th>Адрес</th>
 				<th>Контакты</th>
                 <th>Доп. информация</th>
-				<th>Дата объявления</th>
+				<th class="order-default order-direction-desc">Дата объявления</th>
 				<th class="td-edit"><i class="fa fa-edit text-primary"></i></th>
 				<th class="td-delete"><i class="fa fa-remove text-danger"></i></th>
 			</tr>
