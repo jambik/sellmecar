@@ -186,12 +186,20 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
                     <div class="form-group">
-                        {!! Form::label('car_id', 'Автомобиль:') !!}
-                        {!! Form::select('car_id', $carsList, null, ['class' => 'form-control input-lg select2', 'style' => 'width: 100%; height: 40px;']) !!}
+                        <label>Автомобиль:</label>
+                        <select name="car_id" placeholder="- Выберите марку автомобиля -" class="form-control input-lg" v-model="car" v-on="change: changeCar">
+                            <option value="">- Выберите марку автомобиля -</option>
+                            @foreach($cars as $value)
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
-                        {!! Form::label('model', 'Модель автомобиля:') !!}
-                        {!! Form::text('model', null, ['class' => 'form-control input-lg', 'placeholder' => 'Camry']) !!}
+                        <div class="form-group">
+                            <label>Модель авто:</label>
+                            <select name="model" class="form-control input-lg select2" v-model="model" options="modelOptions">
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('transmission', 'Трансмиссия:') !!}
@@ -221,7 +229,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="form-group">
                         <label>Город:</label>
-                        <select name="city_id" placeholder="Выберите город" class="form-control input-lg" v-model="city" v-on="change: changeCity">
+                        <select name="city_id" placeholder="- Выберите город -" class="form-control input-lg" v-model="city" v-on="change: changeCity">
                             <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
@@ -398,10 +406,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::text('year_from', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'Год выпуска, с']) !!}
+                            <input type="text" name="year_from" class="form-control input-lg input-year" placeholder="Год выпуска, с">
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::text('year_to', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'Год выпуска, по']) !!}
+                            <input type="text" name="year_to" class="form-control input-lg input-year" placeholder="Год выпуска, по">
                         </div>
                     </div>
                 </div>
@@ -437,18 +445,17 @@
                         <div class="form-group col-lg-6">
                             <select name="gear" placeholder="- Привод -" class="form-control input-lg">
                                 <option value="0">- Привод -</option>
-                                <option value="0">Неважно</option>
-                                <option value="1">Задний</option>
-                                <option value="2">Передний</option>
-                                <option value="3">Полный</option>
+                                @foreach (config('vars.car_info.gear') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
                             <select name="transmission" placeholder="- Трансмиссия -" class="form-control input-lg">
                                 <option value="0">- Трансмиссия -</option>
-                                <option value="0">Неважно</option>
-                                <option value="1">Автомат</option>
-                                <option value="2">Механика</option>
+                                @foreach (config('vars.car_info.transmission') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -457,20 +464,17 @@
                         <div class="form-group col-lg-6">
                             <select name="engine" placeholder="- Тип двигателя -" class="form-control input-lg">
                                 <option value="0">- Тип двигателя -</option>
-                                <option value="0">Неважно</option>
-                                <option value="1">Бензин</option>
-                                <option value="2">Дизенль</option>
-                                <option value="3">Гибрид</option>
-                                <option value="4">Бензин / Газ</option>
-                                <option value="5">Электро</option>
+                                @foreach (config('vars.car_info.engine') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
                             <select name="rudder" placeholder="- Руль -" class="form-control input-lg">
                                 <option value="0">- Руль -</option>
-                                <option value="0">Неважно</option>
-                                <option value="1">Левый</option>
-                                <option value="2">Правый</option>
+                                @foreach (config('vars.car_info.rudder') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -481,23 +485,51 @@
                         <div class="form-group col-lg-6">
                             <select name="color" placeholder="- Цвет -" class="form-control input-lg">
                                 <option value="0">- Цвет -</option>
-                                <option value="0">Неважно</option>
-                                @foreach (config('vars.car_info.color') as $item)
-                                    <option value="{{ $item['name'] }}" data-hex="{{ $item['hex'] }}">{{ $item['name'] }}</option>
+                                @foreach (config('vars.car_info.color') as $value)
+                                    <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control input-lg">
+                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control input-lg mask-km">
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::text('capacity_from', null, ['class' => 'form-control input-lg', 'placeholder' => 'Объем двигателя от, л.']) !!}
+                            <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control input-lg">
+                                <option value="0">- Объем двигателя от, л. -</option>
+                                @foreach (config('vars.car_info.capacity') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }} л.</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::text('capacity_to', null, ['class' => 'form-control input-lg', 'placeholder' => 'Объем двигателя до, л.']) !!}
+                            <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control input-lg">
+                                <option value="0">- Объем двигателя до, л. -</option>
+                                @foreach (config('vars.car_info.capacity') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }} л.</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <select name="capacity_from" placeholder="- Состояние авто -" class="form-control input-lg">
+                                <option value="0">- Состояние авто -</option>
+                                @foreach (config('vars.car_info.state') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <select name="capacity_to" placeholder="- Количество хозяев по ПТС -" class="form-control input-lg">
+                                <option value="0">- Количество хозяев по ПТС -</option>
+                                @foreach (config('vars.car_info.owners') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -547,27 +579,6 @@
                 </td>
                 <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>
             </tr>
-            {{--<div class="inquiry-block" data-inquiry-id="@{{ item.id }}">
-                <div class="car-image" v-if="item.car.image"><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></div>
-                <div class="text-uppercase text-l">Куплю:</div>
-                <div class="block-line">
-                    автомобиль:
-                    <div class="value">
-                        @{{ item.car.name }}<span v-if="item.model">, @{{ item.model }}</span>
-                    </div>
-                </div>
-                <div class="block-line">
-                    года:
-                    <div class="value">
-                        <span v-if="item.year_from">с @{{ item.year_from }}г.</span>
-                        <span v-if="item.year_to">по @{{ item.year_to }}г.</span>
-                        <span v-if="! item.year_from && ! item.year_to">-</span>
-                    </div>
-                </div>
-                <div class="block-line">трансмиссия: <div class="value">@{{ item.transmission_name }}</div></div>
-                <div class="block-line">город: <div class="value">@{{ item.city.name }}</div></div>
-                <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
-            </div>--}}
         </table>
 
         <div class="text-center" v-if=" ! inquiriesSearch.found.length">По вашему запросу ничего не найдено</div>

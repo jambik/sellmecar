@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\News;
+use App\Carmodel;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
-class NewsController extends Controller
+class CarmodelsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,18 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(config('vars.news_per_page'));
+        //
+    }
 
-        return response()->json($news);
+    /**
+     * @param $id
+     * @return static
+     * @internal param $city
+     * @internal param $id
+     */
+    public function car($id)
+    {
+        return Carmodel::where('car_id', $id)->orderBy('name')->get();
     }
 
     /**
@@ -44,20 +53,12 @@ class NewsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
-     * @param Request $request
+     * @param  int  $id
      * @return Response
      */
-    public function show($id, Request $request)
+    public function show($id)
     {
-        $news = News::findOrFail($id);
-
-        if($request->ajax())
-        {
-            return response()->json($news);
-        }
-
-        return $news;
+        //
     }
 
     /**

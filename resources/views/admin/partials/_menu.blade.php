@@ -1,6 +1,7 @@
 <ul class="list-group">
     <li class="list-group-item"><a href="{{ route('admin.inquiries.index') }}"><i class="fa fa-bullhorn"></i> Объявления</a></li>
     <li class="list-group-item"><a href="{{ route('admin.cars.index') }}"><i class="fa fa-car"></i> Автомобили</a></li>
+    <li class="list-group-item"><a href="{{ route('admin.carmodels.index') }}"><i class="fa fa-car"></i> Модели авто</a></li>
     <li class="list-group-item"><a href="{{ route('admin.cities.index') }}"><i class="fa fa-globe"></i> Города</a></li>
     <li class="list-group-item"><a href="{{ route('admin.metro.index') }}"><i class="fa fa-subway"></i> Метро</a></li>
 

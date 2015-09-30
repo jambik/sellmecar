@@ -30,6 +30,8 @@ Route::get('/page/show/{id}', ['as' => 'pageShow', 'uses' => 'PagesController@sh
 
 Route::get('metro/{id}', 'MetroController@city');
 
+Route::get('carmodels/{id}', 'CarmodelsController@car');
+
 
 
 
@@ -116,6 +118,7 @@ Route::group(['prefix' => 'admin'], function()
         Route::resource('pages', 'Admin\PagesController');
         Route::resource('news', 'Admin\NewsController');
         Route::resource('cars', 'Admin\CarsController');
+        Route::resource('carmodels', 'Admin\CarmodelsController');
         Route::resource('cities', 'Admin\CitiesController');
         Route::resource('metro', 'Admin\MetroController');
         Route::resource('users', 'Admin\UsersController');

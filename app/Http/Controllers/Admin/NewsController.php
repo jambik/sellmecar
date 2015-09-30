@@ -40,9 +40,14 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['title' => 'required']);
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
 
-        $item = News::create($request->all() + ['published_at' => Carbon::now()]);
+        $input = $request->all();
+        $input['published_at'] = $input['published_at'] ?: Carbon::now();
+
+        $item = News::create($input);
 
         $item->saveImage($item, $request);
 
@@ -84,7 +89,9 @@ class NewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['title' => 'required']);
+        $this->validate($request, [
+            'title' => 'required'
+        ]);
 
         $item = News::findOrFail($id);
 

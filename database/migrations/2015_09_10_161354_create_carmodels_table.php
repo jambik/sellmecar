@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsTable extends Migration
+class CreateCarmodelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,12 +12,11 @@ class CreateNewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news', function (Blueprint $table) {
+        Schema::create('carmodels', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->text('text')->default('');
-            $table->string('image')->default('');
-            $table->dateTime('published_at');
+            $table->string('name');
+            $table->integer('car_id')->unsigned();
+            $table->foreign('car_id')->references('id')->on('cars');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateNewsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('news');
+        Schema::drop('carmodels');
     }
 }

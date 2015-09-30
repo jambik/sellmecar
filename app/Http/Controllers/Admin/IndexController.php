@@ -10,6 +10,5 @@ class IndexController extends Controller
     public function index()
     {
         return view('admin.index');
-        // TODO: добавить модель города
     }
 }

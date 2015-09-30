@@ -10,7 +10,7 @@
 			<tr>
 				<th>Id</th>
 				<th>Фото</th>
-                <th>Автомобиль</th>
+                <th class="order-default">Автомобиль</th>
 				<th class="td-edit"><i class="fa fa-edit text-primary"></i></th>
 				<th class="td-delete"><i class="fa fa-remove text-danger"></i></th>
 			</tr>

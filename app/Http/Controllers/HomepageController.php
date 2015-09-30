@@ -21,11 +21,11 @@ class HomepageController extends Controller
         $carsList = $cars->lists('name', 'id')->toArray();
         $carBrandsShow = 18;
 
-        $lastInquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiriesPerPage'));
+        $lastInquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiries_per_page'));
         $lastInquiries->setPath('inquiry/index');
 
         Carbon::setLocale(config('app.locale'));
-        $lastNews = News::paginate(config('vars.newsPerPage'));
+        $lastNews = News::paginate(config('vars.news_per_page'));
         $lastNews->setPath('news/index');
 
         $cities = City::lists('name', 'id')->all();

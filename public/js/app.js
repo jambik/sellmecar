@@ -17,9 +17,12 @@ $(document).ready(function() {
             newsLoaded: [],
             pageShow: false,
             city: '',
+            car: '',
             street: '',
             metro: '',
             metroOptions: [],
+            model: '',
+            modelOptions: [],
             autocomplete: false,
             API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo"
         },
@@ -173,6 +176,7 @@ $(document).ready(function() {
                 $("#container_step1").effect('slide', { direction: 'left', mode: 'hide' }, 300, function(){
                     $("#container_step2").effect('slide', { direction: 'right', mode: 'show' }, 500);
                     this.profileLoad();
+                    this.changeCar();
                     this.changeCity();
                 }.bind(this));
 
@@ -242,6 +246,29 @@ $(document).ready(function() {
                 }
             },
 
+            changeCar: function() // Изменение Марки авто
+            {
+                this.model = "";
+                this.modelOptions = [];
+                $("select[name='model']").val('');
+                setTimeout("$(\"select[name='model']\").select2({language: 'ru', allowClear: true, placeholder: '- Модель авто -'})", 1);
+
+                if (this.car)
+                {
+                    $.get("/carmodels/" + this.car, function (data) {
+                        $.each(data, function (index, value) {
+                            this.modelOptions.push(value.name);
+                            //this.metroOptions.push({text: value.name, value: value.id });
+                        }.bind(this));
+                        setTimeout("$(\"select[name='model']\").select2({language: 'ru', allowClear: true, placeholder: '- Модель авто -'})", 1);
+                    }.bind(this))
+                    .fail(function () {
+                        alert("Ошибка при запросе");
+                    });
+                }
+
+            },
+
             changeCity: function() // Изменение города
             {
                 this.metro = "";
@@ -302,6 +329,7 @@ $(document).ready(function() {
 
         ready: function()
         {
+            this.changeCar();
             this.changeCity();
 
             // Обработчик кнопки Дать объявление (шаг 0)
@@ -312,6 +340,7 @@ $(document).ready(function() {
                         if($('#user_menu').is(':visible'))
                         {
                             this.profileLoad();
+                            this.changeCar();
                             this.changeCity();
                             $("#container_step2").effect('slide', {direction: 'right', mode: 'show'}, 500);
                         }
@@ -337,9 +366,10 @@ $(document).ready(function() {
             if ($('.select2').length) $('.select2').select2({language: "ru"});
 
             // Инициализируем выбор годов автомобиля
-            if ($('.input-year').length) $('.input-year').datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY' });
+            $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
+            $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
-            // Добавляем маску полям
+            // Добавляем маску полю, типа - цена
             $('input.mask-price').inputmask({
                 alias: 'numeric',
                 groupSeparator: ' ',
@@ -347,6 +377,18 @@ $(document).ready(function() {
                 digits: 0,
                 digitsOptional: false,
                 suffix: ' руб.',
+                rightAlign: false,
+                autoUnmask: true
+            });
+
+            // Добавляем маску полю, типа - км
+            $('input.mask-km').inputmask({
+                alias: 'numeric',
+                groupSeparator: ' ',
+                autoGroup: true,
+                digits: 0,
+                digitsOptional: false,
+                suffix: ' км.',
                 rightAlign: false,
                 autoUnmask: true
             });

@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Car;
-use App\City;
-use App\Inquiry;
-use Carbon\Carbon;
+use App\Carmodel;
 use Flash;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class InquiriesController extends Controller
+class CarmodelsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +17,9 @@ class InquiriesController extends Controller
      */
     public function index()
     {
-        $items = Inquiry::with('car', 'city')->orderBy('created_at', 'desc')->get();
+        $items = Carmodel::with('car')->get();
 
-        return view('admin.inquiries.index', compact('items'));
+        return view('admin.carmodels.index', compact('items'));
     }
 
     /**
@@ -31,10 +29,9 @@ class InquiriesController extends Controller
      */
     public function create()
     {
-        $cars = Car::lists('name', 'id')->all();
-        $cities = City::lists('name', 'id')->all();
+        $cars = Car::orderBy('name')->get()->lists('name', 'id')->all();
 
-        return view('admin.inquiries.create', compact('cars', 'cities'));
+        return view('admin.carmodels.create', compact('cars'));
     }
 
     /**
@@ -46,14 +43,15 @@ class InquiriesController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'car_id' => 'required'
         ]);
 
-        $item = Inquiry::create($request->all());
+        $item = Carmodel::create($request->all());
 
         Flash::success("Запись - {$item->id} сохранена");
 
-        return redirect(route('admin.inquiries.index'));
+        return redirect(route('admin.carmodels.index'));
     }
 
     /**
@@ -75,11 +73,10 @@ class InquiriesController extends Controller
      */
     public function edit($id)
     {
-        $item = Inquiry::findOrFail($id);
-        $cars = Car::lists('name', 'id')->all();
-        $cities = City::lists('name', 'id')->all();
+        $item = Carmodel::findOrFail($id);
+        $cars = Car::orderBy('name')->get()->lists('name', 'id')->all();
 
-        return view('admin.inquiries.edit', compact('item', 'cars', 'cities'));
+        return view('admin.carmodels.edit', compact('item', 'cars'));
     }
 
     /**
@@ -92,31 +89,31 @@ class InquiriesController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required'
+            'name' => 'required',
+            'car_id' => 'required'
         ]);
 
-        $item = Inquiry::findOrFail($id);
+        $item = Carmodel::findOrFail($id);
 
         $item->update($request->all());
 
         Flash::success("Запись - {$id} обновлена");
 
-        return redirect(route('admin.inquiries.index'));
+        return redirect(route('admin.carmodels.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int  $id
      * @return Response
-     * @internal param Request $request
      */
     public function destroy($id)
     {
-        Inquiry::destroy($id);
+        Carmodel::destroy($id);
 
         Flash::success("Запись - {$id} удалена");
 
-        return redirect(route('admin.inquiries.index'));
+        return redirect(route('admin.carmodels.index'));
     }
 }
