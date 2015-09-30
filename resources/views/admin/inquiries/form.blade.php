@@ -9,11 +9,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('transmission', 'Трансмиссия:') !!}
-    {!! Form::select('transmission', ['1' => 'Автомат', 2 => 'Механика', 0 => 'Не важно'], null, ['class' => 'form-control']) !!}
-</div>
-
-<div class="form-group">
     {!! Form::label('year_from', 'Год - c:') !!}
     {!! Form::text('year_from', null, ['class' => 'form-control']) !!}
 </div>

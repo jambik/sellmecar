@@ -18,7 +18,6 @@
                         <td>
                             <span>@{{ item.car.name }}</span>
                             <span v-if="item.model">, @{{ item.model }}</span>
-                            <div>@{{ item.transmission_name }}</div>
                         </td>
                         <td>
                             <span v-if="item.year_from">с @{{ item.year_from }}г.</span>

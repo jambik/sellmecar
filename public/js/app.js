@@ -25,7 +25,8 @@ $(document).ready(function() {
             model: '',
             modelOptions: [],
             autocomplete: false,
-            API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo"
+            API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo",
+            vars: false
         },
 
         methods:
@@ -331,11 +332,26 @@ $(document).ready(function() {
                     var addressType = place.address_components[i].types[0];
                     if (addressType == 'route') this.street = place.address_components[i].long_name;
                 }
-            }
+            },
+
+            varsLoad: function()
+            {
+                if ( ! this.vars)
+                {
+                    $.get("/vars", function (data) {
+                        console.log(data);
+                        this.vars = data;
+                    }.bind(this))
+                        .fail(function () {
+                            alert("Ошибка при запросе");
+                        });
+                }
+            },
         },
 
         ready: function()
         {
+            this.varsLoad();
             this.changeCar();
             this.changeCity();
 

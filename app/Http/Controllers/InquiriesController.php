@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Carinfo;
 use App\Inquiry;
 use App\User;
 use Auth;
@@ -101,12 +102,21 @@ class InquiriesController extends Controller
         $user = User::find(Auth::user()->id);
 
         $this->validate($request, [
-            'name' => 'required',
-            'city_id' => 'required'
+            'car_id' => 'required',
+            'city_id' => 'required',
+            'name' => 'required'
         ]);
 
         $item = Inquiry::create($request->all() + ['user_id' => $user->id]);
-        $inquiry = Inquiry::with('car', 'city')->findOrFail($item->id);
+
+        if ($request->has('carinfo'))
+        {
+            $carinfoFilled = false;
+            foreach($request->get('carinfo') as $value) if ($value) { $carinfoFilled = true; break; }
+            if ($carinfoFilled) Carinfo::create($request->get('carinfo') + ['inquiry_id' => $item->id]);
+        }
+
+        $inquiry = Inquiry::with('car', 'carinfo', 'city')->findOrFail($item->id);
 
         if($request->ajax())
         {
@@ -130,7 +140,7 @@ class InquiriesController extends Controller
      */
     public function show($id, Request $request)
     {
-        $inquiry = Inquiry::with('car.info', 'city', 'user')->findOrFail($id);
+        $inquiry = Inquiry::with('car', 'carinfo', 'city', 'user')->findOrFail($id);
 
         if($request->ajax())
         {

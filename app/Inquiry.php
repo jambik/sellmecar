@@ -8,9 +8,9 @@ class Inquiry extends Model
 {
     protected $table = 'inquiries';
 
-    protected $fillable = ['user_id', 'car_id', 'model', 'transmission', 'price_from', 'price_to', 'year_from', 'year_to', 'city_id', 'metro', 'street', 'name', 'phone', 'information'];
+    protected $fillable = ['user_id', 'car_id', 'carinfo_id', 'model', 'price_from', 'price_to', 'year_from', 'year_to', 'city_id', 'metro', 'street', 'name', 'phone', 'information'];
 
-    protected $appends = ['price_from_formatted', 'price_to_formatted', 'transmission_name'];
+    protected $appends = ['price_from_formatted', 'price_to_formatted'];
 
     /**
      * @param $query
@@ -47,6 +47,14 @@ class Inquiry extends Model
     }
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function carinfo()
+    {
+        return $this->hasOne('App\Carinfo');
+    }
+
+    /**
      * @return int|string
      */
     public function getPriceFromFormattedAttribute()
@@ -62,12 +70,4 @@ class Inquiry extends Model
         return $this->price_to ? number_format(floatval($this->price_to), 0, '.', ' ') : 0;
     }
 
-    /**
-     * @return string
-     */
-    public function getTransmissionNameAttribute()
-    {
-        $transmissions = ['0' => 'Не важно', '1' => 'Автомат', '2' => 'Механическая'];
-        return $transmissions[$this->transmission];
-    }
 }

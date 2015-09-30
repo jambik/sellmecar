@@ -73,7 +73,7 @@ header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
 
 #section_inquiries { background: url("../img/section-2.jpg") top center; }
 #section_inquiries .container { background: rgba(73,131,178,0.7); border-radius: 10px; }
-.inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 340px; }
+.inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 310px; }
 .inquiry-block .car-image { height: 50px; text-align: center; }
 .block-line { margin: 0 0 2px 0; }
 .block-line .value { color: #c7254e; }
@@ -101,6 +101,8 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     header .menu { margin: 0 auto; text-align: center; }
     header .personal { text-align: center; margin: 10px 0 20px 0; font-size: 24px; }
     header .personal a { padding: 0; border-left: none; }
+    .text-xxl { font-size: 30px; }
+    .text-about { padding: 0 5%; }
 }
 
 /* mobile - 480 and up */

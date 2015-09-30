@@ -76,10 +76,10 @@
 
     {{--Шаг 0: Баннер--}}
     <div class="container" id="container_step0" style="display: {{ !Request::has('step') || Request::get('step') == 0 ? 'block' : 'none' }};">
-        <div>&nbsp;</div>
-        <div class="text-light text-xxl text-shadow text-center">Как дать объявление на покупку автомобиля</div>
-        <div>&nbsp;</div>
-        <div class="row">
+        <div class="hidden-xs">&nbsp;</div>
+        <div class="text-light text-xxl text-shadow text-center hidden-xs">Как дать объявление на покупку автомобиля</div>
+        <div class="hidden-xs">&nbsp;</div>
+        <div class="row hidden-xs">
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="card" v-on="click: showCard(1)">
                     <div class="card-inner step-1">
@@ -200,28 +200,31 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        {!! Form::label('transmission', 'Трансмиссия:') !!}
-                        {!! Form::select('transmission', [1 => 'Автомат', 2 => 'Механика', 0 => 'Не важно'], null, ['class' => 'form-control input-lg']) !!}
-                    </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::label('price_from', 'Цена, от:') !!}
-                            {!! Form::text('price_from', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'цена от']) !!}
+                            <label>Цена, от:</label>
+                            <input type="text" name="price_from" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="цена от">
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::label('price_to', 'до:') !!}
-                            {!! Form::text('price_to', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'цена до']) !!}
+                            <label>до:</label>
+                            <input type="text" name="price_to" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="цена до">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::label('year_from', 'Год выпуска, от:') !!}
-                            {!! Form::text('year_from', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'год от']) !!}
+                            <label>Год выпуска, от:</label>
+                            <input type="text" name="year_from" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::label('year_to', 'до:') !!}
-                            {!! Form::text('year_to', null, ['class' => 'form-control input-lg input-year', 'placeholder' => 'год до']) !!}
+                            <label>до:</label>
+                            <input type="text" name="year_to" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div>&nbsp;</div>
+                        <div class="text-center info-link">
+                            <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
                         </div>
                     </div>
                 </div>
@@ -278,7 +281,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <select name="gear" placeholder="- Привод -" class="form-control input-lg">
+                            <select name="carinfo[gear]" placeholder="- Привод -" class="form-control input-lg">
                                 <option value="0">- Привод -</option>
                                 @foreach (config('vars.car_info.gear') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -286,7 +289,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            <select name="transmission" placeholder="- Трансмиссия -" class="form-control input-lg">
+                            <select name="carinfo[transmission]" placeholder="- Трансмиссия -" class="form-control input-lg">
                                 <option value="0">- Трансмиссия -</option>
                                 @foreach (config('vars.car_info.transmission') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -297,7 +300,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <select name="engine" placeholder="- Тип двигателя -" class="form-control input-lg">
+                            <select name="carinfo[engine]" placeholder="- Тип двигателя -" class="form-control input-lg">
                                 <option value="0">- Тип двигателя -</option>
                                 @foreach (config('vars.car_info.engine') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -305,7 +308,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            <select name="rudder" placeholder="- Руль -" class="form-control input-lg">
+                            <select name="carinfo[rudder]" placeholder="- Руль -" class="form-control input-lg">
                                 <option value="0">- Руль -</option>
                                 @foreach (config('vars.car_info.rudder') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -316,7 +319,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <select name="color" placeholder="- Цвет -" class="form-control input-lg">
+                            <select name="carinfo[color]" placeholder="- Цвет -" class="form-control input-lg">
                                 <option value="0">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
@@ -332,7 +335,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control input-lg">
+                            <select name="carinfo[capacity_from]" placeholder="- Объем двигателя от, л. -" class="form-control input-lg">
                                 <option value="0">- Объем двигателя от, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -340,7 +343,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control input-lg">
+                            <select name="carinfo[capacity_to]" placeholder="- Объем двигателя до, л. -" class="form-control input-lg">
                                 <option value="0">- Объем двигателя до, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -351,7 +354,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <select name="capacity_from" placeholder="- Состояние авто -" class="form-control input-lg">
+                            <select name="carinfo[state]" placeholder="- Состояние авто -" class="form-control input-lg">
                                 <option value="0">- Состояние авто -</option>
                                 @foreach (config('vars.car_info.state') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -359,7 +362,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6">
-                            <select name="capacity_to" placeholder="- Количество хозяев по ПТС -" class="form-control input-lg">
+                            <select name="carinfo[owners]" placeholder="- Количество хозяев по ПТС -" class="form-control input-lg">
                                 <option value="0">- Количество хозяев по ПТС -</option>
                                 @foreach (config('vars.car_info.owners') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -371,13 +374,9 @@
             </div>
 
             <div>&nbsp;</div>
-            <div class="text-center info-link">
-                <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
-            </div>
-            <div>&nbsp;</div>
 
             <div class="btn-line">
-                <button type="submit" class="btn btn-lg btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опублковать объявление</button>
+                <button type="submit" class="btn btn-lg btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опубликовать объявление</button>
             </div>
             {!! Form::token() !!}
         </form>
@@ -411,12 +410,6 @@
                         <span v-if="inquiryCreated.year_from">с @{{ inquiryCreated.year_from }}г.</span>
                         <span v-if="inquiryCreated.year_to">по @{{ inquiryCreated.year_to }}г.</span>
                         <span v-if="! inquiryCreated.year_from && ! inquiryCreated.year_to">-</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">Трансмиссия:</div>
-                    <div class="col-lg-6">
-                        @{{ inquiryCreated.transmission_name }}
                     </div>
                 </div>
                 <div class="row">
@@ -466,7 +459,7 @@
 
             <div class="row brands">
                 @for ($i = 0; ($i < $carBrandsShow && $i < $cars->count()); $i++)
-                    <div class="col-lg-2 col-md-3 col-sm-4">
+                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
                         <div class="checkbox">
                             <label>
                                 <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
@@ -481,7 +474,7 @@
 
                     <div class="brands-hidden">
                         @for ($i = $carBrandsShow; ($i < $cars->count()); $i++)
-                            <div class="col-lg-2 col-md-3 col-sm-4">
+                            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
                                 <div class="checkbox">
                                     <label>
                                         <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
@@ -509,10 +502,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            <input type="text" name="year_from" class="form-control input-lg input-year" placeholder="Год выпуска, с">
+                            <input type="text" name="year_from" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
                         </div>
                         <div class="form-group col-lg-6">
-                            <input type="text" name="year_to" class="form-control input-lg input-year" placeholder="Год выпуска, по">
+                            <input type="text" name="year_to" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
                         </div>
                     </div>
                 </div>
@@ -537,10 +530,10 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
                         <div class="form-group col-lg-6">
-                            {!! Form::text('price_from', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'Цена, от']) !!}
+                            <input type="text" name="price_from" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="Цена, от">
                         </div>
                         <div class="form-group col-lg-6">
-                            {!! Form::text('price_to', null, ['class' => 'form-control input-lg mask-price', 'placeholder' => 'Цена, до']) !!}
+                            <input type="text" name="price_to" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="Цена, до">
                         </div>
                     </div>
 
@@ -669,7 +662,6 @@
                 <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
                 <td>@{{ item.car.name }}</td>
                 <td>@{{ item.model }}</td>
-                <td>@{{ item.transmission_name }}</td>
                 <td>
                     <span v-if="item.year_from">с @{{ item.year_from }}г.</span>
                     <span v-if="item.year_to">по @{{ item.year_to }}г.</span>
@@ -707,8 +699,8 @@
                         <div class="text-uppercase text-l">Куплю:</div>
                         <div class="block-line">автомобиль: <div class="value">{{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}</div></div>
                         <div class="block-line">года: <div class="value">{{ $item->year_from ? 'с '.$item->year_from.'г. ' : '' }}{{ $item->year_to ? 'по '.$item->year_to.'г. ' : '' }}{{ $item->year_from && $item->year_to ? '' : '-' }}</div></div>
-                        <div class="block-line">трансмиссия: <div class="value">{{ $item->transmission_name }}</div></div>
                         <div class="block-line">город: <div class="value">{{ $item->city->name }}</div></div>
+                        <div>&nbsp;</div>
                         <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
                     </div>
                 </div>
@@ -731,8 +723,8 @@
                             <span v-if="! item.year_from && ! item.year_to">-</span>
                         </div>
                     </div>
-                    <div class="block-line">трансмиссия: <div class="value">@{{ item.transmission_name }}</div></div>
                     <div class="block-line">город: <div class="value">@{{ item.city.name }}</div></div>
+                    <div>&nbsp;</div>
                     <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
                 </div>
             </div>

@@ -24,10 +24,7 @@
 			@foreach($items as $item)
 				<tr>
 					<td>{{ $item->id }}</td>
-					<td>
-                        {{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}
-                        <div>трансииссия: {{ $item->transmission_name }}</div>
-                    </td>
+					<td>{{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}</td>
                     <td>{{ $item->year_from ? 'с '.$item->year_from.'г. ' : '' }}{{ $item->year_to ? 'по '.$item->year_to.'г. ' : '' }}{{ !$item->year_from && !$item->year_to ? '-' : '' }}</td>
 					<td>{{ $item->price_from ? 'от '.$item->price_from_formatted.'руб. ' : '' }}{{ $item->price_to ? 'до '.$item->price_to_formatted.'руб. ' : '' }}{{ !$item->price_from && !$item->price_to ? '-' : '' }}</td>
 					<td>г. {{ $item->city->name }}{{ $item->metro ? ', метро '.$item->metro : '' }}{{ $item->street ? ', '.$item->street : '' }}</td>

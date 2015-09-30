@@ -13,10 +13,7 @@
                         <dd>@{{ inquiryShow.car.name }}</dd>
 
                         <dt>Модель</dt>
-                        <dd>@{{ inquiryShow.model }}</dd>
-
-                        <dt>Трансмиссия</dt>
-                        <dd>@{{ inquiryShow.transmission_name }}</dd>
+                        <dd>@{{ inquiryShow.model }}<span v-if="! inquiryShow.model">-</span></dd>
 
                         <dt>Года</dt>
                         <dd>
@@ -32,8 +29,40 @@
                             <span v-if="! inquiryShow.price_from && ! inquiryShow.price_to">-</span>
                         </dd>
 
-                        <dt v-if="inquiryShow.car.info.gear">Привод</dt>
-                        <dd v-if="inquiryShow.car.info.gear"><span>@{{ inquiryShow.car.info.gear }}</span></dd>
+                        <div v-if="inquiryShow.carinfo">
+                            <div>&nbsp;</div>
+                            <p class="text-uppercase text-center">Дополнительные параметры:</p>
+
+                            <dt v-if="inquiryShow.carinfo.gear > 0">Привод</dt>
+                            <dd v-if="inquiryShow.carinfo.gear > 0"><span>@{{ vars.car_info.gear[inquiryShow.carinfo.gear] }}</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.transmission > 0">Трансмиссия</dt>
+                            <dd v-if="inquiryShow.carinfo.transmission > 0"><span>@{{ vars.car_info.transmission[inquiryShow.carinfo.transmission] }}</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.engine > 0">Тип двигателя</dt>
+                            <dd v-if="inquiryShow.carinfo.engine > 0"><span>@{{ vars.car_info.engine[inquiryShow.carinfo.engine] }}</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.rudder > 0">Руль</dt>
+                            <dd v-if="inquiryShow.carinfo.rudder > 0"><span>@{{ vars.car_info.rudder[inquiryShow.carinfo.rudder] }}</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.color > 0">Цвет</dt>
+                            <dd v-if="inquiryShow.carinfo.color > 0"><span>@{{ vars.car_info.color[inquiryShow.carinfo.color].name }}</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.run > 0">Пробег</dt>
+                            <dd v-if="inquiryShow.carinfo.run > 0"><span>до @{{ inquiryShow.carinfo.run }} км.</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.capacity_from > 0 || inquiryShow.carinfo.capacity_to > 0">Объем двигателя</dt>
+                            <dd v-if="inquiryShow.carinfo.capacity_from > 0 || inquiryShow.carinfo.capacity_to > 0">
+                                <span v-if="inquiryShow.carinfo.capacity_from > 0">от @{{ vars.car_info.capacity[inquiryShow.carinfo.capacity_from] }} л.</span>
+                                <span v-if="inquiryShow.carinfo.capacity_to > 0">до @{{ vars.car_info.capacity[inquiryShow.carinfo.capacity_to] }} л.</span>
+                            </dd>
+
+                            <dt v-if="inquiryShow.carinfo.state > 0">Состояние авто</dt>
+                            <dd v-if="inquiryShow.carinfo.state > 0"><span>@{{ vars.car_info.state[inquiryShow.carinfo.state] }}</span></dd>
+
+                            <dt v-if="inquiryShow.carinfo.owners > 0">Кол-во хозяев по ПТС</dt>
+                            <dd v-if="inquiryShow.carinfo.owners > 0"><span>@{{ vars.car_info.owners[inquiryShow.carinfo.owners] }}</span></dd>
+                        </div>
                     </dl>
                     <hr>
                     <p class="text-uppercase text-center text-l">Пользователь:</p>

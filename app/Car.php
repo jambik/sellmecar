@@ -22,11 +22,6 @@ class Car extends Model
         return $this->hasMany('App\Inquiry');
     }
 
-    public function info()
-    {
-        return $this->hasOne('App\Carinfo');
-    }
-
     /**
      * @return mixed
      */

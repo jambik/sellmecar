@@ -19,7 +19,6 @@ class CreateInquiriesTable extends Migration
             $table->integer('car_id')->unsigned();
             $table->foreign('car_id')->references('id')->on('cars');
             $table->string('model')->default('');
-            $table->integer('transmission')->default(1);
             $table->integer('price_from')->default(0);
             $table->integer('price_to')->default(0);
             $table->integer('year_from')->default(0);

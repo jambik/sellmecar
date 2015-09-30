@@ -63,4 +63,9 @@ class HomepageController extends Controller
         Flash::success("Профиль сохранён");
         return redirect('/');
     }
+
+    public function vars(Request $request)
+    {
+        return config('vars');
+    }
 }
