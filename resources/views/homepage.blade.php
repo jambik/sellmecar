@@ -16,7 +16,6 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2">
                 <div id="login_menu" style="display: {{ Auth::check() ? 'none' : 'block' }}">
-                    {{--<a href="/auth/login">Вход</a>--}}
                     <a href="#" class="dropdown-toggle login-link" id="dropdownLogin" data-toggle="dropdown" aria-expanded="true">Вход</a>
                     <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownLogin">
                         <div id="login_block">
@@ -272,7 +271,111 @@
                 </div>
             </div>
 
+            <div class="row" v-show="showAdditionalFields" v-transition="flipInX">
+                <div>&nbsp;</div>
+                <p class="lead text-center text-light">Дополнительные характеристики авто</p>
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <select name="gear" placeholder="- Привод -" class="form-control input-lg">
+                                <option value="0">- Привод -</option>
+                                @foreach (config('vars.car_info.gear') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <select name="transmission" placeholder="- Трансмиссия -" class="form-control input-lg">
+                                <option value="0">- Трансмиссия -</option>
+                                @foreach (config('vars.car_info.transmission') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <select name="engine" placeholder="- Тип двигателя -" class="form-control input-lg">
+                                <option value="0">- Тип двигателя -</option>
+                                @foreach (config('vars.car_info.engine') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <select name="rudder" placeholder="- Руль -" class="form-control input-lg">
+                                <option value="0">- Руль -</option>
+                                @foreach (config('vars.car_info.rudder') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <select name="color" placeholder="- Цвет -" class="form-control input-lg">
+                                <option value="0">- Цвет -</option>
+                                @foreach (config('vars.car_info.color') as $value)
+                                    <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control input-lg mask-km">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-5">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control input-lg">
+                                <option value="0">- Объем двигателя от, л. -</option>
+                                @foreach (config('vars.car_info.capacity') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }} л.</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control input-lg">
+                                <option value="0">- Объем двигателя до, л. -</option>
+                                @foreach (config('vars.car_info.capacity') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }} л.</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <select name="capacity_from" placeholder="- Состояние авто -" class="form-control input-lg">
+                                <option value="0">- Состояние авто -</option>
+                                @foreach (config('vars.car_info.state') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <select name="capacity_to" placeholder="- Количество хозяев по ПТС -" class="form-control input-lg">
+                                <option value="0">- Количество хозяев по ПТС -</option>
+                                @foreach (config('vars.car_info.owners') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div>&nbsp;</div>
+            <div class="text-center info-link">
+                <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
+            </div>
+            <div>&nbsp;</div>
+
             <div class="btn-line">
                 <button type="submit" class="btn btn-lg btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опублковать объявление</button>
             </div>

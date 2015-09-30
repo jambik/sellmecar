@@ -13,6 +13,7 @@ $(document).ready(function() {
             inquiriesLoaded: [],
             inquiriesSearch: false,
             showInquiryInfoFields: false,
+            showAdditionalFields: false,
             newsShow: false,
             newsLoaded: [],
             pageShow: false,
@@ -98,6 +99,12 @@ $(document).ready(function() {
             {
                 e.preventDefault();
                 this.showInquiryInfoFields = ! this.showInquiryInfoFields;
+            },
+
+            showAdditional: function(e)
+            {
+                e.preventDefault();
+                this.showAdditionalFields = ! this.showAdditionalFields;
             },
 
             showCard: function(id)
@@ -251,7 +258,7 @@ $(document).ready(function() {
                 this.model = "";
                 this.modelOptions = [];
                 $("select[name='model']").val('');
-                setTimeout("$(\"select[name='model']\").select2({language: 'ru', allowClear: true, placeholder: '- Модель авто -'})", 1);
+                setTimeout("$(\"select[name='model']\").select2({language: 'ru', tags: true, allowClear: true, placeholder: '- Модель авто -'})", 1);
 
                 if (this.car)
                 {
@@ -260,7 +267,7 @@ $(document).ready(function() {
                             this.modelOptions.push(value.name);
                             //this.metroOptions.push({text: value.name, value: value.id });
                         }.bind(this));
-                        setTimeout("$(\"select[name='model']\").select2({language: 'ru', allowClear: true, placeholder: '- Модель авто -'})", 1);
+                        //setTimeout("$(\"select[name='model']\").select2({language: 'ru', allowClear: true, placeholder: '- Модель авто -'})", 1);
                     }.bind(this))
                     .fail(function () {
                         alert("Ошибка при запросе");

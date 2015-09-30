@@ -130,7 +130,7 @@ class InquiriesController extends Controller
      */
     public function show($id, Request $request)
     {
-        $inquiry = Inquiry::with('car', 'city', 'user')->findOrFail($id);
+        $inquiry = Inquiry::with('car.info', 'city', 'user')->findOrFail($id);
 
         if($request->ajax())
         {

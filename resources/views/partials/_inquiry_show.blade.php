@@ -31,6 +31,9 @@
                             <span v-if="inquiryShow.price_to">до @{{ inquiryShow.price_to_formatted }}руб.</span>
                             <span v-if="! inquiryShow.price_from && ! inquiryShow.price_to">-</span>
                         </dd>
+
+                        <dt v-if="inquiryShow.car.info.gear">Привод</dt>
+                        <dd v-if="inquiryShow.car.info.gear"><span>@{{ inquiryShow.car.info.gear }}</span></dd>
                     </dl>
                     <hr>
                     <p class="text-uppercase text-center text-l">Пользователь:</p>
