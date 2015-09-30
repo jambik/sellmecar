@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Be right back.</title>
+        <meta charset="utf-8" />
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+        <title>Сайт на реконструкции.</title>
 
         <style>
             html, body {
@@ -17,7 +17,7 @@
                 color: #B0BEC5;
                 display: table;
                 font-weight: 100;
-                font-family: 'Lato';
+                font-family: 'Courier New', Monospace;
             }
 
             .container {
@@ -40,7 +40,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
+                <div class="title">Сайт на реконструкции. Мы скоро вернемся.</div>
             </div>
         </div>
     </body>
