@@ -3,10 +3,11 @@
 <header>
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-2 col-sm-2 logo text-center">
+            <div class="col-lg-3 col-md-3 col-sm-3 logo text-center">
                 <a href="/"><img src="img/logo.png" class="img-responsive" alt=""></a>
+                <div class="slogan">Мечта сама приедет к Вам</div>
             </div>
-            <div class="col-lg-7 col-md-8 col-sm-8 menu text-center">
+            <div class="col-lg-7 col-md-7 col-sm-7 menu text-center">
                 <ul>
                     <li><a href="#" onclick="$('body').scrollTo('#section_inquiries', 500); return false;">Объявления</a></li>
                     <li><a href="#" onclick="$('body').scrollTo('#section_apply', 500); return false;">Покупателям</a></li>
@@ -110,14 +111,18 @@
             </div>
         </div>
 
-        <div class="text-center"><span class="text-dream">Мечта сама приедет к вам!</span></div>
+        {{--<div class="text-center"><span class="text-dream">Мечта сама приедет к вам!</span></div>--}}
 
         <p class="text-shadow text-light text-about">Уникальность нашего сайта состоит в том, что покупатель выставляет свое объявление, а продавец автомобиля  ищет именно то, объявление, где есть сходство с его автомобилем!</p>
 
         <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
         <div class="btn-line">
             <button class="btn btn-lg btn-danger" id="btn_inquiry_create"><span class="fa fa-list-alt btn-icon"></span> Дать объявление</button>
         </div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
         <div>&nbsp;</div>
     </div>
     {{--/Шаг 0/--}}
