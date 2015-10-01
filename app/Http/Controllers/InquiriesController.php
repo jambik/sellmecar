@@ -60,8 +60,18 @@ class InquiriesController extends Controller
 
 
 
-        $search['price_from'] = $request->get('price_from');
-        $search['price_to']   = $request->get('price_to');
+        $search['price_from']    = $request->get('price_from');
+        $search['price_to']      = $request->get('price_to');
+        $search['gear']          = $request->get('gear');
+        $search['transmission']  = $request->get('transmission');
+        $search['engine']        = $request->get('engine');
+        $search['rudder']        = $request->get('rudder');
+        $search['color']         = $request->get('color');
+        $search['run']           = $request->get('run');
+        $search['capacity_from'] = $request->get('capacity_from');
+        $search['capacity_to']   = $request->get('capacity_to');
+        $search['state']         = $request->get('state');
+        $search['owners']        = $request->get('owners');
 
         if ($search['price_from']) $inquiries->where('price_from', '>=', $search['price_from']);
         if ($search['price_to'])   $inquiries->where('price_to', '<=', $search['price_to']);
