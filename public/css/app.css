@@ -21,10 +21,10 @@ header .menu { margin: 60px 0 0 0; }
 header .menu ul { list-style: none; padding: 0; margin: 0; }
 header .menu li { margin: 0 0 0 40px; display: inline-block; font-size: 24px; }
 header .menu li a { color: #1d436b; }
-header #login_menu { margin: 30px 0 0 0; font-size: 24px; text-align: center; }
+header #login_menu { margin: 60px 0 0 0; font-size: 24px; text-align: center; }
 header #login_menu .login-link { padding-left: 30px; border-left: 2px solid #1d436b; text-decoration: none; }
 header #login_menu .dropdown-menu { min-width: 240px; padding: 15px; }
-header #user_menu { padding-left: 20px; border-left: 2px solid #eee; margin: 20px 0 20px 0; font-size: 16px; text-align: center; }
+header #user_menu { padding-left: 20px; border-left: 2px solid #eee; margin: 30px 0 20px 0; font-size: 16px; text-align: center; }
 header #user_menu img { height: 48px; width: 48px; border-radius: 10px; border: 1px solid #aaa; }
 header #user_menu a { font-size: 16px; text-decoration: none; }
 header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
@@ -99,8 +99,6 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 @media (max-width: 479px) {
     header .logo img { margin: 20px auto 0 auto; }
     header .menu { margin: 0 auto; text-align: center; }
-    header .personal { text-align: center; margin: 10px 0 20px 0; font-size: 24px; }
-    header .personal a { padding: 0; border-left: none; }
     .text-xxl { font-size: 30px; }
     .text-about { padding: 0 5%; }
 }
@@ -108,19 +106,17 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 /* mobile - 480 and up */
 @media (min-width: 480px) and (max-width: 767px) {
     header .logo a { display: inline-block; width: 100px; }
-    header .menu { margin: 0; text-align: center; }
-    header .personal { text-align: center; margin: 10px 0 20px 0; font-size: 24px; }
-    header .personal a { padding: 0; border-left: none; }
+    header .menu { margin: 0; }
     header .menu li { display: block; margin-left: 0; }
+    header #login_menu { margin: 10px 0 10px 0; padding-top: 10px; font-size: 20px; border-top: 1px solid #ddd; }
     header #login_menu .login-link { padding-left: 0; border-left: none; }
-    header #user_menu { padding-left: 0; border-left: none; }
+    header #user_menu { padding: 10px 0 0 0; border-left: none; border-top: 1px solid #ddd; margin: 10px 0 10px 0; }
 }
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {
     header .menu { margin: 30px 0 0 0; }
     header li { margin: 0 0 0 20px; font-size: 20px; }
-    header .personal { margin: 30px 0 0 0; font-size: 20px; }
 }
 
 /* Medium devices (desktops, 992px and up) */
