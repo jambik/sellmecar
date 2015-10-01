@@ -15,30 +15,19 @@ a:hover { color: #000; }
 .btn-line { text-align: center; }
 .text-red { color: #c7254e; }
 
-/*header { background: linear-gradient(to bottom,  rgba(137,161,181,1) 0%,rgba(255,255,255,1) 100%); }
+header { background: linear-gradient(to bottom,  rgba(137,161,181,1) 0%,rgba(255,255,255,1) 100%); }
 header .logo img { margin: 20px 0 0 0; }
 header .menu { margin: 60px 0 0 0; }
 header .menu ul { list-style: none; padding: 0; margin: 0; }
 header .menu li { margin: 0 0 0 40px; display: inline-block; font-size: 24px; }
 header .menu li a { color: #1d436b; }
-header #login_menu { margin: 60px 0 0 0; font-size: 24px; }
+header #login_menu { margin: 30px 0 0 0; font-size: 24px; text-align: center; }
 header #login_menu .login-link { padding-left: 30px; border-left: 2px solid #1d436b; text-decoration: none; }
 header #login_menu .dropdown-menu { min-width: 240px; padding: 15px; }
-header #user_menu { padding-left: 20px; border-left: 2px solid #eee; margin: 50px 0 0 0; font-size: 16px; text-align: center; }
+header #user_menu { padding-left: 20px; border-left: 2px solid #eee; margin: 20px 0 20px 0; font-size: 16px; text-align: center; }
 header #user_menu img { height: 48px; width: 48px; border-radius: 10px; border: 1px solid #aaa; }
 header #user_menu a { font-size: 16px; text-decoration: none; }
-header .social-buttons img { width: 48px; height: 48px; margin: 9px; }*/
-
-nav { background: linear-gradient(to bottom,  rgba(137,161,181,1) 0%,rgba(255,255,255,1) 100%); }
-nav.navbar-default .navbar-nav li { margin: 0 0 0 20px; display: inline-block; font-size: 24px; }
-nav.navbar-default .navbar-nav li a { color: #1d436b; }
-nav #login_menu { font-size: 24px; }
-nav #login_menu .login-link { text-decoration: none; }
-nav #login_menu .dropdown-menu { min-width: 240px; padding: 15px; }
-nav #user_menu { padding-left: 20px; border-left: 2px solid #eee; font-size: 16px; text-align: center; }
-nav #user_menu img { height: 48px; width: 48px; border-radius: 10px; border: 1px solid #aaa; }
-nav #user_menu a { font-size: 16px; text-decoration: none; }
-nav .social-buttons img { width: 48px; height: 48px; margin: 9px; }
+header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
 
 #section_notification { background: #ddd; }
 #section_notification .alert { margin-top: 15px; }
@@ -118,10 +107,13 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 
 /* mobile - 480 and up */
 @media (min-width: 480px) and (max-width: 767px) {
-    header .logo img { margin: 20px auto 0 auto; }
+    header .logo a { display: inline-block; width: 100px; }
     header .menu { margin: 0; text-align: center; }
     header .personal { text-align: center; margin: 10px 0 20px 0; font-size: 24px; }
     header .personal a { padding: 0; border-left: none; }
+    header .menu li { display: block; margin-left: 0; }
+    header #login_menu .login-link { padding-left: 0; border-left: none; }
+    header #user_menu { padding-left: 0; border-left: none; }
 }
 
 /* Small devices (tablets, 768px and up) */
