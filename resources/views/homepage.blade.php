@@ -220,7 +220,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6">
                             <label>Год выпуска, от:</label>
-                            <input type="text" name="year_from" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
+                            <input type="text" name="year_from" class="form-control input-lg input-year" onblur="console.log(parseInt($(this).parent().next().find('input').val())); if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
                         </div>
                         <div class="form-group col-lg-6">
                             <label>до:</label>
