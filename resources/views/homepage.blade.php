@@ -1,6 +1,81 @@
 @include('partials._header', ['title' => 'Sellmecar - главная'])
 
-<header>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Меню сайта</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand"><img src="img/logo.png" class="img-responsive" alt=""></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse text-center" id="navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#" onclick="$('body').scrollTo('#section_inquiries', 500); return false;">Объявления</a></li>
+                <li><a href="#" onclick="$('body').scrollTo('#section_apply', 500); return false;">Покупателям</a></li>
+                <li><a href="#" onclick="$('body').scrollTo('#section_search', 500); return false;">Продавцам</a></li>
+                <li><a href="#" onclick="$('body').scrollTo('#section_news', 500); return false;">Новости</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right text-center">
+                <div id="login_menu" style="display: {{ Auth::check() ? 'none' : 'block' }}">
+                    <a href="#" class="dropdown-toggle login-link" id="dropdownLogin" data-toggle="dropdown" aria-expanded="true">Вход</a>
+                    <div class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownLogin">
+                        <div id="login_block">
+                            <form action="/auth/login" method="POST" accept-charset="UTF-8" id="form_login">
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" placeholder="Пароль" class="form-control" />
+                                </div>
+                                <div class="form-group text-center">
+                                    <div class="checkbox">
+                                        <input type="checkbox" name="remember"> Запомнить меня
+                                    </div>
+                                </div>
+                                {!! Form::token() !!}
+                                <button type="submit" class="btn btn-block btn-warning">Вход</button>
+                                <div>&nbsp;</div>
+                                <div class="text-center">
+                                    <a href="/password/email" id="email_link">Забыл проль?</a>
+                                </div>
+                            </form>
+                            <hr />
+                            <div class="social-buttons">
+                                <p class="text-center"><strong>Вход через социальные сети:</strong></p>
+                                <a href="/auth/facebook"><img src="img/social/FB.png"></a>
+                                <a href="/auth/vkontakte"><img src="img/social/VK.png"></a>
+                                <a href="/auth/twitter"><img src="img/social/Twitter.png"></a>
+                                <a href="/auth/odnoklassniki"><img src="img/social/Odnoklasniki.png"></a>
+                                <a href="/auth/yandex"><img src="img/social/ya.png"></a>
+                                <a href="/auth/google"><img src="img/social/G.png"></a>
+                            </div>
+                            <hr />
+                            <a href="/auth/register" class="btn btn-block btn-success">Регистрация на сайте</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="user_menu" style="display: {{ Auth::check() ? 'block' : 'none' }};">
+                    <div class="dropdown user-links">
+                        <div><img src="{{ Auth::check() && Auth::user()->avatar ? Auth::user()->avatar : '/img/avatar.png' }}"></div>
+                        <a href="#" class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="true"><span id="user_name">{{ Auth::check() ? Auth::user()->name : '' }}</span> <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownUser">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#profileModal" v-on="click: profileLoad"><i class="fa fa-user"></i> Данные аккаунта</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-toggle="modal" data-target="#inquiriesModal" v-on="click: inquiriesLoad"><i class="fa fa-list"></i> Мои объявления</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="/auth/logout"><i class="fa fa-sign-out"></i> Выход</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+{{--<header>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2 col-sm-2 logo">
@@ -67,7 +142,7 @@
             </div>
         </div>
     </div>
-</header>
+</header>--}}
 
 <section id="section_apply">
     <div>&nbsp;</div>
@@ -797,10 +872,10 @@
                 <div class="col-lg-5 col-md-6 col-sm-5">
                     <div class="text-light text-xxl text-shadow text-center">Мы в социальных сетях</div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 text-center"><img src="img/social/FB.png"></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 text-center"><img src="img/social/VK.png"></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 text-center"><img src="img/social/Twitter.png"></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 text-center"><img src="img/social/Odnoklasniki.png"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center"><a href="https://www.facebook.com/groups/sellmecarbro/" target="_blank"><img src="img/social/FB.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center"><a href="http://vk.com/sellmecar" target="_blank"><img src="img/social/VK.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 text-center"><a href="https://twitter.com/sellmecar" target="_blank"><img src="img/social/Twitter.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 text-center"><a href="http://ok.ru/group/52443834417310" target="_blank"><img src="img/social/Odnoklasniki.png"></a></div>
                         <div class="col-lg-4 col-md-4 col-sm-6 text-center"><img src="img/social/ya.png"></div>
                         <div class="col-lg-4 col-md-4 col-sm-6 text-center"><img src="img/social/G.png"></div>
                     </div>
