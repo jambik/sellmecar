@@ -21,7 +21,7 @@ Route::get('/inquiry/index', ['as' => 'inquiries', 'uses' => 'InquiriesControlle
 Route::get('/inquiry/private', ['as' => 'inquiriesPrivate', 'uses' => 'InquiriesController@privateIndex']);
 Route::get('/inquiry/show/{id}', ['as' => 'inquiryShow', 'uses' => 'InquiriesController@show']);
 Route::post('/inquiry/store', ['as' => 'inquiryStore', 'uses' => 'InquiriesController@store']);
-Route::post('/inquiry/search', ['as' => 'inquirySearch', 'uses' => 'InquiriesController@search']);
+Route::match(['get', 'post'], '/inquiry/search', ['as' => 'inquirySearch', 'uses' => 'InquiriesController@search']);
 Route::get('/inquiry/delete/{id}', ['as' => 'inquiriesDestroy', 'uses' => 'InquiriesController@destroy']);
 
 Route::get('/news/index', ['as' => 'news', 'uses' => 'NewsController@index']);

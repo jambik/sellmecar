@@ -13,6 +13,7 @@ class CreateCarinfoTable extends Migration
     public function up()
     {
         Schema::create('carinfo', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('inquiry_id')->unsigned()->nullable();
             $table->foreign('inquiry_id')->references('id')->on('inquiries')->onDelete('cascade');
             $table->integer('gear')->default(0);
