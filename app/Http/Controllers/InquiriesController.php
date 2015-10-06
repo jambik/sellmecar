@@ -89,7 +89,6 @@ class InquiriesController extends Controller
         if ($searchMore['state'])         $inquiries->where('state', '>=', $search['state']);
         if ($searchMore['owners'])        $inquiries->where('owners', '>=', $search['owners']);
 
-
         $inquiriesFound = $inquiries->with('car', 'user', 'city')->get();
 
         if($request->ajax())
