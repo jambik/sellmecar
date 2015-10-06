@@ -9,6 +9,7 @@
             </div>
             <div class="col-lg-7 col-md-7 col-sm-7 menu text-center">
                 <ul>
+                    <li><a href="/">Главная</a></li>
                     <li><a href="#" onclick="$('body').scrollTo('#section_inquiries', 500); return false;">Объявления</a></li>
                     <li><a href="#" onclick="$('body').scrollTo('#section_apply', 500); return false;">Покупателям</a></li>
                     <li><a href="#" onclick="$('body').scrollTo('#section_search', 500); return false;">Продавцам</a></li>
@@ -42,12 +43,12 @@
                             <hr />
                             <div class="social-buttons">
                                 <p class="text-center"><strong>Вход через социальные сети:</strong></p>
-                                <a href="/auth/facebook"><img src="img/social/FB.png"></a>
-                                <a href="/auth/vkontakte"><img src="img/social/VK.png"></a>
-                                <a href="/auth/twitter"><img src="img/social/Twitter.png"></a>
-                                <a href="/auth/odnoklassniki"><img src="img/social/Odnoklasniki.png"></a>
-                                <a href="/auth/yandex"><img src="img/social/ya.png"></a>
-                                <a href="/auth/google"><img src="img/social/G.png"></a>
+                                <a href="/auth/facebook"><img src="img/social2/FB.png"></a>
+                                <a href="/auth/vkontakte"><img src="img/social2/VK.png"></a>
+                                <a href="/auth/twitter"><img src="img/social2/Twitter.png"></a>
+                                <a href="/auth/odnoklassniki"><img src="img/social2/Odnoklasniki.png"></a>
+                                <a href="/auth/yandex"><img src="img/social2/ya.png"></a>
+                                <a href="/auth/google"><img src="img/social2/G.png"></a>
                             </div>
                             <hr />
                             <a href="/auth/register" class="btn btn-block btn-success">Регистрация на сайте</a>
@@ -72,8 +73,6 @@
 
 <section id="section_apply">
     <div>&nbsp;</div>
-    <div>&nbsp;</div>
-
 
     {{--Шаг 0: Баннер--}}
     <div class="container" id="container_step0" style="display: {{ !Request::has('step') || Request::get('step') == 0 ? 'block' : 'none' }};">
@@ -117,11 +116,9 @@
 
         <div>&nbsp;</div>
         <div>&nbsp;</div>
-        <div>&nbsp;</div>
         <div class="btn-line">
-            <button class="btn btn-lg btn-danger" id="btn_inquiry_create"><span class="fa fa-list-alt btn-icon"></span> Дать объявление</button>
+            <button class="btn btn-danger" id="btn_inquiry_create"><span class="fa fa-list-alt btn-icon"></span> Дать объявление</button>
         </div>
-        <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
     </div>
@@ -139,20 +136,20 @@
                 <form action="/auth/register" method="POST" accept-charset="UTF-8" class="form-ajax" id="form_register" v-on="submit: ajaxFormSubmit($event, registrationSuccess)">
                     <div class="form-status"></div>
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="Имя" class="form-control input-lg" />
+                        <input type="text" name="name" placeholder="Имя" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="email" name="email" placeholder="Email" class="form-control input-lg" />
+                        <input type="email" name="email" placeholder="Email" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" placeholder="Пароль" class="form-control input-lg" />
+                        <input type="password" name="password" placeholder="Пароль" class="form-control" />
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password_confirmation" placeholder="Пароль еще раз" class="form-control input-lg" />
+                        <input type="password" name="password_confirmation" placeholder="Пароль еще раз" class="form-control" />
                     </div>
                     <hr>
                     {!! Form::token() !!}
-                    <button class="btn btn-lg btn-block btn-success form-button">Регистрация</button>
+                    <button class="btn btn-block btn-success form-button">Регистрация</button>
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
                 </form>
@@ -161,12 +158,12 @@
                 <div class="text-xl text-light text-center text-shadow">Войти через соцсети</div>
                 <div>&nbsp;</div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/facebook"><img src="img/social/FB.png"></a></div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/vkontakte"><img src="img/social/VK.png"></a></div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/twitter"><img src="img/social/Twitter.png"></a></div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/odnoklassniki"><img src="img/social/Odnoklasniki.png"></a></div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/yandex"><img src="img/social/ya.png"></a></div>
-                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/google"><img src="img/social/G.png"></a></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/facebook"><img src="img/social2/FB.png"></a></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/vkontakte"><img src="img/social2/VK.png"></a></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/twitter"><img src="img/social2/Twitter.png"></a></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/odnoklassniki"><img src="img/social2/Odnoklasniki.png"></a></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/yandex"><img src="img/social2/ya.png"></a></div>
+                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center"><a href="/auth/google"><img src="img/social2/G.png"></a></div>
                 </div>
             </div>
         </div>
@@ -175,7 +172,7 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div class="btn-line">
-            <button id="btn_back_start" class="btn btn-lg btn-danger"><span class="fa fa-arrow-circle-o-left btn-icon"></span> Назад</button>
+            <button id="btn_back_start" class="btn btn-danger"><span class="fa fa-arrow-circle-o-left btn-icon"></span> Назад</button>
         </div>
         <div>&nbsp;</div>
     </div>
@@ -193,7 +190,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
                     <div class="form-group">
                         <label>Автомобиль:</label>
-                        <select name="car_id" placeholder="- Выберите марку автомобиля -" class="form-control input-lg" v-model="car" v-on="change: changeCar">
+                        <select name="car_id" placeholder="- Выберите марку автомобиля -" class="form-control" v-model="car" v-on="change: changeCar">
                             <option value="">- Выберите марку автомобиля -</option>
                             @foreach($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -203,28 +200,28 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Модель авто:</label>
-                            <select name="model" class="form-control input-lg select2" v-model="model" options="modelOptions">
+                            <select name="model" class="form-control select2" v-model="model" options="modelOptions">
                             </select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6 col-md-6">
                             <label>Цена, от:</label>
-                            <input type="text" name="price_from" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="цена от">
+                            <input type="text" name="price_from" class="form-control mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="цена от">
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6 col-md-6">
                             <label>до:</label>
-                            <input type="text" name="price_to" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="цена до">
+                            <input type="text" name="price_to" class="form-control mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="цена до">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6 col-md-6">
                             <label>Год выпуска, от:</label>
-                            <input type="text" name="year_from" class="form-control input-lg input-year" onblur="console.log(parseInt($(this).parent().next().find('input').val())); if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
+                            <input type="text" name="year_from" class="form-control input-year" onblur="console.log(parseInt($(this).parent().next().find('input').val())); if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
                         </div>
-                        <div class="form-group col-lg-6">
+                        <div class="form-group col-lg-6 col-md-6">
                             <label>до:</label>
-                            <input type="text" name="year_to" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
+                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
                         </div>
                     </div>
 
@@ -238,7 +235,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="form-group">
                         <label>Город:</label>
-                        <select name="city_id" placeholder="- Выберите город -" class="form-control input-lg" v-model="city" v-on="change: changeCity">
+                        <select name="city_id" placeholder="- Выберите город -" class="form-control" v-model="city" v-on="change: changeCity">
                             <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
@@ -246,37 +243,37 @@
                         </select>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group" v-show="metroOptions.length">
                                 <label for="metro">Метро:</label>
-                                <select name="metro" class="form-control input-lg select2" v-model="metro" options="metroOptions">
+                                <select name="metro" class="form-control select2" v-model="metro" options="metroOptions">
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label for="street">Улица:</label>
-                                <input type="text" name="street" id="street" class="form-control input-lg" v-model="street">
+                                <input type="text" name="street" id="street" class="form-control" v-model="street">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label for="name">Имя:</label>
-                                <input type="text" name="name" class="form-control input-lg" v-model="user.name">
+                                <input type="text" name="name" class="form-control" v-model="user.name">
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label for="phone">Телефон:</label>
-                                <input type="text" name="phone" class="form-control input-lg" v-model="user.phone">
+                                <input type="text" name="phone" class="form-control" v-model="user.phone">
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('information', 'Дополнительная информация:') !!}
-                        {!! Form::textarea('information', null, ['class' => 'form-control input-lg', 'rows' => 4, 'style' => 'height: 133px;', 'placeholder' => 'Например: хочу машину белого цвета, не битую']) !!}
+                        {!! Form::textarea('information', null, ['class' => 'form-control', 'rows' => 4, 'style' => 'height: 100px;', 'placeholder' => 'Например: хочу машину белого цвета, не битую']) !!}
                     </div>
                 </div>
             </div>
@@ -287,16 +284,16 @@
 
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[gear]" placeholder="- Привод -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[gear]" placeholder="- Привод -" class="form-control">
                                 <option value="0">- Привод -</option>
                                 @foreach (config('vars.car_info.gear') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[transmission]" placeholder="- Трансмиссия -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[transmission]" placeholder="- Трансмиссия -" class="form-control">
                                 <option value="0">- Трансмиссия -</option>
                                 @foreach (config('vars.car_info.transmission') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -306,16 +303,16 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[engine]" placeholder="- Тип двигателя -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[engine]" placeholder="- Тип двигателя -" class="form-control">
                                 <option value="0">- Тип двигателя -</option>
                                 @foreach (config('vars.car_info.engine') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[rudder]" placeholder="- Руль -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[rudder]" placeholder="- Руль -" class="form-control">
                                 <option value="0">- Руль -</option>
                                 @foreach (config('vars.car_info.rudder') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -325,32 +322,32 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[color]" placeholder="- Цвет -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[color]" placeholder="- Цвет -" class="form-control">
                                 <option value="0">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control input-lg mask-km">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control mask-km">
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[capacity_from]" placeholder="- Объем двигателя от, л. -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[capacity_from]" placeholder="- Объем двигателя от, л. -" class="form-control">
                                 <option value="0">- Объем двигателя от, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[capacity_to]" placeholder="- Объем двигателя до, л. -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[capacity_to]" placeholder="- Объем двигателя до, л. -" class="form-control">
                                 <option value="0">- Объем двигателя до, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -360,16 +357,16 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[state]" placeholder="- Состояние авто -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[state]" placeholder="- Состояние авто -" class="form-control">
                                 <option value="0">- Состояние авто -</option>
                                 @foreach (config('vars.car_info.state') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="carinfo[owners]" placeholder="- Количество хозяев по ПТС -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <select name="carinfo[owners]" placeholder="- Количество хозяев по ПТС -" class="form-control">
                                 <option value="0">- Количество хозяев по ПТС -</option>
                                 @foreach (config('vars.car_info.owners') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -383,7 +380,7 @@
             <div>&nbsp;</div>
 
             <div class="btn-line">
-                <button type="submit" class="btn btn-lg btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опубликовать объявление</button>
+                <button type="submit" class="btn btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опубликовать объявление</button>
             </div>
             {!! Form::token() !!}
         </form>
@@ -451,7 +448,6 @@
 
 
     <div>&nbsp;</div>
-    <div>&nbsp;</div>
 </section>
 
 <section id="section_search">
@@ -466,13 +462,11 @@
 
             <div class="row brands">
                 @for ($i = 0; ($i < $carBrandsShow && $i < $cars->count()); $i++)
-                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-                        <div class="checkbox">
-                            <label>
-                                <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
-                                <input type="checkbox"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span>
-                            </label>
-                        </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
+                        <label>
+                            <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
+                            <div class="brand-name"><input type="checkbox"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
+                        </label>
                     </div>
                 @endfor
 
@@ -481,13 +475,11 @@
 
                     <div class="brands-hidden">
                         @for ($i = $carBrandsShow; ($i < $cars->count()); $i++)
-                            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-6">
-                                <div class="checkbox">
-                                    <label>
-                                        <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
-                                        <input type="checkbox"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span>
-                                    </label>
-                                </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
+                                <label>
+                                    <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
+                                    <div class="brand-name"><input type="checkbox"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
+                                </label>
                             </div>
                         @endfor
                     </div>
@@ -505,20 +497,20 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                        <input type="text" name="model" placeholder="Модель авто" class="form-control input-lg">
+                        <input type="text" name="model" placeholder="Модель авто" class="form-control">
                     </div>
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <input type="text" name="year_from" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <input type="text" name="year_from" class="form-control input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <input type="text" name="year_to" class="form-control input-lg input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                        <select name="city_id" placeholder="Выберите город" class="form-control input-lg" v-model="city" v-on="change: changeCity">
+                        <select name="city_id" placeholder="Выберите город" class="form-control" v-model="city" v-on="change: changeCity">
                             <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
@@ -536,25 +528,25 @@
             <div class="row" id="search_car_info" v-show="showInquiryInfoFields" v-transition="flipInX">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <input type="text" name="price_from" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="Цена, от">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <input type="text" name="price_from" class="form-control mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="Цена, от">
                         </div>
-                        <div class="form-group col-lg-6">
-                            <input type="text" name="price_to" class="form-control input-lg mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="Цена, до">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <input type="text" name="price_to" class="form-control mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="Цена, до">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="gear" placeholder="- Привод -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="gear" placeholder="- Привод -" class="form-control">
                                 <option value="0">- Привод -</option>
                                 @foreach (config('vars.car_info.gear') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="transmission" placeholder="- Трансмиссия -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="transmission" placeholder="- Трансмиссия -" class="form-control">
                                 <option value="0">- Трансмиссия -</option>
                                 @foreach (config('vars.car_info.transmission') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -564,16 +556,16 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="engine" placeholder="- Тип двигателя -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="engine" placeholder="- Тип двигателя -" class="form-control">
                                 <option value="0">- Тип двигателя -</option>
                                 @foreach (config('vars.car_info.engine') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="rudder" placeholder="- Руль -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="rudder" placeholder="- Руль -" class="form-control">
                                 <option value="0">- Руль -</option>
                                 @foreach (config('vars.car_info.rudder') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -585,30 +577,30 @@
 
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="color" placeholder="- Цвет -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="color" placeholder="- Цвет -" class="form-control">
                                 <option value="0">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control input-lg mask-km">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control mask-km">
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control">
                                 <option value="0">- Объем двигателя от, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control">
                                 <option value="0">- Объем двигателя до, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -618,16 +610,16 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-lg-6">
-                            <select name="capacity_from" placeholder="- Состояние авто -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="capacity_from" placeholder="- Состояние авто -" class="form-control">
                                 <option value="0">- Состояние авто -</option>
                                 @foreach (config('vars.car_info.state') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group col-lg-6">
-                            <select name="capacity_to" placeholder="- Количество хозяев по ПТС -" class="form-control input-lg">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                            <select name="capacity_to" placeholder="- Количество хозяев по ПТС -" class="form-control">
                                 <option value="0">- Количество хозяев по ПТС -</option>
                                 @foreach (config('vars.car_info.owners') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -648,7 +640,7 @@
             <div>&nbsp;</div>
 
             <div class="btn-line">
-                <button class="btn btn-lg btn-danger form-button"><span class="fa fa-search btn-icon"></span> Искать по параметрам</button>
+                <button class="btn btn-danger form-button"><span class="fa fa-search btn-icon"></span> Искать по параметрам</button>
             </div>
             <div>&nbsp;</div>
             {!! Form::token() !!}
@@ -691,7 +683,6 @@
 </section>
 
 <section id="section_inquiries">
-    <div>&nbsp;</div>
     <div>&nbsp;</div>
     <div class="container">
         <div>&nbsp;</div>
@@ -739,13 +730,12 @@
         @if ($lastInquiries->hasMorePages())
             <form action="{{ $lastInquiries->nextPageUrl() }}" accept-charset="UTF-8" method="GET" id="form_last_inquiries" v-on="submit: ajaxFormSubmit($event, loadInquiries)">
                 <div class="btn-line">
-                    <button type="submit" class="btn btn-lg btn-danger form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё объявления</button>
+                    <button type="submit" class="btn btn-danger form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё объявления</button>
                 </div>
             </form>
         @endif
         <div>&nbsp;</div>
     </div>
-    <div>&nbsp;</div>
     <div>&nbsp;</div>
 </section>
 
@@ -776,12 +766,11 @@
         @if ($lastNews->hasMorePages())
             <form action="{{ $lastNews->nextPageUrl() }}" method="GET" accept-charset="UTF-8" id="form_last_news" v-on="submit: ajaxFormSubmit($event, loadNews)">
                 <div class="btn-line">
-                    <button type="submit" class="btn btn-lg btn-danger form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё новости</button>
+                    <button type="submit" class="btn btn-danger form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё новости</button>
                 </div>
             </form>
         @endif
 
-        <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
     </div>
@@ -792,39 +781,38 @@
         <div class="container">
             <div>&nbsp;</div>
             <div>&nbsp;</div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
             <div class="row">
-                <div class="col-lg-7 col-md-6 col-sm-7 text-l text-light text-justify">
+                <div class="col-lg-7 col-md-6 col-sm-7 text-light text-justify">
                     <p>Открытое акционерное общество Страховая компания «РОСНО‑МС» — страховая медицинская организация, специализирующаяся на обязательном и добровольном медицинском страховании.</p>
                     <p>ОАО «РОСНО‑МС» зарегистрировано 18 ноября 1994 г. Уставный капитал компании полностью оплачен и составляет 600 млн. рублей. С 2001 года ОАО «РОСНО-МС» входит в состав страховой Группы Allianz – одного из крупнейших финансово-страховых концернов, который уже более 120 лет обеспечивает надежной страховой защитой миллионы клиентов по всему миру.</p>
                     <p>Открытое акционерное общество Страховая компания «РОСНО‑МС» — страховая медицинская организация, специализирующаяся на обязательном и добровольном медицинском страховании.</p>
                     <p class="copyright">© Сервис предоставляется компанией Me Car</p>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-5">
-                    <div class="text-light text-xxl text-shadow text-center">Мы в социальных сетях</div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="https://www.facebook.com/groups/sellmecarbro/" target="_blank"><img src="img/social/FB.png"></a></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="http://vk.com/sellmecar" target="_blank"><img src="img/social/VK.png"></a></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="https://twitter.com/sellmecar" target="_blank"><img src="img/social/Twitter.png"></a></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="http://ok.ru/group/52443834417310" target="_blank"><img src="img/social/Odnoklasniki.png"></a></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><img src="img/social/ya.png"></div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><img src="img/social/G.png"></div>
+                    <div class="text-light text-xl text-shadow text-center">Мы в социальных сетях</div>
+                    <div>&nbsp;</div>
+                    <div class="row login-social">
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="https://www.facebook.com/groups/sellmecarbro/" target="_blank"><img src="img/social2/FB.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="http://vk.com/sellmecar" target="_blank"><img src="img/social2/VK.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="https://twitter.com/sellmecar" target="_blank"><img src="img/social2/Twitter.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><a href="http://ok.ru/group/52443834417310" target="_blank"><img src="img/social2/Odnoklasniki.png"></a></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><img src="img/social2/ya.png"></div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-4 text-center"><img src="img/social2/G.png"></div>
                     </div>
                 </div>
             </div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
         </div>
     </div>
 </footer>
 
-@include('partials._flash')
-@include('partials._profile')
-@include('partials._inquiry_show')
-@include('partials._inquiries_table')
-@include('partials._page_show')
-@include('partials._news_show')
-@include('partials._footer')
+<div class="container">
+    @include('partials._flash')
+    @include('partials._profile')
+    @include('partials._inquiry_show')
+    @include('partials._inquiries_table')
+    @include('partials._page_show')
+    @include('partials._news_show')
+    @include('partials._footer')
+</div>
