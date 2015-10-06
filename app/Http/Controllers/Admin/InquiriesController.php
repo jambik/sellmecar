@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Car;
+use App\Carinfo;
 use App\City;
 use App\Inquiry;
 use Carbon\Carbon;
@@ -33,8 +34,9 @@ class InquiriesController extends Controller
     {
         $cars = Car::lists('name', 'id')->all();
         $cities = City::lists('name', 'id')->all();
+        foreach (config('vars.car_info.color') as $key => $value) $colors[$key] = $value['name'];
 
-        return view('admin.inquiries.create', compact('cars', 'cities'));
+        return view('admin.inquiries.create', compact('cars', 'cities', 'colors'));
     }
 
     /**
@@ -50,6 +52,22 @@ class InquiriesController extends Controller
         ]);
 
         $item = Inquiry::create($request->all());
+
+        if ($request->has('carinfo'))
+        {
+            $carinfoFilled = false;
+            foreach($request->get('carinfo') as $value) if ($value) { $carinfoFilled = true; break; }
+            if ($carinfoFilled)
+            {
+                $carinfo = Carinfo::where('inquiry_id', $item->id)->first() ?: new Carinfo;
+                $carinfo->fill($request->get('carinfo'));
+                $item->carinfo()->save($carinfo);
+            }
+            else
+            {
+                $item->carinfo()->delete();
+            }
+        }
 
         Flash::success("Запись - {$item->id} сохранена");
 
@@ -75,11 +93,12 @@ class InquiriesController extends Controller
      */
     public function edit($id)
     {
-        $item = Inquiry::findOrFail($id);
+        $item = Inquiry::with('carinfo')->findOrFail($id);
         $cars = Car::lists('name', 'id')->all();
         $cities = City::lists('name', 'id')->all();
+        foreach (config('vars.car_info.color') as $key => $value) $colors[$key] = $value['name'];
 
-        return view('admin.inquiries.edit', compact('item', 'cars', 'cities'));
+        return view('admin.inquiries.edit', compact('item', 'cars', 'cities', 'colors'));
     }
 
     /**
@@ -98,6 +117,22 @@ class InquiriesController extends Controller
         $item = Inquiry::findOrFail($id);
 
         $item->update($request->all());
+
+        if ($request->has('carinfo'))
+        {
+            $carinfoFilled = false;
+            foreach($request->get('carinfo') as $value) if ($value) { $carinfoFilled = true; break; }
+            if ($carinfoFilled)
+            {
+                $carinfo = Carinfo::where('inquiry_id', $id)->first() ?: new Carinfo;
+                $carinfo->fill($request->get('carinfo'));
+                $item->carinfo()->save($carinfo);
+            }
+            else
+            {
+                $item->carinfo()->delete();
+            }
+        }
 
         Flash::success("Запись - {$id} обновлена");
 

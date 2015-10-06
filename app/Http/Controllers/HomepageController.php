@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\Carinfo;
 use App\City;
 use App\Inquiry;
 use App\News;
