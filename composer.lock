@@ -1760,16 +1760,16 @@
         },
         {
             "name": "ckeditor/ckeditor",
-            "version": "4.5.3",
+            "version": "4.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ckeditor/ckeditor-releases.git",
-                "reference": "a93cb51eb1fc85a13892706dd61eccfd4c999947"
+                "reference": "a84a972a367bc6c59bafb3e5fd503ec317d47daa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/a93cb51eb1fc85a13892706dd61eccfd4c999947",
-                "reference": "a93cb51eb1fc85a13892706dd61eccfd4c999947",
+                "url": "https://api.github.com/repos/ckeditor/ckeditor-releases/zipball/a84a972a367bc6c59bafb3e5fd503ec317d47daa",
+                "reference": "a84a972a367bc6c59bafb3e5fd503ec317d47daa",
                 "shasum": ""
             },
             "type": "library",
@@ -1797,7 +1797,7 @@
                 "text",
                 "wysiwyg"
             ],
-            "time": "2015-08-19 12:38:22"
+            "time": "2015-10-06 13:02:19"
         },
         {
             "name": "datatables/datatables",
