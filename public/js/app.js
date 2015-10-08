@@ -24,6 +24,7 @@ $(document).ready(function() {
             metroOptions: [],
             model: '',
             modelOptions: [],
+            modelsOptions: [],
             autocomplete: false,
             API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo",
             vars: false
@@ -88,11 +89,47 @@ $(document).ready(function() {
                 });
             },
 
+            selectCar: function(e, id)
+            {
+                var element = e.target;
+
+                if ($(element).is(':checked'))
+                {
+                    $.get("/carmodels/" + id, function (data) {
+                        var carOptions = [];
+
+                        $.each(data, function (index, value) {
+                            carOptions.push(value.name);
+                        }.bind(this));
+
+                        if (carOptions.length) this.modelsOptions.push({label: $(element).data('carName'), options: carOptions});
+
+                        console.log(this.modelsOptions);
+                    }.bind(this))
+                    .fail(function () {
+                        alert("Ошибка при запросе");
+                    });
+                }
+                else
+                {
+                    $.each(this.modelsOptions, function(index, value) {
+                        if (value.label == $(element).data('carName')) {
+                            this.modelsOptions.splice(index, 1);
+                            return false;
+                        }
+                    }.bind(this));
+
+                    console.log(this.modelsOptions);
+                }
+            },
+
             inquirySearchSuccess: function (data)
             {
                 console.log(data);
-                this.inquiriesSearch = { found: data.found, suggest: data.suggest };
-                //$('#table_inquiries_search').tablesorter();
+                this.inquiriesSearch = data;
+
+                setTimeout("$('#table_inquiries_search').trigger('updateAll')", 1);
+
                 $('body').scrollTo('#section_search_results', 500);
             },
 
@@ -266,9 +303,7 @@ $(document).ready(function() {
                     $.get("/carmodels/" + this.car, function (data) {
                         $.each(data, function (index, value) {
                             this.modelOptions.push(value.name);
-                            //this.metroOptions.push({text: value.name, value: value.id });
                         }.bind(this));
-                        //setTimeout("$(\"select[name='model']\").select2({language: 'ru', allowClear: true, placeholder: '- Модель авто -'})", 1);
                     }.bind(this))
                     .fail(function () {
                         alert("Ошибка при запросе");
@@ -342,9 +377,9 @@ $(document).ready(function() {
                         console.log(data);
                         this.vars = data;
                     }.bind(this))
-                        .fail(function () {
-                            alert("Ошибка при запросе");
-                        });
+                    .fail(function () {
+                        alert("Ошибка при запросе");
+                    });
                 }
             },
         },
@@ -354,7 +389,22 @@ $(document).ready(function() {
             this.varsLoad();
             this.changeCar();
             this.changeCity();
-            $('#table_inquiries_search').tablesorter();
+
+            $.tablesorter.themes.bootstrap = {
+                table        : 'table table-striped',
+                caption      : 'caption',
+                header       : 'bootstrap-header',
+                iconSortNone : 'bootstrap-icon-unsorted',
+                iconSortAsc  : 'glyphicon glyphicon-chevron-up',
+                iconSortDesc : 'glyphicon glyphicon-chevron-down',
+            };
+
+            $('#table_inquiries_search').tablesorter({
+                theme : "bootstrap",
+                widthFixed: true,
+                headerTemplate : '{content} {icon}',
+                widgets : [ "uitheme" ]
+            });
 
             // Обработчик кнопки Дать объявление (шаг 0)
             if ($('#btn_inquiry_create').length)
@@ -419,6 +469,21 @@ $(document).ready(function() {
         }
 
     });
+
+    function showInquiry(element)
+    {
+        var element = e.target;
+        var id = $(element).closest('.inquiry-item').data('inquiryId');
+
+        $.get('/inquiry/show/' + id, function(data) {
+            console.log(data);
+            vm.inquiryShow = data.inquiry;
+            $("#inquiryShowModal").modal('show');
+        }.bind(this))
+        .fail(function() {
+            alert("Ошибка при запросе");
+        });
+    }
 
 });
 

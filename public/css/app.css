@@ -97,6 +97,7 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 
 .inquiry-show .data-avatar { height: 48px; width: 48px; vertical-align: middle; margin: 0 10px 0 0; }
 
+.table-inquiries-found thead th { font-size: 13px; }
 .table-inquiries-found tbody tr { cursor: pointer; }
 .table-inquiries-found tbody tr:hover td { background: #FFFFB6; }
 

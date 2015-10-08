@@ -53,7 +53,7 @@ class InquiriesController extends Controller
         $search['city_id']    = $request->get('city_id');
         $search['metro']      = $request->has('metro') && $request->get('metro') ? $request->get('metro') : false;
 
-        if ($search['car_id'])    $inquiries->where('car_id', $search['car_id']);
+        if ($search['car_id'])    $inquiries->whereIn('car_id', $search['car_id']);
         if ($search['model'])     $inquiries->where('model', $search['model']);
         if ($search['year_from']) $inquiries->where('year_from', '>=', $search['year_from']);
         if ($search['year_to'])   $inquiries->where('year_to', '<=', $search['year_to']);
@@ -89,17 +89,15 @@ class InquiriesController extends Controller
         if ($searchMore['state'])         $inquiries->where('state', '>=', $search['state']);
         if ($searchMore['owners'])        $inquiries->where('owners', '>=', $search['owners']);
 
-        $inquiriesFound = $inquiries->with('car', 'user', 'city')->get();
+        $searchResult['found'] = $inquiries->with('car', 'user', 'city')->get();
+        $searchResult['suggest'] = [];
 
         if($request->ajax())
         {
-            return response()->json([
-                'found' => $inquiriesFound,
-                'suggest' => []
-            ]);
+            return response()->json($searchResult);
         }
 
-        return $inquiriesFound;
+        return $searchResult;
     }
 
     /**
