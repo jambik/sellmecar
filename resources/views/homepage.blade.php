@@ -731,9 +731,9 @@
                     <div class="block-line">
                         года:
                         <div class="value">
-                            <span v-if="item.year_from">с @{{ item.year_from }}г.</span>
-                            <span v-if="item.year_to">по @{{ item.year_to }}г.</span>
-                            <span v-if="! item.year_from && ! item.year_to">-</span>
+                            <span v-if="item.year_from > 0">с @{{ item.year_from }}г.</span>
+                            <span v-if="item.year_to > 0">по @{{ item.year_to }}г.</span>
+                            <span v-if="item.year_from == 0 && item.year_to == 0">-</span>
                         </div>
                     </div>
                     <div class="block-line">город: <div class="value">@{{ item.city.name }}</div></div>
