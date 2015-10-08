@@ -648,31 +648,381 @@
     </div>
 </section>
 
+<table class="table table-striped table-inquiries-found tablesorter tablesorter-default" id="table_inquiries_search" role="grid">
+    <thead>
+    <tr role="row" class="tablesorter-headerRow">
+        <td data-column="0" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="none" aria-label="#: No sort applied, activate to apply a descending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">#</div></td>
+        <td data-column="1" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="none" aria-label="img: No sort applied, activate to apply an ascending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">img</div></td>
+        <td data-column="2" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="none" aria-label="Марка: No sort applied, activate to apply an ascending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">Марка</div></td>
+        <td data-column="3" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="none" aria-label="Модель: No sort applied, activate to apply an ascending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">Модель</div></td>
+        <td data-column="4" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="none" aria-label="Года: No sort applied, activate to apply a descending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">Года</div></td>
+        <td data-column="5" class="tablesorter-header tablesorter-headerUnSorted" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="none" aria-label="Цена: No sort applied, activate to apply a descending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">Цена</div></td>
+        <td data-column="6" class="tablesorter-header tablesorter-headerAsc" tabindex="0" scope="col" role="columnheader" aria-disabled="false" aria-controls="table_inquiries_search" unselectable="on" aria-sort="ascending" aria-label="Адрес: Ascending sort applied, activate to apply a descending sort" style="-webkit-user-select: none;"><div class="tablesorter-header-inner">Адрес</div></td>
+    </tr>
+    </thead>
+    <tbody aria-live="polite" aria-relevant="all">
+    <tr class="inquiry-item" data-inquiry-id="1">
+        <td>#1</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>C-Classe</td>
+        <td>
+            <span>с 2010г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 400 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Динамо</span><span>, ул. Динамовская улица</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="2">
+        <td>#2</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>S-Classe</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 2 000 000руб.</span>
+            <span>до 2 900 000руб.</span>
+
+        </td>
+        <td>Санкт-Перербург<span>, метро Достоевская</span><span>, ул. улица Достоевского</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="3">
+        <td>#3</td>
+        <td><img src="/img/cars/toyota.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Toyota</td>
+        <td>Camry</td>
+        <td>
+            <span>с 2012г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 800 000руб.</span>
+            <span>до 900 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Арбатская</span><span>, ул. улица Арбат</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="4">
+        <td>#4</td>
+        <td><img src="/img/cars/ford.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Ford</td>
+        <td>Focus 3</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 200 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Борисово</span><span>, ул. Борисовский проезд</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="5">
+        <td>#5</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>C-Classe</td>
+        <td>
+            <span>с 2010г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 400 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Динамо</span><span>, ул. Динамовская улица</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="6">
+        <td>#6</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>S-Classe</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 2 000 000руб.</span>
+            <span>до 2 900 000руб.</span>
+
+        </td>
+        <td>Санкт-Перербург<span>, метро Достоевская</span><span>, ул. улица Достоевского</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="7">
+        <td>#7</td>
+        <td><img src="/img/cars/toyota.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Toyota</td>
+        <td>Camry</td>
+        <td>
+            <span>с 2012г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 800 000руб.</span>
+            <span>до 900 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Арбатская</span><span>, ул. улица Арбат</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="8">
+        <td>#8</td>
+        <td><img src="/img/cars/ford.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Ford</td>
+        <td>Focus 3</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 200 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Борисово</span><span>, ул. Борисовский проезд</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="9">
+        <td>#9</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>C-Classe</td>
+        <td>
+            <span>с 2010г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 400 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Динамо</span><span>, ул. Динамовская улица</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="10">
+        <td>#10</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>S-Classe</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 2 000 000руб.</span>
+            <span>до 2 900 000руб.</span>
+
+        </td>
+        <td>Санкт-Перербург<span>, метро Достоевская</span><span>, ул. улица Достоевского</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="11">
+        <td>#11</td>
+        <td><img src="/img/cars/toyota.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Toyota</td>
+        <td>Camry</td>
+        <td>
+            <span>с 2012г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 800 000руб.</span>
+            <span>до 900 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Арбатская</span><span>, ул. улица Арбат</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="12">
+        <td>#12</td>
+        <td><img src="/img/cars/ford.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Ford</td>
+        <td>Focus 3</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 200 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Борисово</span><span>, ул. Борисовский проезд</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="13">
+        <td>#13</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>C-Classe</td>
+        <td>
+            <span>с 2010г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 400 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Динамо</span><span>, ул. Динамовская улица</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="14">
+        <td>#14</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>S-Classe</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 2 000 000руб.</span>
+            <span>до 2 900 000руб.</span>
+
+        </td>
+        <td>Санкт-Перербург<span>, метро Достоевская</span><span>, ул. улица Достоевского</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="15">
+        <td>#15</td>
+        <td><img src="/img/cars/toyota.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Toyota</td>
+        <td>Camry</td>
+        <td>
+            <span>с 2012г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 800 000руб.</span>
+            <span>до 900 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Арбатская</span><span>, ул. улица Арбат</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="16">
+        <td>#16</td>
+        <td><img src="/img/cars/ford.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Ford</td>
+        <td>Focus 3</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 200 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Борисово</span><span>, ул. Борисовский проезд</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="17">
+        <td>#17</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>C-Classe</td>
+        <td>
+            <span>с 2010г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 400 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Динамо</span><span>, ул. Динамовская улица</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="18">
+        <td>#18</td>
+        <td><img src="/img/cars/mercedes_benz.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Mercedes-Benz</td>
+        <td>S-Classe</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 2 000 000руб.</span>
+            <span>до 2 900 000руб.</span>
+
+        </td>
+        <td>Санкт-Перербург<span>, метро Достоевская</span><span>, ул. улица Достоевского</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="19">
+        <td>#19</td>
+        <td><img src="/img/cars/toyota.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Toyota</td>
+        <td>Camry</td>
+        <td>
+            <span>с 2012г.</span>
+            <span>по 2013г.</span>
+
+        </td>
+        <td>
+            <span>от 800 000руб.</span>
+            <span>до 900 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Арбатская</span><span>, ул. улица Арбат</span></td>
+    </tr><tr class="inquiry-item" data-inquiry-id="20">
+        <td>#20</td>
+        <td><img src="/img/cars/ford.png?w=40&amp;h=40&amp;1443680018"></td>
+        <td>Ford</td>
+        <td>Focus 3</td>
+        <td>
+            <span>с 2013г.</span>
+            <span>по 2015г.</span>
+
+        </td>
+        <td>
+            <span>от 1 000 000руб.</span>
+            <span>до 1 200 000руб.</span>
+
+        </td>
+        <td>Москва<span>, метро Борисово</span><span>, ул. Борисовский проезд</span></td>
+    </tr>
+    </tbody>
+</table>
+
 <section id="section_search_results">
-    <div class="container" v-if="inquiriesSearch">
+    <div class="container" v-show="inquiriesSearch">
         <div>&nbsp;</div>
         <h2 class="text-center">Результаты поиска</h2>
         <p class="text-center" v-if="inquiriesSearch.found.length">Найдено @{{ inquiriesSearch.found.length }} объявлений на покупку авто</p>
         <div>&nbsp;</div>
 
-        <table class="table table-striped table-inquiries-found">
-            <tr v-repeat="item in inquiriesSearch.found" class="inquiry-item" data-inquiry-id="@{{ item.id }}"  v-on="click: showInquiry($event)">
-                <td>#@{{ item.id }}</td>
-                <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
-                <td>@{{ item.car.name }}</td>
-                <td>@{{ item.model }}</td>
-                <td>
-                    <span v-if="item.year_from">с @{{ item.year_from }}г.</span>
-                    <span v-if="item.year_to">по @{{ item.year_to }}г.</span>
-                    <span v-if="! item.year_from && ! item.year_to">-</span>
-                </td>
-                <td>
-                    <span v-if="item.price_from">от @{{ item.price_from_formatted }}руб.</span>
-                    <span v-if="item.price_to">до @{{ item.price_to_formatted }}руб.</span>
-                    <span v-if="! item.price_from && ! item.price_to">-</span>
-                </td>
-                <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>
-            </tr>
+        <table class="table table-striped table-inquiries-found" id="table_inquiries_search">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>img</td>
+                    <td>Марка</td>
+                    <td>Модель</td>
+                    <td>Года</td>
+                    <td>Цена</td>
+                    <td>Адрес</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-repeat="item in inquiriesSearch.found" class="inquiry-item" data-inquiry-id="@{{ item.id }}"  v-on="click: showInquiry($event)">
+                    <td>#@{{ item.id }}</td>
+                    <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
+                    <td>@{{ item.car.name }}</td>
+                    <td>@{{ item.model }}</td>
+                    <td>
+                        <span v-if="item.year_from">с @{{ item.year_from }}г.</span>
+                        <span v-if="item.year_to">по @{{ item.year_to }}г.</span>
+                        <span v-if="! item.year_from && ! item.year_to">-</span>
+                    </td>
+                    <td>
+                        <span v-if="item.price_from">от @{{ item.price_from_formatted }}руб.</span>
+                        <span v-if="item.price_to">до @{{ item.price_to_formatted }}руб.</span>
+                        <span v-if="! item.price_from && ! item.price_to">-</span>
+                    </td>
+                    <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>
+                </tr>
+            </tbody>
         </table>
 
         <div class="text-center" v-if=" ! inquiriesSearch.found.length">По вашему запросу ничего не найдено</div>

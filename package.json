@@ -12,6 +12,7 @@
     "noty": "^2.3.6",
     "select2": "^4.0.0",
     "summernote": "^0.6.16",
+    "tablesorter": "^2.23.5",
     "vue": "^0.12.14"
   },
   "dependencies": {

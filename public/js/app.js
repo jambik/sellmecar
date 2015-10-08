@@ -90,9 +90,9 @@ $(document).ready(function() {
 
             inquirySearchSuccess: function (data)
             {
-                //console.log(data);
+                console.log(data);
                 this.inquiriesSearch = { found: data.found, suggest: data.suggest };
-                console.log(this.inquiriesSearch);
+                //$('#table_inquiries_search').tablesorter();
                 $('body').scrollTo('#section_search_results', 500);
             },
 
@@ -354,6 +354,7 @@ $(document).ready(function() {
             this.varsLoad();
             this.changeCar();
             this.changeCity();
+            $('#table_inquiries_search').tablesorter();
 
             // Обработчик кнопки Дать объявление (шаг 0)
             if ($('#btn_inquiry_create').length)
