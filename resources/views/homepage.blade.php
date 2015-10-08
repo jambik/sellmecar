@@ -676,14 +676,14 @@
                     <td>@{{ item.car.name }}</td>
                     <td>@{{ item.model }}</td>
                     <td>
-                        <span v-if="item.year_from">с @{{ item.year_from }}г.</span>
-                        <span v-if="item.year_to">по @{{ item.year_to }}г.</span>
-                        <span v-if="! item.year_from && ! item.year_to">-</span>
+                        <span v-if="item.year_from > 0">с @{{ item.year_from }}г.</span>
+                        <span v-if="item.year_to > 0">по @{{ item.year_to }}г.</span>
+                        <span v-if="item.year_from == 0 && item.year_to == 0">-</span>
                     </td>
                     <td>
-                        <span v-if="item.price_from">от @{{ item.price_from_formatted }}руб.</span>
-                        <span v-if="item.price_to">до @{{ item.price_to_formatted }}руб.</span>
-                        <span v-if="! item.price_from && ! item.price_to">-</span>
+                        <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }}руб.</span>
+                        <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }}руб.</span>
+                        <span v-if="item.price_from == 0 && item.price_to == 0">-</span>
                     </td>
                     <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>
                 </tr>

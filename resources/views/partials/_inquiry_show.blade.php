@@ -17,16 +17,16 @@
 
                         <dt>Года</dt>
                         <dd>
-                            <span v-if="inquiryShow.year_from">с @{{ inquiryShow.year_from }}г.</span>
-                            <span v-if="inquiryShow.year_to">по @{{ inquiryShow.year_to }}г.</span>
-                            <span v-if="! inquiryShow.year_from && ! inquiryShow.year_to">-</span>
+                            <span v-if="inquiryShow.year_from > 0">с @{{ inquiryShow.year_from }}г.</span>
+                            <span v-if="inquiryShow.year_to > 0">по @{{ inquiryShow.year_to }}г.</span>
+                            <span v-if="inquiryShow.year_from == 0 && inquiryShow.year_to == 0">-</span>
                         </dd>
 
                         <dt>Цена</dt>
                         <dd>
-                            <span v-if="inquiryShow.price_from">от @{{ inquiryShow.price_from_formatted }}руб.</span>
-                            <span v-if="inquiryShow.price_to">до @{{ inquiryShow.price_to_formatted }}руб.</span>
-                            <span v-if="! inquiryShow.price_from && ! inquiryShow.price_to">-</span>
+                            <span v-if="inquiryShow.price_from > 0">от @{{ inquiryShow.price_from_formatted }}руб.</span>
+                            <span v-if="inquiryShow.price_to > 0">до @{{ inquiryShow.price_to_formatted }}руб.</span>
+                            <span v-if="inquiryShow.price_from == 0 && inquiryShow.price_to == 0">-</span>
                         </dd>
 
                         <div v-if="inquiryShow.carinfo">
