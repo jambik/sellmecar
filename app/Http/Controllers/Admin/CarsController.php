@@ -41,7 +41,7 @@ class CarsController extends Controller
     {
         $this->validate($request, ['name' => 'required']);
 
-        $item = Car::create($request->all());
+        $item = Car::create($request->all() + ($request->has('domestic') ? [] : ['domestic' => 0]));
 
         $item->saveImage($item, $request);
 
@@ -87,7 +87,7 @@ class CarsController extends Controller
 
         $item = Car::findOrFail($id);
 
-        $item->update($request->all());
+        $item->update($request->all() + ($request->has('domestic') ? [] : ['domestic' => 0]));
 
         $item->saveImage($item, $request);
 

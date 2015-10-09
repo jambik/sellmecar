@@ -1,4 +1,4 @@
-body, td, input { font-family: "Cuprum"; font-size: 14px; color: #1d436b; }
+body, td, input { font-family: 'Open Sans',sans-serif; font-size: 14px; color: #1d436b; }
 a { color: #337ab7; }
 a:hover { color: #000; }
 
@@ -96,6 +96,8 @@ footer { background: #7e7564 url("../img/section-3.jpg") top center no-repeat; }
 footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 
 .inquiry-show .data-avatar { height: 48px; width: 48px; vertical-align: middle; margin: 0 10px 0 0; }
+
+.has-feedback .form-control-feedback { font-size: 8px; color: #ed0000; }
 
 .table-inquiries-found thead th { font-size: 13px; }
 .table-inquiries-found tbody tr { cursor: pointer; }

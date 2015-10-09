@@ -10,7 +10,7 @@ class Car extends Model
 {
     protected $table = 'cars';
 
-    protected $fillable = ['name', 'image'];
+    protected $fillable = ['domestic', 'name', 'image'];
 
     protected $appends = ['img_url', 'img_size'];
 

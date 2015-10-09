@@ -62,7 +62,7 @@ $(document).ready(function() {
                     {
                         if (formStatus.length && jqXHR.status == 422) // Если статус 422 (неправильные входные данные) то отображаем ошибки
                         {
-                            var formStatusText = "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><div class='text-uppercase'>Ошибка!</div><ul>";
+                            var formStatusText = "<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><div class='text-uppercase'>" + (formStatus.data('errorText') ? formStatus.data('errorText') : 'Ошибка!') + "</div><ul>";
 
                             $.each(jqXHR.responseJSON, function (index, value) {
                                 formStatusText += "<li>" + value + "</li>";

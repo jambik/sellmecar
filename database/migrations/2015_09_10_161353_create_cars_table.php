@@ -14,6 +14,7 @@ class CreateCarsTable extends Migration
     {
         Schema::create('cars', function (Blueprint $table) {
             $table->increments('id');
+            $table->tinyInteger('domestic')->default(0);
             $table->string('name');
             $table->string('image')->default('');
             $table->timestamps();

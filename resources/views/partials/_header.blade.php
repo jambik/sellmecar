@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
     @yield('head')
-    <link href='http://fonts.googleapis.com/css?family=Cuprum:400,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>
+    {{--<link href='http://fonts.googleapis.com/css?family=Cuprum:400,700&amp;subset=latin,cyrillic' rel='stylesheet' type='text/css'>--}}
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href="{{ asset('/css/app.bundle.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('/css/app.css') }}" type="text/css" rel="stylesheet" />
     <script src="{{ asset('/js/app.bundle.js') }}" type="text/javascript"></script>

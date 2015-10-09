@@ -4,6 +4,11 @@
 </div>
 
 <div class="form-group">
+    {!! Form::label('domestic', 'Отечественный:') !!}
+    {!! Form::checkbox('domestic') !!}
+</div>
+
+<div class="form-group">
     {!! Form::label('image', 'Фото:') !!}
     {!! Form::file('image', ['class' => 'form-control']) !!}
 </div>

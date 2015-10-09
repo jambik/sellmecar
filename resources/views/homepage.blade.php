@@ -117,7 +117,7 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div class="btn-line">
-            <button class="btn btn-danger" id="btn_inquiry_create"><span class="fa fa-list-alt btn-icon"></span> Дать объявление</button>
+            <button class="btn btn-danger btn-lg" id="btn_inquiry_create"><span class="fa fa-list-alt btn-icon"></span> Дать объявление</button>
         </div>
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -135,17 +135,25 @@
             <div class="col-lg-4 col-md-4 col-sm-6 col-lg-offset-1 col-md-offset-1">
                 <form action="/auth/register" method="POST" accept-charset="UTF-8" class="form-ajax" id="form_register" v-on="submit: ajaxFormSubmit($event, registrationSuccess)">
                     <div class="form-status"></div>
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Имя" class="form-control" />
+                    <div class="form-group has-feedback">
+                        <input type="text" name="name" placeholder="Имя" class="form-control" aria-describedby="nameRequired">
+                        <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
+                        <span id="nameRequired" class="sr-only">(обязательно)</span>
                     </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email" class="form-control" />
+                    <div class="form-group has-feedback">
+                        <input type="email" name="email" placeholder="Email" class="form-control" aria-describedby="emailRequired">
+                        <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
+                        <span id="emailRequired" class="sr-only">(обязательно)</span>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password" placeholder="Пароль" class="form-control" />
+                    <div class="form-group has-feedback">
+                        <input type="password" name="password" placeholder="Пароль" class="form-control" aria-describedby="passwordRequired">
+                        <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
+                        <span id="passwordRequired" class="sr-only">(обязательно)</span>
                     </div>
-                    <div class="form-group">
-                        <input type="password" name="password_confirmation" placeholder="Пароль еще раз" class="form-control" />
+                    <div class="form-group has-feedback">
+                        <input type="password" name="password_confirmation" placeholder="Пароль еще раз" class="form-control" aria-describedby="passwordConfirmationRequired">
+                        <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
+                        <span id="passwordConfirmationRequired" class="sr-only">(обязательно)</span>
                     </div>
                     <hr>
                     {!! Form::token() !!}
@@ -172,7 +180,7 @@
         <div>&nbsp;</div>
         <div>&nbsp;</div>
         <div class="btn-line">
-            <button id="btn_back_start" class="btn btn-danger"><span class="fa fa-arrow-circle-o-left btn-icon"></span> Назад</button>
+            <button id="btn_back_start" class="btn btn-danger btn-lg"><span class="fa fa-arrow-circle-o-left btn-icon"></span> Назад</button>
         </div>
         <div>&nbsp;</div>
     </div>
@@ -185,17 +193,19 @@
         <div class="text-light text-xxl text-shadow text-center">Дать объявление</div>
         <div>&nbsp;</div>
         <form action="{{ route('inquiryStore') }}" method="POST" accept-charset="UTF-8" id="form_inquiry" class="form-ajax" v-on="submit: ajaxFormSubmit($event, inquiryCreateSuccess)">
-            <div class="form-status"></div>
+            <div class="form-status" data-error-text="Ваше объявление не может быть создано, потому что вы не заполнили следующие обязательные поля:"></div>
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
-                    <div class="form-group">
+                    <div class="form-group has-feedback">
                         <label>Автомобиль:</label>
-                        <select name="car_id" placeholder="- Выберите марку автомобиля -" class="form-control" v-model="car" v-on="change: changeCar">
+                        <select name="car_id" placeholder="- Выберите марку автомобиля -" class="form-control" aria-describedby="carRequired" v-model="car" v-on="change: changeCar">
                             <option value="">- Выберите марку автомобиля -</option>
                             @foreach($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
                         </select>
+                        <span class="glyphicon glyphicon-asterisk form-control-feedback" style="padding-right: 15px;" aria-hidden="true"></span>
+                        <span id="carRequired" class="sr-only">(обязательно)</span>
                     </div>
                     <div class="form-group">
                         <div class="form-group">
@@ -233,14 +243,16 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5">
-                    <div class="form-group">
+                    <div class="form-group has-feedback">
                         <label>Город:</label>
-                        <select name="city_id" placeholder="- Выберите город -" class="form-control" v-model="city" v-on="change: changeCity">
+                        <select name="city_id" placeholder="- Выберите город -" class="form-control" aria-describedby="cityRequired" v-model="city" v-on="change: changeCity">
                             <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
                             @endforeach
                         </select>
+                        <span class="glyphicon glyphicon-asterisk form-control-feedback" style="padding-right: 15px;" aria-hidden="true"></span>
+                        <span id="cityRequired" class="sr-only">(обязательно)</span>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
@@ -380,7 +392,7 @@
             <div>&nbsp;</div>
 
             <div class="btn-line">
-                <button type="submit" class="btn btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опубликовать объявление</button>
+                <button type="submit" class="btn btn-danger btn-lg form-button"><span class="fa fa-check-square-o btn-icon"></span> Опубликовать объявление</button>
             </div>
             {!! Form::token() !!}
         </form>
@@ -641,7 +653,7 @@
             <div>&nbsp;</div>
 
             <div class="btn-line">
-                <button class="btn btn-danger form-button"><span class="fa fa-search btn-icon"></span> Искать по параметрам</button>
+                <button class="btn btn-danger btn-lg form-button"><span class="fa fa-search btn-icon"></span> Искать по параметрам</button>
             </div>
             <div>&nbsp;</div>
             {!! Form::token() !!}
@@ -745,7 +757,7 @@
         @if ($lastInquiries->hasMorePages())
             <form action="{{ $lastInquiries->nextPageUrl() }}" accept-charset="UTF-8" method="GET" id="form_last_inquiries" v-on="submit: ajaxFormSubmit($event, loadInquiries)">
                 <div class="btn-line">
-                    <button type="submit" class="btn btn-danger form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё объявления</button>
+                    <button type="submit" class="btn btn-danger btn-lg form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё объявления</button>
                 </div>
             </form>
         @endif
@@ -781,7 +793,7 @@
         @if ($lastNews->hasMorePages())
             <form action="{{ $lastNews->nextPageUrl() }}" method="GET" accept-charset="UTF-8" id="form_last_news" v-on="submit: ajaxFormSubmit($event, loadNews)">
                 <div class="btn-line">
-                    <button type="submit" class="btn btn-danger form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё новости</button>
+                    <button type="submit" class="btn btn-danger btn-lg form-button"><span class="fa fa-arrow-down btn-icon"></span> Ещё новости</button>
                 </div>
             </form>
         @endif
