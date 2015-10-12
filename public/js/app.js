@@ -1,3 +1,19 @@
+function initializeSelect2()
+{
+    $(".select2-color").select2({
+        templateResult: function(state){
+            if (!state.id) { return state.text; }
+
+            if ($(state.element).data('hex'))
+            {
+                var border = state.text == "Белый" ? "border: 1px solid #999;" : '';
+                var state = $('<span><span style="' + border + 'display: inline-block; vertical-align: text-bottom; background: ' + $(state.element).data('hex') + '; height: 20px; width: 20px; border-radius: 10px;"></span> ' + state.text + '</span>');
+                return state;
+            }
+        }
+    });
+}
+
 $(document).ready(function() {
 
     var vm = new Vue({
@@ -137,12 +153,14 @@ $(document).ready(function() {
             {
                 e.preventDefault();
                 this.showInquiryInfoFields = ! this.showInquiryInfoFields;
+                setTimeout("initializeSelect2()");
             },
 
             showAdditional: function(e)
             {
                 e.preventDefault();
                 this.showAdditionalFields = ! this.showAdditionalFields;
+                setTimeout("initializeSelect2()");
             },
 
             showCard: function(id)
@@ -381,7 +399,7 @@ $(document).ready(function() {
                         alert("Ошибка при запросе");
                     });
                 }
-            },
+            }
         },
 
         ready: function()
@@ -438,6 +456,8 @@ $(document).ready(function() {
 
             // Инициализируем плагин select2
             if ($('.select2').length) $('.select2').select2({language: "ru"});
+
+            this.initializeSelect2();
 
             // Инициализируем выбор годов автомобиля
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });

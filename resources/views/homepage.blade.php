@@ -115,7 +115,7 @@
             </div>
         </div>
 
-        <div class="hidden-xs">&nbsp;</div>
+        <div>&nbsp;</div>
 
         <p class="text-shadow text-light text-about">Уникальность нашего сайта состоит в том, что покупатель выставляет свое объявление, а продавец автомобиля  ищет именно то, объявление, где есть сходство с его автомобилем!</p>
 
@@ -191,7 +191,6 @@
         <div>&nbsp;</div>
     </div>
     {{--/Шаг 1/--}}
-
 
     {{--Шаг 2: Дать объявление--}}
     <div class="container" id="container_step2" style="display: {{ Request::has('step') && Request::get('step') == 2 ? 'block' : 'none' }};">
@@ -341,7 +340,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[color]" placeholder="- Цвет -" class="form-control">
+                            <select name="carinfo[color]" placeholder="- Цвет -" class="form-control select2-color">
                                 <option value="0">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
@@ -476,7 +475,6 @@
         <div>&nbsp;</div>
         <p class="text-center">Сначала выберите марку Вашего автомобиля (лей)</p>
         <div>&nbsp;</div>
-
         <form action="{{ route('inquirySearch') }}" accept-charset="UTF-8" method="POST" id="form_inquiry_search" class="form-ajax" v-on="submit: ajaxFormSubmit($event, inquirySearchSuccess)">
             <div class="form-status"></div>
 
@@ -599,7 +597,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="color" placeholder="- Цвет -" class="form-control">
+                            <select name="color" placeholder="- Цвет -" class="form-control select2-color">
                                 <option value="0">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
@@ -677,40 +675,45 @@
         <p class="text-center" v-if="inquiriesSearch.found.length">Найдено @{{ inquiriesSearch.found.length }} объявлений на покупку авто</p>
         <div>&nbsp;</div>
 
-        <table class="table table-striped table-inquiries-found" id="table_inquiries_search">
-            <thead>
-                <tr>
-                    <th data-sorter="false">#</th>
-                    <th data-sorter="false">&nbsp;</th>
-                    <th>Марка</th>
-                    <th>Модель</th>
-                    <th>Года</th>
-                    <th>Цена</th>
-                    <th>Адрес</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-repeat="item in inquiriesSearch.found" class="inquiry-item" data-inquiry-id="@{{ item.id }}"  v-on="click: showInquiry($event)">
-                    <td>#@{{ item.id }}</td>
-                    <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
-                    <td>@{{ item.car.name }}</td>
-                    <td>@{{ item.model }}</td>
-                    <td>
-                        <span v-if="item.year_from > 0">с @{{ item.year_from }}г.</span>
-                        <span v-if="item.year_to > 0">по @{{ item.year_to }}г.</span>
-                        <span v-if="item.year_from == 0 && item.year_to == 0">-</span>
-                    </td>
-                    <td>
-                        <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }}руб.</span>
-                        <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }}руб.</span>
-                        <span v-if="item.price_from == 0 && item.price_to == 0">-</span>
-                    </td>
-                    <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-striped table-inquiries-found" id="table_inquiries_search">
+                <thead>
+                    <tr>
+                        <th data-sorter="false">#</th>
+                        <th data-sorter="false">&nbsp;</th>
+                        <th>Марка</th>
+                        <th>Модель</th>
+                        <th>Года</th>
+                        <th>Цена</th>
+                        <th>Адрес</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-repeat="item in inquiriesSearch.found" class="inquiry-item" data-inquiry-id="@{{ item.id }}"  v-on="click: showInquiry($event)">
+                        <td>#@{{ item.id }}</td>
+                        <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
+                        <td>@{{ item.car.name }}</td>
+                        <td>@{{ item.model }}</td>
+                        <td>
+                            <span v-if="item.year_from > 0">с @{{ item.year_from }}г.</span>
+                            <span v-if="item.year_to > 0">по @{{ item.year_to }}г.</span>
+                            <span v-if="item.year_from == 0 && item.year_to == 0">-</span>
+                        </td>
+                        <td>
+                            <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }}руб.</span>
+                            <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }}руб.</span>
+                            <span v-if="item.price_from == 0 && item.price_to == 0">-</span>
+                        </td>
+                        <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-        <div class="text-center" v-if=" ! inquiriesSearch.found.length">По вашему запросу ничего не найдено</div>
+        <div class="text-center" v-if=" ! inquiriesSearch.found.length">
+            <p>По вашему запросу ничего не найдено</p>
+            <p><a href="#section_search" onclick="$('body').scrollTo('#section_search', 500); return false;">вернуться к поиску</a></p>
+        </div>
 
         <div>&nbsp;</div>
         <div>&nbsp;</div>
@@ -727,7 +730,7 @@
 
         <div class="row">
             @foreach ($lastInquiries as $item)
-                <div class="col-lg-3 col-md-3 col-sm-4">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                     <div class="inquiry-block inquiry-item" data-inquiry-id="{{ $item->id }}">
                         @if($item->car->image)<div class="car-image"><img src='{{ $item->car->img_url.$item->car->image.$item->car->img_size['xs'] }}'></div>@endif
                         <div class="text-uppercase text-l">Куплю:</div>
@@ -739,7 +742,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-3 col-md-3 col-sm-4" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
                 <div class="inquiry-block inquiry-item" data-inquiry-id="@{{ item.id }}">
                     <div class="car-image" v-if="item.car.image"><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></div>
                     <div class="text-uppercase text-l">Куплю:</div>
@@ -784,7 +787,7 @@
 
         <div class="row">
             @foreach ($lastNews as $item)
-                <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
                     <div class="news-block" data-news-id="{{ $item->id }}">
                         <div class="news-date">{{ $item->published_at->diffForHumans() }}</div>
                         <div class="news-title"><a href="#" v-on="click: showNews($event)">{{ $item->title }}</a></div>
@@ -792,7 +795,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-3 col-md-3 col-sm-4" v-repeat="item in newsLoaded" v-transition="bounceIn">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" v-repeat="item in newsLoaded" v-transition="bounceIn">
                 <div class="news-block" data-news-id="@{{ item.id }}">
                     <div class="news-date">@{{ item.published_at }}</div>
                     <div class="news-title"><a href="#" v-on="click: showNews($event)">@{{ item.title }}</a></div>
