@@ -17,22 +17,26 @@ a:hover { color: #000; }
 
 header { background: linear-gradient(to bottom,  rgba(137,161,181,1) 0%,rgba(255,255,255,1) 100%); }
 header .logo img { margin: 20px 0 0 0; }
-header .slogan { text-transform: uppercase; font-size: 15px; margin: 5px 0 15px 0; letter-spacing: 1.3px; font-weight: bolder; }
-header .menu { margin: 40px 0 0 0; }
+header .slogan { text-transform: uppercase; font-size: 14px; margin: 5px 0 15px 0; }
+header .menu { margin: 40px 0 0 0; max-height: 21px; }
 header .menu ul { list-style: none; padding: 0; margin: 0; }
-header .menu li { margin: 0 0 0 30px; display: inline-block; font-size: 18px; }
+header .menu li { margin: 0 0 0 20px; display: inline-block; vertical-align: top; font-size: 15px; text-transform: uppercase; }
 header .menu li:first { margin-left: 0; }
 header .menu li a { color: #1d436b; }
 
-header #login_menu { margin: 40px 0 0 0; font-size: 18px; text-align: center; }
-header #login_menu .login-link { padding-left: 30px; border-left: 2px solid #1d436b; text-decoration: none; }
-header #login_menu .dropdown-menu { min-width: 240px; padding: 15px; }
+header #login_menu .login-link { padding-left: 20px; color: #000; border-left: 1px solid #1d436b; text-decoration: none; }
+header #login_menu .dropdown-menu { width: 240px; padding: 15px; font-size: 12px; }
 
-header #user_menu { padding-left: 20px; border-left: 2px solid #eee; margin: 20px 0 20px 0; font-size: 16px; text-align: center; }
+header #user_menu { margin-top: -30px; padding-left: 20px; border-left: 1px solid #1d436b; max-width: 100px; text-align: center; text-transform: none; }
+header #user_menu li { text-transform: none; }
 header #user_menu img { height: 32px; width: 32px; border-radius: 5px; border: 1px solid #bbb; }
 header #user_menu a { font-size: 14px; text-decoration: none; }
+header #user_menu .dropdown-menu li { margin-left: 0; }
+header #user_name { display: inline-block; width: 90px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+header .caret
 
-header .social-buttons img { width: 48px; height: 48px; margin: 9px; }
+header .social-buttons { text-align: center; }
+header .social-buttons img { width: 40px; height: 40px; margin: 9px; }
 
 #section_notification { background: #ddd; }
 #section_notification .alert { margin-top: 15px; }
