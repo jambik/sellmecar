@@ -457,7 +457,7 @@ $(document).ready(function() {
             // Инициализируем плагин select2
             if ($('.select2').length) $('.select2').select2({language: "ru"});
 
-            this.initializeSelect2();
+            initializeSelect2();
 
             // Инициализируем выбор годов автомобиля
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
