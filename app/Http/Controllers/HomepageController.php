@@ -18,7 +18,10 @@ class HomepageController extends Controller
     public function homepage()
     {
         $user = Auth::user() ?: false;
-        $cars = Car::with('inquiriesCount')->get();
+        $cars = Car::with('inquiriesCount')->orderBy('domestic', 'asc')->orderBy('name')->get();
+        $cars1 = $cars->filter(function ($item) { return $item->name == "ВАЗ"; });
+        $cars2 = $cars->filter(function ($item) { return $item->name != "ВАЗ"; });
+        $cars = $cars1->merge($cars2);
         $carsList = $cars->lists('name', 'id')->toArray();
         $carBrandsShow = 18;
 

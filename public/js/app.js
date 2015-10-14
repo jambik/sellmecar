@@ -109,16 +109,23 @@ $(document).ready(function() {
             {
                 var element = e.target;
 
-                if ($(element).is(':checked'))
+                var checkbox = id ? true : false;
+                var carId    = checkbox ? id : $(element).val();
+                var carName  = checkbox ? $(element).data('carName') : $(element).find("option:selected").text();
+                var checked  = checkbox ? $(element).is(':checked') : true;
+
+                if ( ! checkbox) this.modelsOptions = [];
+
+                if (checked)
                 {
-                    $.get("/carmodels/" + id, function (data) {
+                    $.get("/carmodels/" + carId, function (data) {
                         var carOptions = [];
 
                         $.each(data, function (index, value) {
                             carOptions.push(value.name);
                         }.bind(this));
 
-                        if (carOptions.length) this.modelsOptions.push({label: $(element).data('carName'), options: carOptions});
+                        if (carOptions.length) this.modelsOptions.push({label: carName, options: carOptions});
 
                         console.log(this.modelsOptions);
                     }.bind(this))
@@ -129,7 +136,7 @@ $(document).ready(function() {
                 else
                 {
                     $.each(this.modelsOptions, function(index, value) {
-                        if (value.label == $(element).data('carName')) {
+                        if (value.label == carName) {
                             this.modelsOptions.splice(index, 1);
                             return false;
                         }

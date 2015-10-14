@@ -119,12 +119,12 @@
 
         <p class="text-shadow text-light text-about">Уникальность нашего сайта состоит в том, что покупатель выставляет свое объявление, а продавец автомобиля  ищет именно то, объявление, где есть сходство с его автомобилем!</p>
 
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div>&nbsp;</div>
         <div class="btn-line">
             <button class="btn btn-danger" id="btn_inquiry_create"><span class="fa fa-list-alt btn-icon"></span> Дать объявление</button>
         </div>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div>&nbsp;</div>
     </div>
     {{--/Шаг 0/--}}
@@ -183,8 +183,8 @@
         </div>
 
         <div>&nbsp;</div>
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div class="btn-line">
             <button id="btn_back_start" class="btn btn-danger"><span class="fa fa-arrow-circle-o-left btn-icon"></span> Назад</button>
         </div>
@@ -284,7 +284,7 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
                                 <label for="phone">Телефон:</label>
-                                <input type="text" name="phone" class="form-control" v-model="user.phone">
+                                <input type="text" name="phone" class="form-control" v-model="user.phone ? user.phone : '+7'">
                             </div>
                         </div>
                     </div>
@@ -470,15 +470,15 @@
 <section id="section_search">
     <div class="container">
         <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div class="text-dark text-xxl text-uppercase text-center">Как продать свой автомобиль</div>
         <div>&nbsp;</div>
         <p class="text-center">Сначала выберите марку Вашего автомобиля (лей)</p>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <form action="{{ route('inquirySearch') }}" accept-charset="UTF-8" method="POST" id="form_inquiry_search" class="form-ajax" v-on="submit: ajaxFormSubmit($event, inquirySearchSuccess)">
             <div class="form-status"></div>
 
-            <div class="row brands">
+            <div class="row brands hidden-xs">
                 @for ($i = 0; ($i < $carBrandsShow && $i < $cars->count()); $i++)
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
                         <label>
@@ -504,18 +504,26 @@
                 @endif
             </div>
 
-            <div>&nbsp;</div>
-            <div class="hr"></div>
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
+            <div class="hidden-xs">&nbsp;</div>
+            <div class="hr hidden-xs"></div>
+            <div class="hidden-xs">&nbsp;</div>
+            <div class="hidden-xs">&nbsp;</div>
 
-            <p class="text-l text-uppercase text-center">Поиск объявлений по параметрам Вашего авто</p>
+            <p class="text-l text-uppercase text-center hidden-xs">Поиск объявлений по параметрам Вашего авто</p>
             <div>&nbsp;</div>
 
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group visible-xs-block">
+                        <select name="car_id[]" placeholder="- Марка автомобиля -" class="form-control" v-on="change: selectCar($event)">
+                            <option value="">- Марка автомобиля -</option>
+                            @foreach ($cars as $value)
+                                <option value="{{ $value->id }}">{{ $value->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group">
-                        <select name="model" placeholder="- Модель авто -" class="form-control select2" v-model="models" options="modelsOptions">
+                        <select name="model" placeholder="- Модель автомобиля -" class="form-control select2" v-model="models" options="modelsOptions">
                         </select>
                     </div>
                     <div class="row">
@@ -651,10 +659,10 @@
                 <input type="hidden" name="search_info" value="1">
             </div>
 
-            <div>&nbsp;</div>
-            <div>&nbsp;</div>
+            <div class="hidden-xs">&nbsp;</div>
+            <div class="hidden-xs">&nbsp;</div>
             <div class="more-search text-center"><a href="#" v-on="click: showInquirySearchInfo($event)">Расширенный поиск</a></div>
-            <div>&nbsp;</div>
+            <div class="hidden-xs">&nbsp;</div>
             <div>&nbsp;</div>
             <div>&nbsp;</div>
 
@@ -669,7 +677,7 @@
 
 <section id="section_search_results">
     <div class="container" v-show="inquiriesSearch">
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <h3 class="text-center text-uppercase">Результаты поиска</h3>
 
         <p class="text-center" v-if="inquiriesSearch.found.length">Найдено @{{ inquiriesSearch.found.length }} объявлений на покупку авто</p>
@@ -715,17 +723,17 @@
             <p><a href="#section_search" onclick="$('body').scrollTo('#section_search', 500); return false;">вернуться к поиску</a></p>
         </div>
 
-        <div>&nbsp;</div>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
     </div>
 </section>
 
 <section id="section_inquiries">
     <div>&nbsp;</div>
     <div class="container">
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div class="text-light text-xxl text-uppercase text-center">Последние объявления</div>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div>&nbsp;</div>
 
         <div class="row">
@@ -780,9 +788,9 @@
 
 <section id="section_news">
     <div class="container">
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div class="text-dark text-xxl text-uppercase text-center">Новости</div>
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div>&nbsp;</div>
 
         <div class="row">
@@ -811,7 +819,7 @@
             </form>
         @endif
 
-        <div>&nbsp;</div>
+        <div class="hidden-xs">&nbsp;</div>
         <div>&nbsp;</div>
     </div>
 </section>
@@ -819,14 +827,15 @@
 <footer>
     <div class="footer-inner">
         <div class="container">
-            <div>&nbsp;</div>
+            <div class="hidden-xs">&nbsp;</div>
             <div>&nbsp;</div>
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-7 text-light text-justify">
                     <p>Открытое акционерное общество Страховая компания «РОСНО‑МС» — страховая медицинская организация, специализирующаяся на обязательном и добровольном медицинском страховании.</p>
                     <p>ОАО «РОСНО‑МС» зарегистрировано 18 ноября 1994 г. Уставный капитал компании полностью оплачен и составляет 600 млн. рублей. С 2001 года ОАО «РОСНО-МС» входит в состав страховой Группы Allianz – одного из крупнейших финансово-страховых концернов, который уже более 120 лет обеспечивает надежной страховой защитой миллионы клиентов по всему миру.</p>
                     <p>Открытое акционерное общество Страховая компания «РОСНО‑МС» — страховая медицинская организация, специализирующаяся на обязательном и добровольном медицинском страховании.</p>
-                    <p class="copyright">© Сервис предоставляется компанией Me Car</p>
+                    <p>© Сервис предоставляется компанией Me Car</p>
+                    <div>&nbsp;</div>
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-5">
                     <div class="text-light text-xl text-shadow text-center">Мы в социальных сетях</div>
@@ -841,7 +850,6 @@
                     </div>
                 </div>
             </div>
-            <div>&nbsp;</div>
             <div>&nbsp;</div>
         </div>
     </div>
