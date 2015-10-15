@@ -413,7 +413,7 @@
 
         <div class="text-light text-xl text-shadow text-center text-uppercase">Мое объявление</div>
         <div>&nbsp;</div>
-        <div class="text-light text-l text-shadow text-center">Уважаемый (ая): @{{ inquiryCreated.name }}, Ваше объявление размещено под номером <span class="inquiry-new-id">@{{ inquiryCreated.id }}</span></div>
+        <div class="text-light text-l text-shadow text-center">Уважаемый (ая): @{{ inquiryCreated.name }}, Ваше объявление размещено под номером: <span class="inquiry-new-id">@{{ inquiryCreated.id }}</span></div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 inquiry_new">
                 <div class="caption">Параметры объявления:</div>

@@ -478,7 +478,7 @@ $(document).ready(function() {
                 autoGroup: true,
                 digits: 0,
                 digitsOptional: false,
-                suffix: ' руб.',
+                suffix: ' ₽',
                 rightAlign: false,
                 autoUnmask: true
             });
