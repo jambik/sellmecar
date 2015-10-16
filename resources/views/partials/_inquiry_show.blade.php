@@ -82,6 +82,11 @@
                     <hr>
                     <div><i class="fa fa-calendar"></i> Дата объявления: @{{ inquiryShow.created_at }}</div>
                 </div>
+
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+
+                <div id="disqus_thread"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>

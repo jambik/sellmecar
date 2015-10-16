@@ -5,9 +5,9 @@ $(document).ready(function () {
         language: { url: "/js/dataTables.ru.json" }
     });
 
+    // Сортировка таблиц
     var orderDefault = $(tableItems.table().header()).find('tr .order-default').index();
     var orderDirection = $(tableItems.table().header()).find('tr .order-direction-desc').get(0) ? 'desc' : 'asc';
-
     if(orderDefault > -1) tableItems.order([orderDefault, orderDirection]);
 
     // Применять плагин к полям типа datetime

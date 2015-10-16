@@ -489,8 +489,6 @@
                 @endfor
 
                 @if ($carBrandsShow < $cars->count())
-                    <div class="more-brands text-center"><a href="#" onclick="$('.brands-hidden').show(); $('.brands-hidden').addClass('animated bounceIn'); $(this).hide(); return false;">Смотреть еще</a></div>
-
                     <div class="brands-hidden">
                         @for ($i = $carBrandsShow; ($i < $cars->count()); $i++)
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
@@ -501,6 +499,11 @@
                             </div>
                         @endfor
                     </div>
+                @endif
+
+                @if ($carBrandsShow < $cars->count())
+                    <div class="clearfix"></div>
+                    <div class="more-brands text-center"><a href="#" v-on="click: toggleBrands($event)">Показать все Марки</a></div>
                 @endif
             </div>
 
@@ -524,6 +527,7 @@
                     </div>
                     <div class="form-group">
                         <select name="model" placeholder="- Модель автомобиля -" class="form-control select2" v-model="models" options="modelsOptions">
+                            <option value="">- Любая -</option>
                         </select>
                     </div>
                     <div class="row">
@@ -656,7 +660,7 @@
                     </div>
                 </div>
 
-                <input type="hidden" name="search_info" value="1">
+                <input type="hidden" name="search_info" id="search_info" value="0">
             </div>
 
             <div class="hidden-xs">&nbsp;</div>
@@ -687,7 +691,7 @@
             <table class="table table-striped table-inquiries-found" id="table_inquiries_search">
                 <thead>
                     <tr>
-                        <th data-sorter="false">#</th>
+                        <th data-sorter="false">№</th>
                         <th data-sorter="false">&nbsp;</th>
                         <th>Марка</th>
                         <th>Модель</th>
@@ -698,7 +702,7 @@
                 </thead>
                 <tbody>
                     <tr v-repeat="item in inquiriesSearch.found" class="inquiry-item" data-inquiry-id="@{{ item.id }}"  v-on="click: showInquiry($event)">
-                        <td>#@{{ item.id }}</td>
+                        <td>№ @{{ item.id }}</td>
                         <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
                         <td>@{{ item.car.name }}</td>
                         <td>@{{ item.model }}</td>

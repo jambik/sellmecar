@@ -14,6 +14,18 @@ function initializeSelect2()
     });
 }
 
+var DisqusReset = function (newIdentifier, newUrl, newTitle)
+{
+    DISQUS.reset({
+        reload: true,
+        config: function () {
+            this.page.identifier = newIdentifier;
+            this.page.url = newUrl;
+            this.page.title = newTitle;
+        }
+    });
+};
+
 $(document).ready(function() {
 
     var vm = new Vue({
@@ -40,7 +52,7 @@ $(document).ready(function() {
             metroOptions: [],
             model: '',
             modelOptions: [],
-            modelsOptions: [],
+            modelsOptions: [ { text: 'Любая модель', value: 0 } ],
             autocomplete: false,
             API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo",
             vars: false
@@ -114,7 +126,7 @@ $(document).ready(function() {
                 var carName  = checkbox ? $(element).data('carName') : $(element).find("option:selected").text();
                 var checked  = checkbox ? $(element).is(':checked') : true;
 
-                if ( ! checkbox) this.modelsOptions = [];
+                if ( ! checkbox) this.modelsOptions = [{ text: 'Любая модель', value: 0 }];
 
                 if (checked)
                 {
@@ -160,14 +172,32 @@ $(document).ready(function() {
             {
                 e.preventDefault();
                 this.showInquiryInfoFields = ! this.showInquiryInfoFields;
-                setTimeout("initializeSelect2()");
+                $('#search_info').val( $('#search_info').val() == "0" ? 1 : 0 );
+                setTimeout("initializeSelect2()", 1);
             },
 
             showAdditional: function(e)
             {
                 e.preventDefault();
                 this.showAdditionalFields = ! this.showAdditionalFields;
-                setTimeout("initializeSelect2()");
+                setTimeout("initializeSelect2()", 1);
+            },
+
+            toggleBrands: function(e)
+            {
+                e.preventDefault();
+                var element = e.target;
+
+                if ($('.brands-hidden').is(':hidden')) {
+                    $('.brands-hidden').show();
+                    $('.brands-hidden').addClass('animated bounceIn');
+                    $(element).html('Свернуть список');
+                }
+                else {
+                    $('.brands-hidden').hide();
+                    $('.brands-hidden').removeClass('animated bounceIn');
+                    $(element).html('Показать все Марки');
+                }
             },
 
             showCard: function(id)
@@ -191,6 +221,9 @@ $(document).ready(function() {
                     console.log(data);
                     this.newsShow = data;
                     $("#newsShowModal").modal('show');
+                    $('#disqus_thread').appendTo('#newsShowModal .modal-body');
+                    var url = $.url();
+                    DisqusReset('news-'+this.newsShow.id, url.attr('base') + url.attr('path') + "#!news="+this.newsShow.id, 'Новость №: '+this.newsShow.id);
                 }.bind(this))
                 .fail(function() {
                     alert("Ошибка при запросе");
@@ -207,6 +240,9 @@ $(document).ready(function() {
                     console.log(data);
                     this.inquiryShow = data.inquiry;
                     $("#inquiryShowModal").modal('show');
+                    $('#disqus_thread').appendTo('#inquiryShowModal .modal-body');
+                    var url = $.url();
+                    DisqusReset('inquiry-'+this.inquiryShow.id, url.attr('base') + url.attr('path') + "#!inquiry="+this.inquiryShow.id, 'Объявление №: '+this.inquiryShow.id);
                 }.bind(this))
                 .fail(function() {
                     alert("Ошибка при запросе");
@@ -493,6 +529,23 @@ $(document).ready(function() {
                 suffix: ' км.',
                 rightAlign: false,
                 autoUnmask: true
+            });
+
+            $.scrollUp({
+                scrollName: 'scrollUp',      // Element ID
+                scrollDistance: 300,         // Distance from top/bottom before showing element (px)
+                scrollFrom: 'top',           // 'top' or 'bottom'
+                scrollSpeed: 300,            // Speed back to top (ms)
+                easingType: 'linear',        // Scroll to top easing (see http://easings.net/)
+                animation: 'fade',           // Fade, slide, none
+                animationSpeed: 200,         // Animation speed (ms)
+                scrollTrigger: false,        // Set a custom triggering element. Can be an HTML string or jQuery object
+                scrollTarget: false,         // Set a custom target element for scrolling to. Can be element or number
+                scrollText: 'Наверх', // Text for element, can contain HTML
+                scrollTitle: false,          // Set a custom <a> title if required.
+                scrollImg: false,            // Set true to use image
+                activeOverlay: false,        // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+                zIndex: 2147483647           // Z-Index for the overlay
             });
         }
 

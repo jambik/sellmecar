@@ -46,13 +46,15 @@ class InquiriesController extends Controller
     {
         $inquiries = Inquiry::query();
 
-        $search['car_id']     = $request->has('car_id') ? $request->get('car_id') : false;
-        $search['model']      = $request->get('model');
-        $search['year_from']  = $request->get('year_from');
-        $search['year_to']    = $request->get('year_to');
-        $search['city_id']    = $request->get('city_id');
-        $search['metro']      = $request->has('metro') && $request->get('metro') ? $request->get('metro') : false;
+        $search['car_id']      = $request->has('car_id') ? $request->get('car_id') : false;
+        $search['model']       = $request->get('model');
+        $search['year_from']   = $request->get('year_from');
+        $search['year_to']     = $request->get('year_to');
+        $search['city_id']     = $request->get('city_id');
+        $search['metro']       = $request->has('metro') && $request->get('metro') ? $request->get('metro') : false;
+        $search['search_info'] = $request->get('search_info');
 
+        if ($search['car_id'])    foreach($search['car_id'] as $key => $value) if ( ! $value) unset($search['car_id'][$key]);
         if ($search['car_id'])    $inquiries->whereIn('car_id', $search['car_id']);
         if ($search['model'])     $inquiries->where('model', $search['model']);
         if ($search['year_from']) $inquiries->where('year_from', '>=', $search['year_from']);
@@ -60,34 +62,37 @@ class InquiriesController extends Controller
         if ($search['city_id'])   $inquiries->where('city_id', $search['city_id']);
         if ($search['metro'])     $inquiries->where('metro', $search['metro']);
 
-        // Расширенный поиск
-        $capacity = config('vars.car_info.capacity');
+        if ($search['search_info'])
+        {
+            // Расширенный поиск
+            $capacity = config('vars.car_info.capacity');
 
-        $searchMore['price_from']    = $request->get('price_from') ?: false;
-        $searchMore['price_to']      = $request->get('price_to') ?: false;
-        $searchMore['gear']          = $request->get('gear') ?: false;
-        $searchMore['transmission']  = $request->get('transmission') ?: false;
-        $searchMore['engine']        = $request->get('engine') ?: false;
-        $searchMore['rudder']        = $request->get('rudder') ?: false;
-        $searchMore['color']         = $request->get('color') ?: false;
-        $searchMore['run']           = $request->get('run') ?: false;
-        $searchMore['capacity_from'] = $request->get('capacity_from') ? $capacity[$request->get('capacity_from')] : false;
-        $searchMore['capacity_to']   = $request->get('capacity_to') ? $capacity[$request->get('capacity_to')] : false;
-        $searchMore['state']         = $request->get('state') ?: false;
-        $searchMore['owners']        = $request->get('owners') ?: false;
+            $searchMore['price_from'] = $request->get('price_from') ?: false;
+            $searchMore['price_to'] = $request->get('price_to') ?: false;
+            $searchMore['gear'] = $request->get('gear') ?: false;
+            $searchMore['transmission'] = $request->get('transmission') ?: false;
+            $searchMore['engine'] = $request->get('engine') ?: false;
+            $searchMore['rudder'] = $request->get('rudder') ?: false;
+            $searchMore['color'] = $request->get('color') ?: false;
+            $searchMore['run'] = $request->get('run') ?: false;
+            $searchMore['capacity_from'] = $request->get('capacity_from') ? $capacity[$request->get('capacity_from')] : false;
+            $searchMore['capacity_to'] = $request->get('capacity_to') ? $capacity[$request->get('capacity_to')] : false;
+            $searchMore['state'] = $request->get('state') ?: false;
+            $searchMore['owners'] = $request->get('owners') ?: false;
 
-        if ($searchMore['price_from'])    $inquiries->where('price_from', '>=', $searchMore['price_from']);
-        if ($searchMore['price_to'])      $inquiries->where('price_to', '<=', $searchMore['price_to']);
-        if ($searchMore['gear'])          $inquiries->where('gear', $search['gear']);
-        if ($searchMore['transmission'])  $inquiries->where('transmission', $search['transmission']);
-        if ($searchMore['engine'])        $inquiries->where('engine', $search['engine']);
-        if ($searchMore['rudder'])        $inquiries->where('rudder', $search['rudder']);
-        if ($searchMore['color'])         $inquiries->where('color', $search['color']);
-        if ($searchMore['run'])           $inquiries->where('run', '<=', $search['run']);
-        if ($searchMore['capacity_from']) $inquiries->where('capacity_from', '>=', $search['capacity_from']);
-        if ($searchMore['capacity_to'])   $inquiries->where('capacity_to', '<=', $search['capacity_to']);
-        if ($searchMore['state'])         $inquiries->where('state', '>=', $search['state']);
-        if ($searchMore['owners'])        $inquiries->where('owners', '>=', $search['owners']);
+            if ($searchMore['price_from']) $inquiries->where('price_from', '>=', $searchMore['price_from']);
+            if ($searchMore['price_to']) $inquiries->where('price_to', '<=', $searchMore['price_to']);
+            if ($searchMore['gear']) $inquiries->where('gear', $search['gear']);
+            if ($searchMore['transmission']) $inquiries->where('transmission', $search['transmission']);
+            if ($searchMore['engine']) $inquiries->where('engine', $search['engine']);
+            if ($searchMore['rudder']) $inquiries->where('rudder', $search['rudder']);
+            if ($searchMore['color']) $inquiries->where('color', $search['color']);
+            if ($searchMore['run']) $inquiries->where('run', '<=', $search['run']);
+            if ($searchMore['capacity_from']) $inquiries->where('capacity_from', '>=', $search['capacity_from']);
+            if ($searchMore['capacity_to']) $inquiries->where('capacity_to', '<=', $search['capacity_to']);
+            if ($searchMore['state']) $inquiries->where('state', '>=', $search['state']);
+            if ($searchMore['owners']) $inquiries->where('owners', '>=', $search['owners']);
+        }
 
         $searchResult['found'] = $inquiries->with('car', 'user', 'city')->get();
         $searchResult['suggest'] = [];
@@ -120,11 +125,18 @@ class InquiriesController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        $this->validate($request, [
-            'car_id' => 'required',
-            'city_id' => 'required',
-            'name' => 'required'
-        ]);
+        $this->validate($request,
+            [
+                'car_id' => 'required',
+                'city_id' => 'required',
+                'name' => 'required'
+            ],
+            [
+                'car_id.required' => 'Выберите марку автомобиля',
+                'city_id.required' => 'Выберите город',
+                'name.required' => 'Укажите свое имя',
+            ]
+        );
 
         $item = Inquiry::create($request->all() + ['user_id' => $user->id]);
 
