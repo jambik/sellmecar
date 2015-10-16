@@ -54,7 +54,7 @@ $(document).ready(function() {
             modelOptions: [],
             modelsOptions: [ { text: 'Любая модель', value: 0 } ],
             autocomplete: false,
-            API_KEY: "AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo",
+            API_KEY: "AIzaSyBPWHLr4_9wTreEUPAtgWiEsZ5KFXBEfUc",
             vars: false
         },
 
