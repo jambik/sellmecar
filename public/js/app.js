@@ -448,7 +448,7 @@ $(document).ready(function() {
         ready: function()
         {
             this.varsLoad();
-            //this.changeCar();
+            this.changeCar();
             //this.changeCity();
 
             $.tablesorter.themes.bootstrap = {
