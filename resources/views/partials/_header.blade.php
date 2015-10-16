@@ -12,7 +12,7 @@
     <link href="{{ asset('/css/app.css') }}" type="text/css" rel="stylesheet" />
     <script src="{{ asset('/js/app.bundle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrxH2cAEZwZGhQlJbnxTE6lqN6PXiYdNo&amp;libraries=places&amp;language=ru" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPWHLr4_9wTreEUPAtgWiEsZ5KFXBEfUc&amp;libraries=places&amp;language=ru" type="text/javascript"></script>
     <title>{{ $title ?: 'Sellmecar' }}</title>
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>

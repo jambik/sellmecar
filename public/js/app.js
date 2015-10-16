@@ -448,8 +448,8 @@ $(document).ready(function() {
         ready: function()
         {
             this.varsLoad();
-            this.changeCar();
-            this.changeCity();
+            //this.changeCar();
+            //this.changeCity();
 
             $.tablesorter.themes.bootstrap = {
                 table        : 'table table-striped',
