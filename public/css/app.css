@@ -29,7 +29,7 @@ nav .user-links { padding: 8px 0 0 15px; }
 nav .user-links img { height: 30px; width: 30px; border-radius: 3px; }
 .navbar-default .navbar-toggle .icon-bar { background-color: #0055aa; }
 
-#section_apply { background: #323e65 url("../img/section-1.jpg") top center no-repeat; display: none; }
+#section_apply { background: #323e65 url("../img/section-1.jpg") top center no-repeat; }
 #section_apply .container { background: rgba(73,131,178,0.7); border-radius: 10px; min-height: 520px; }
 #section_apply label { color: #fff; text-shadow: 1px 1px 2px #555; }
 .card { border-radius: 16px; background: #fff; margin-bottom: 30px; cursor: pointer; }
