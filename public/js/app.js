@@ -359,9 +359,9 @@ $(document).ready(function() {
                     this.changeCity();
                 }.bind(this));
 
-                $("#user_name").html( $("#form_register input[name='name']").val() );
                 $("#login_menu").hide();
                 $("#user_menu").show();
+                $("#user_menu").data('userLogged', 'true');
             },
 
             profileLoad: function () // Функция загрузки профиля в форму
@@ -545,7 +545,7 @@ $(document).ready(function() {
             {
                 $("#btn_inquiry_create").on( "click", function() {
                     $("#container_step0").effect('slide', { direction: 'left', mode: 'hide' }, 300, function(){
-                        if($('#user_menu').is(':visible'))
+                        if($('#user_menu').data('userLogged'))
                         {
                             this.profileLoad();
                             this.changeCar();

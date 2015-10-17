@@ -78,7 +78,7 @@ ul.search-filters li span { color: #80001c; border-bottom: 1px dashed }
 .inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 290px; }
 .inquiry-block .car-image { height: 50px; text-align: center; }
 .block-line { margin: 0 0 2px 0; }
-.block-line .value { color: #c7254e; }
+.block-line .value { color: #c7254e; height: 18px; overflow: hidden; }
 
 #section_news {}
 .news-block { border-radius: 131px; margin-bottom: 30px; min-height: 262.5px; background: #ddd; text-align: center; }

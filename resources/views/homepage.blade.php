@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </li>
-                <li id="user_menu" style="display: {{ Auth::check() ? 'inline-block' : 'none' }};">
+                <li id="user_menu" data-user-logged="{{ Auth::check() ? 'true' : '' }}" style="display: {{ Auth::check() ? 'inline-block' : 'none' }};">
                     <div class="dropdown user-links">
                         <a href="#" class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::check() && Auth::user()->avatar ? Auth::user()->avatar : '/img/avatar.png' }}"><span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownUser">
@@ -239,13 +239,6 @@
                             <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
                         </div>
                     </div>
-
-                    <div class="row">
-                        <div>&nbsp;</div>
-                        <div class="text-center info-link">
-                            <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
-                        </div>
-                    </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="form-group has-feedback">
@@ -291,6 +284,14 @@
                     <div class="form-group">
                         {!! Form::label('information', 'Дополнительная информация:') !!}
                         {!! Form::textarea('information', null, ['class' => 'form-control', 'rows' => 4, 'style' => 'height: 100px;', 'placeholder' => 'Например: хочу машину белого цвета, не битую']) !!}
+                    </div>
+                    <div class="visible-xs-block">&nbsp;</div>
+                    <div class="visible-xs-block">&nbsp;</div>
+                    <div class="visible-xs-block">&nbsp;</div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1" style="margin-top: -60px;">
+                    <div class="text-center info-link">
+                        <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
                     </div>
                 </div>
             </div>
@@ -531,10 +532,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="year_from" class="form-control input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год, с">
+                            <input type="text" name="year_from" class="form-control input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="Год, с">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год, по">
+                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="Год, по">
                         </div>
                     </div>
                 </div>
