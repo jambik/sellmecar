@@ -2,7 +2,7 @@
 
 return [
 
-    'cars_per_page' => 6,
+    'cars_per_page' => 18,
 
     'inquiries_per_page' => 8,
 
