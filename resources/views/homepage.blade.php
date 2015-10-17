@@ -436,8 +436,8 @@
                 <div class="row">
                     <div class="col-lg-6">Стоимость:</div>
                     <div class="col-lg-6">
-                        <span v-if="inquiryCreated.price_from">от @{{ inquiryCreated.price_from_formatted }}руб.</span>
-                        <span v-if="inquiryCreated.price_to">до @{{ inquiryCreated.price_to_formatted }}руб.</span>
+                        <span v-if="inquiryCreated.price_from">от @{{ inquiryCreated.price_from_formatted }} ₽</span>
+                        <span v-if="inquiryCreated.price_to">до @{{ inquiryCreated.price_to_formatted }} ₽</span>
                         <span v-if="! inquiryCreated.price_from && ! inquiryCreated.price_to">-</span>
                     </div>
                 </div>
@@ -479,7 +479,7 @@
             <div class="form-status"></div>
 
             <div class="row brands hidden-xs">
-                @for ($i = 0; ($i < $carBrandsShow && $i < $cars->count()); $i++)
+                @for ($i = 0; ($i < config('vars.cars_per_page') && $i < $cars->count()); $i++)
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
                         <label>
                             <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
@@ -488,9 +488,9 @@
                     </div>
                 @endfor
 
-                @if ($carBrandsShow < $cars->count())
+                @if (config('vars.cars_per_page') < $cars->count())
                     <div class="brands-hidden">
-                        @for ($i = $carBrandsShow; ($i < $cars->count()); $i++)
+                        @for ($i = config('vars.cars_per_page'); ($i < $cars->count()); $i++)
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
                                 <label>
                                     <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
@@ -501,7 +501,7 @@
                     </div>
                 @endif
 
-                @if ($carBrandsShow < $cars->count())
+                @if (config('vars.cars_per_page') < $cars->count())
                     <div class="clearfix"></div>
                     <div class="more-brands text-center"><a href="#" v-on="click: toggleBrands($event)">Показать все Марки</a></div>
                 @endif
@@ -526,16 +526,15 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="model" placeholder="- Модель автомобиля -" class="form-control select2" v-model="models" options="modelsOptions">
-                            <option value="">- Любая -</option>
+                        <select name="model" placeholder="- Модель автомобиля -" class="form-control select2" multiple v-model="models" options="modelsOptions">
                         </select>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="year_from" class="form-control input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
+                            <input type="text" name="year_from" class="form-control input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год, с">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
+                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год, по">
                         </div>
                     </div>
                 </div>
@@ -570,7 +569,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="gear" placeholder="- Привод -" class="form-control">
-                                <option value="0">- Привод -</option>
+                                <option value="">- Привод -</option>
                                 @foreach (config('vars.car_info.gear') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
@@ -578,7 +577,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="transmission" placeholder="- Трансмиссия -" class="form-control">
-                                <option value="0">- Трансмиссия -</option>
+                                <option value="">- Трансмиссия -</option>
                                 @foreach (config('vars.car_info.transmission') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
@@ -589,7 +588,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="engine" placeholder="- Тип двигателя -" class="form-control">
-                                <option value="0">- Тип двигателя -</option>
+                                <option value="">- Тип двигателя -</option>
                                 @foreach (config('vars.car_info.engine') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
@@ -597,7 +596,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="rudder" placeholder="- Руль -" class="form-control">
-                                <option value="0">- Руль -</option>
+                                <option value="">- Руль -</option>
                                 @foreach (config('vars.car_info.rudder') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
@@ -610,7 +609,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="color" placeholder="- Цвет -" class="form-control select2-color">
-                                <option value="0">- Цвет -</option>
+                                <option value="">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
                                 @endforeach
@@ -624,7 +623,7 @@
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control">
-                                <option value="0">- Объем двигателя от, л. -</option>
+                                <option value="">- Объем двигателя от, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
                                 @endforeach
@@ -632,7 +631,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control">
-                                <option value="0">- Объем двигателя до, л. -</option>
+                                <option value="">- Объем двигателя до, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
                                 @endforeach
@@ -642,16 +641,16 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="capacity_from" placeholder="- Состояние авто -" class="form-control">
-                                <option value="0">- Состояние авто -</option>
+                            <select name="state" placeholder="- Состояние авто -" class="form-control">
+                                <option value="">- Состояние авто -</option>
                                 @foreach (config('vars.car_info.state') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="capacity_to" placeholder="- Количество хозяев по ПТС -" class="form-control">
-                                <option value="0">- Количество хозяев по ПТС -</option>
+                            <select name="owners" placeholder="- Количество хозяев по ПТС -" class="form-control">
+                                <option value="">- Количество хозяев по ПТС -</option>
                                 @foreach (config('vars.car_info.owners') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
@@ -685,6 +684,7 @@
         <h3 class="text-center text-uppercase">Результаты поиска</h3>
 
         <p class="text-center" v-if="inquiriesSearch.found.length">Найдено @{{ inquiriesSearch.found.length }} объявлений на покупку авто</p>
+        <p v-if="inquiriesSearchFilter" class="text-center"><strong>Фильтр поиска:</strong> @{{{ inquiriesSearchFilter }}}</p>
         <div>&nbsp;</div>
 
         <div class="table-responsive">
@@ -712,8 +712,8 @@
                             <span v-if="item.year_from == 0 && item.year_to == 0">-</span>
                         </td>
                         <td>
-                            <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }}руб.</span>
-                            <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }}руб.</span>
+                            <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }} ₽</span>
+                            <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }} ₽</span>
                             <span v-if="item.price_from == 0 && item.price_to == 0">-</span>
                         </td>
                         <td>@{{ item.city.name }}<span v-if="item.metro">, метро @{{ item.metro }}</span><span v-if="item.street">, ул. @{{ item.street }}</span></td>

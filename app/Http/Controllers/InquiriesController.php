@@ -82,16 +82,16 @@ class InquiriesController extends Controller
 
             if ($searchMore['price_from']) $inquiries->where('price_from', '>=', $searchMore['price_from']);
             if ($searchMore['price_to']) $inquiries->where('price_to', '<=', $searchMore['price_to']);
-            if ($searchMore['gear']) $inquiries->where('gear', $search['gear']);
-            if ($searchMore['transmission']) $inquiries->where('transmission', $search['transmission']);
-            if ($searchMore['engine']) $inquiries->where('engine', $search['engine']);
-            if ($searchMore['rudder']) $inquiries->where('rudder', $search['rudder']);
-            if ($searchMore['color']) $inquiries->where('color', $search['color']);
-            if ($searchMore['run']) $inquiries->where('run', '<=', $search['run']);
-            if ($searchMore['capacity_from']) $inquiries->where('capacity_from', '>=', $search['capacity_from']);
-            if ($searchMore['capacity_to']) $inquiries->where('capacity_to', '<=', $search['capacity_to']);
-            if ($searchMore['state']) $inquiries->where('state', '>=', $search['state']);
-            if ($searchMore['owners']) $inquiries->where('owners', '>=', $search['owners']);
+            if ($searchMore['gear']) $inquiries->where('gear', $searchMore['gear']);
+            if ($searchMore['transmission']) $inquiries->where('transmission', $searchMore['transmission']);
+            if ($searchMore['engine']) $inquiries->where('engine', $searchMore['engine']);
+            if ($searchMore['rudder']) $inquiries->where('rudder', $searchMore['rudder']);
+            if ($searchMore['color']) $inquiries->where('color', $searchMore['color']);
+            if ($searchMore['run']) $inquiries->where('run', '<=', $searchMore['run']);
+            if ($searchMore['capacity_from']) $inquiries->where('capacity_from', '>=', $searchMore['capacity_from']);
+            if ($searchMore['capacity_to']) $inquiries->where('capacity_to', '<=', $searchMore['capacity_to']);
+            if ($searchMore['state']) $inquiries->where('state', '>=', $searchMore['state']);
+            if ($searchMore['owners']) $inquiries->where('owners', '>=', $searchMore['owners']);
         }
 
         $searchResult['found'] = $inquiries->with('car', 'user', 'city')->get();

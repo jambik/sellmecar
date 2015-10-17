@@ -10,6 +10,7 @@
     "jquery": "^2.0.0",
     "jquery.scrollto": "2.1.1",
     "noty": "^2.3.6",
+    "numeral": "^1.5.3",
     "select2": "^4.0.0",
     "summernote": "^0.6.16",
     "tablesorter": "^2.23.5",

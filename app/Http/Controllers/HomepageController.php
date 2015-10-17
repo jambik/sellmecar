@@ -23,7 +23,6 @@ class HomepageController extends Controller
         $cars2 = $cars->filter(function ($item) { return $item->name != "ВАЗ"; });
         $cars = $cars1->merge($cars2);
         $carsList = $cars->lists('name', 'id')->toArray();
-        $carBrandsShow = 18;
 
         $lastInquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiries_per_page'));
         $lastInquiries->setPath('inquiry/index');
@@ -34,7 +33,7 @@ class HomepageController extends Controller
 
         $cities = City::lists('name', 'id')->all();
 
-        return view('homepage', compact('user', 'cars', 'carsList', 'carBrandsShow', 'lastInquiries', 'lastNews', 'cities'));
+        return view('homepage', compact('user', 'cars', 'carsList', 'lastInquiries', 'lastNews', 'cities'));
     }
 
     public function profile(Request $request)

@@ -7,6 +7,12 @@ class CarmodelsTableSeeder extends Seeder
 {
     protected $items = [
 
+        ['Priora', 1],
+        ['Granta', 1],
+        ['Kalina', 1],
+        ['Largus', 1],
+        ['2110', 1],
+        ['2114', 1],
         ['A-klasse', 2],
         ['B-klasse', 2],
         ['C-klasse', 2],

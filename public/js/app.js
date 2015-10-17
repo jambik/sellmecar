@@ -40,6 +40,7 @@ $(document).ready(function() {
             inquiries: [],
             inquiriesLoaded: [],
             inquiriesSearch: false,
+            inquiriesSearchFilter: '',
             showInquiryInfoFields: false,
             showAdditionalFields: false,
             newsShow: false,
@@ -52,7 +53,8 @@ $(document).ready(function() {
             metroOptions: [],
             model: '',
             modelOptions: [],
-            modelsOptions: [ { text: 'Любая модель', value: 0 } ],
+            models: [],
+            modelsOptions: [ { text: '- Любая модель- ', value: 0 } ],
             autocomplete: false,
             API_KEY: "AIzaSyBPWHLr4_9wTreEUPAtgWiEsZ5KFXBEfUc",
             vars: false
@@ -126,7 +128,7 @@ $(document).ready(function() {
                 var carName  = checkbox ? $(element).data('carName') : $(element).find("option:selected").text();
                 var checked  = checkbox ? $(element).is(':checked') : true;
 
-                if ( ! checkbox) this.modelsOptions = [{ text: 'Любая модель', value: 0 }];
+                if ( ! checkbox) this.modelsOptions = [{ text: '- Любая модель- ', value: 0 }];
 
                 if (checked)
                 {
@@ -164,6 +166,77 @@ $(document).ready(function() {
                 this.inquiriesSearch = data;
 
                 setTimeout("$('#table_inquiries_search').trigger('updateAll')", 1);
+
+                var searchParams = "";
+
+                /* Поля поиска */
+
+                // Марка автомобиля
+                var searchCarId = [];
+                $("input[name=car_id\\[\\]]").each(function(index, value){
+                    if ($(value).is(":checked")) searchCarId.push($(value).data('carName'));
+                });
+                searchParams = searchParams + ( searchCarId.length ? "<li>марка: <span>" + searchCarId.join(", ") + "</span></li>\n" : "" );
+
+                // Модель автомобиля
+                searchParams = searchParams + ( $("#section_search select[name=model]").val() ? "<li>модель: <span>" + $("#section_search select[name=model]").val().join(', ') + "</span></li>\n" : "" );
+
+                // Года
+                var yearFrom = false;
+                var yearTo = false;
+                yearFrom = $("#section_search input[name=year_from]").val() ? "с " + $("#section_search input[name=year_from]").val()  + "г" : "";
+                yearTo   = $("#section_search input[name=year_to]").val()   ? " по " + $("#section_search input[name=year_to]").val()  + "г" : "";
+                searchParams = searchParams + ( yearFrom || yearTo ? "<li>года: <span>" + yearFrom + yearTo + "</span></li>\n" : "" );
+
+                // Город
+                searchParams = searchParams + ( $("#section_search select[name=city_id]").val() ? "<li>город: <span>" + $("#section_search select[name=city_id] option:selected").text() + "</span></li>\n" : "" );
+
+                // Метро
+                searchParams = searchParams + ( $("#section_search select[name=metro]").val() ? "<li>метро: <span>" + $("#section_search select[name=metro]").val() + "</span></li>\n" : "" );
+
+                // Цена
+                var priceFrom = false;
+                var priceTo = false;
+                numeral.language('ru');
+                priceFrom = $("#section_search input[name=price_from]").val() ?  "от " + numeral($("#section_search input[name=price_from]").val()).format() + " ₽" : "";
+                priceTo   = $("#section_search input[name=price_to]").val()   ? " до " + numeral($("#section_search input[name=price_to]").val()).format()   + " ₽" : "";
+                searchParams = searchParams + ( priceFrom || priceTo ? "<li>цена: <span>" + priceFrom + priceTo + "</span></li>\n" : "" );
+
+                // Привод
+                searchParams = searchParams + ( $("#section_search select[name=gear]").val() ? "<li>привод: <span>" + $("#section_search select[name=gear] option:selected").text() + "</span></li>\n" : "" );
+
+                // Трансмиссия
+                searchParams = searchParams + ( $("#section_search select[name=transmission]").val() ? "<li>трансмиссия: <span>" + $("#section_search select[name=transmission] option:selected").text() + "</span></li>\n" : "" );
+
+                // Тип двигателя
+                searchParams = searchParams + ( $("#section_search select[name=engine]").val() ? "<li>тип двигателя: <span>" + $("#section_search select[name=engine] option:selected").text() + "</span></li>\n" : "" );
+
+                // Руль
+                searchParams = searchParams + ( $("#section_search select[name=rudder]").val() ? "<li>руль: <span>" + $("#section_search select[name=rudder] option:selected").text() + "</span></li>\n" : "" );
+
+                // Цвет
+                searchParams = searchParams + ( $("#section_search select[name=color]").val() ? "<li>цвет: <span>" + $("#section_search select[name=color] option:selected").text() + "</span></li>\n" : "" );
+
+                // Пробег
+                searchParams = searchParams + ( $("#section_search input[name=run]").val() ? "<li>пробег: <span>" + numeral($("#section_search input[name=run]").val()).format() + " км.</span></li>\n" : "" );
+
+                // Объем двигателя
+                var capacityFrom = false;
+                var capacityTo = false;
+                capacityFrom = $("#section_search select[name=capacity_from]").val() ?  "от " + $("#section_search select[name=capacity_from] option:selected").text()  : "";
+                capacityTo   = $("#section_search select[name=capacity_to]").val()   ? " до " + $("#section_search select[name=capacity_to] option:selected").text() : "";
+                searchParams = searchParams + ( capacityFrom || capacityTo ? "<li>объем двигателя: <span>" + capacityFrom + capacityTo + "</span></li>\n" : "" );
+
+                // Состояние авто
+                searchParams = searchParams + ( $("#section_search select[name=state]").val() ? "<li>состояние авто: <span>" + $("#section_search select[name=state] option:selected").text() + "</span></li>\n" : "" );
+
+                // Количество хозяев по ПТС
+                searchParams = searchParams + ( $("#section_search select[name=owners]").val() ? "<li>количество хозяев по ПТС: <span>" + $("#section_search select[name=owners] option:selected").text() + "</span></li>\n" : "" );
+
+
+                searchParams = searchParams ? "<ul class='search-filters'>\n" + searchParams + "</ul>" : "";
+                this.inquiriesSearchFilter = searchParams;
+                console.log(searchParams);
 
                 $('body').scrollTo('#section_search_results', 500);
             },

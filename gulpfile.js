@@ -33,13 +33,15 @@ elixir(function(mix) {
         '../../../node_modules/jquery.scrollto/jquery.scrollTo.min.js',
         '../../../node_modules/tablesorter/dist/js/jquery.tablesorter.min.js',
         '../../../node_modules/tablesorter/dist/js/jquery.tablesorter.widgets.min.js',
-        '../../../vendor/robinherbots/jquery.inputmask/dist/jquery.inputmask.bundle.js',
+        '../../../node_modules/numeral/min/numeral.min.js',
+        '../../../node_modules/numeral/min/languages/ru.min.js',
         '../../../bower_components/moment/min/moment-with-locales.min.js',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect-slide.min.js',
         '../../../bower_components/purl/purl.js',
-        '../../../bower_components/scrollup/dist/jquery.scrollUp.min.js'
+        '../../../bower_components/scrollup/dist/jquery.scrollUp.min.js',
+        '../../../vendor/robinherbots/jquery.inputmask/dist/jquery.inputmask.bundle.js',
     ], 'public/js/app.bundle.js');
 
     mix.copy([

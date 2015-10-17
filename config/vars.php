@@ -2,6 +2,8 @@
 
 return [
 
+    'cars_per_page' => 6,
+
     'inquiries_per_page' => 8,
 
     'news_per_page' => 4,

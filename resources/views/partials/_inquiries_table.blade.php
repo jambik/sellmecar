@@ -25,8 +25,8 @@
                             <span v-if="item.year_from == 0 && item.year_to == 0">-</span>
                         </td>
                         <td>
-                            <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }}руб.</span>
-                            <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }}руб.</span>
+                            <span v-if="item.price_from > 0">от @{{ item.price_from_formatted }} ₽</span>
+                            <span v-if="item.price_to > 0">до @{{ item.price_to_formatted }} ₽</span>
                             <span v-if="item.price_from == 0 && item.price_to == 0">-</span>
                         </td>
                         <td>

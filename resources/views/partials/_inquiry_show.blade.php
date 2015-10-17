@@ -24,8 +24,8 @@
 
                         <dt>Цена</dt>
                         <dd>
-                            <span v-if="inquiryShow.price_from > 0">от @{{ inquiryShow.price_from_formatted }}руб.</span>
-                            <span v-if="inquiryShow.price_to > 0">до @{{ inquiryShow.price_to_formatted }}руб.</span>
+                            <span v-if="inquiryShow.price_from > 0">от @{{ inquiryShow.price_from_formatted }} ₽</span>
+                            <span v-if="inquiryShow.price_to > 0">до @{{ inquiryShow.price_to_formatted }} ₽</span>
                             <span v-if="inquiryShow.price_from == 0 && inquiryShow.price_to == 0">-</span>
                         </dd>
 
