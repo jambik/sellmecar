@@ -116,6 +116,7 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     .text-about { padding: 0 5%; }
     #section_apply .container { min-height: auto; }
+    .modal-footer { text-align: center; }
 }
 
 /* mobile - 480 and up */
@@ -125,6 +126,7 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .user-links { padding-left: 15px; }
     .text-about { padding: 0 5%; }
     #section_apply .container { min-height: auto; }
+    .modal-footer { text-align: center; }
 }
 
 /* Small devices (tablets, 768px and up) */
