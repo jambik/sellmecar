@@ -318,22 +318,20 @@ $(document).ready(function() {
                 var hasNext = $(element).closest('div.news-item').next().length;
 
                 if (hasPrev) {
-                    $("#newsShowModal .pager .previous").removeClass('disabled');
+                    $("#newsShowModal .pager .previous").show();
                     $("#newsShowModal .pager .previous").data('newsId', $('div.news-item[data-news-id="' + id + '"]').prev().data('newsId'));
                 }
                 else {
-                    $("#newsShowModal .pager .previous").addClass('disabled');
-                    $("#newsShowModal .pager .previous").data('newsId', '');
+                    $("#newsShowModal .pager .previous").hide();
                 }
 
                 if (hasNext)
                 {
-                    $("#newsShowModal .pager .next").removeClass('disabled');
+                    $("#newsShowModal .pager .next").show();
                     $("#newsShowModal .pager .next").data('newsId', $('div.news-item[data-news-id="' + id + '"]').next().data('newsId'));
                 }
                 else {
-                    $("#newsShowModal .pager .next").addClass('disabled');
-                    $("#newsShowModal .pager .next").data('newsId', '');
+                    $("#newsShowModal .pager .next").hide();
                 }
 
                 $.get('/news/show/' + id, function(data) {
