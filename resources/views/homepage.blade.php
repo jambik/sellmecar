@@ -800,16 +800,16 @@
 
         <div class="row">
             @foreach ($lastNews as $item)
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                    <div class="news-block" data-news-id="{{ $item->id }}">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 news-item" data-news-id="{{ $item->id }}">
+                    <div class="news-block">
                         <div class="news-date">{{ $item->published_at->diffForHumans() }}</div>
                         <div class="news-title"><a href="#" v-on="click: showNews($event)">{{ $item->title }}</a></div>
                         <div class="news-icon">@if($item->image) <img src='{{ $item->img_url.$item->image.$item->img_size['icon'] }}'> @else <img src='/img/noimg.png'> @endif</div>
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" v-repeat="item in newsLoaded" v-transition="bounceIn">
-                <div class="news-block" data-news-id="@{{ item.id }}">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news-item" data-news-id="@{{ item.id }}" v-repeat="item in newsLoaded" v-transition="bounceIn">
+                <div class="news-block">
                     <div class="news-date">@{{ item.published_at }}</div>
                     <div class="news-title"><a href="#" v-on="click: showNews($event)">@{{ item.title }}</a></div>
                     <div class="news-icon"><img v-attr="src: item.img_url + item.image + item.img_size['icon']"></div>

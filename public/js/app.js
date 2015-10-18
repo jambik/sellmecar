@@ -284,19 +284,66 @@ $(document).ready(function() {
                 });
             },
 
-            showNews: function(e) // Отображение объявления
+            moveNews: function(e)
             {
                 e.preventDefault();
                 var element = e.target;
-                var id = $(element).closest('div.news-block').data('newsId');
+
+                $("#newsShowModal").modal('hide');
+                $('#newsShowModal').on('hidden.bs.modal', function () {
+                    this.showNews(false, $(element).parent().data('newsId'));
+                    $('#newsShowModal').off('hidden.bs.modal');
+                }.bind(this));
+            },
+
+            showNews: function(e, newsId) // Отображение объявления
+            {
+                if (e) {
+                    e.preventDefault();
+                    var element = e.target;
+                    var id = $(element).closest('div.news-item').data('newsId');
+                }
+                else if (newsId) {
+                    var element = $('div.news-item[data-news-id="' + newsId + '"]');
+                    var id = newsId;
+                }
+
+                this.newsShow = false;
+                $('#disqus_thread').hide();
+                $('#newsShowModal').on('hidden.bs.modal', null);
+
+                $("#newsShowModal").modal('show');
+
+                var hasPrev = $(element).closest('div.news-item').prev().length;
+                var hasNext = $(element).closest('div.news-item').next().length;
+
+                if (hasPrev) {
+                    $("#newsShowModal .pager .previous").removeClass('disabled');
+                    $("#newsShowModal .pager .previous").data('newsId', $('div.news-item[data-news-id="' + id + '"]').prev().data('newsId'));
+                }
+                else {
+                    $("#newsShowModal .pager .previous").addClass('disabled');
+                    $("#newsShowModal .pager .previous").data('newsId', '');
+                }
+
+                if (hasNext)
+                {
+                    $("#newsShowModal .pager .next").removeClass('disabled');
+                    $("#newsShowModal .pager .next").data('newsId', $('div.news-item[data-news-id="' + id + '"]').next().data('newsId'));
+                }
+                else {
+                    $("#newsShowModal .pager .next").addClass('disabled');
+                    $("#newsShowModal .pager .next").data('newsId', '');
+                }
 
                 $.get('/news/show/' + id, function(data) {
                     console.log(data);
                     this.newsShow = data;
-                    $("#newsShowModal").modal('show');
+
                     $('#disqus_thread').appendTo('#newsShowModal .modal-body');
                     var url = $.url();
                     DisqusReset('news-'+this.newsShow.id, url.attr('base') + url.attr('path') + "#!news="+this.newsShow.id, 'Новость №: '+this.newsShow.id);
+                    $('#disqus_thread').show();
                 }.bind(this))
                 .fail(function() {
                     alert("Ошибка при запросе");
