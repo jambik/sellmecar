@@ -443,6 +443,7 @@ $(document).ready(function() {
 
                 $("#container_step2").effect('slide', { direction: 'left', mode: 'hide' }, 300, function(){
                     $("#container_step3").effect('slide', { direction: 'right', mode: 'show' }, 500);
+                    $('body').scrollTo('#section_apply', 500); return false;
                 });
             },
 

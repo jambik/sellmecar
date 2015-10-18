@@ -397,7 +397,7 @@
 
             <div>&nbsp;</div>
 
-            <div class="btn-line">
+            <div class="btn-line" style="z-index: 1; position: relative;">
                 <button type="submit" class="btn btn-danger form-button"><span class="fa fa-check-square-o btn-icon"></span> Опубликовать объявление</button>
             </div>
             {!! Form::token() !!}
@@ -429,17 +429,17 @@
                 <div class="row">
                     <div class="col-lg-6">Год выпуска:</div>
                     <div class="col-lg-6">
-                        <span v-if="inquiryCreated.year_from">с @{{ inquiryCreated.year_from }}г.</span>
-                        <span v-if="inquiryCreated.year_to">по @{{ inquiryCreated.year_to }}г.</span>
-                        <span v-if="! inquiryCreated.year_from && ! inquiryCreated.year_to">-</span>
+                        <span v-if="inquiryCreated.year_from > 0">с @{{ inquiryCreated.year_from }}г.</span>
+                        <span v-if="inquiryCreated.year_to > 0">по @{{ inquiryCreated.year_to }}г.</span>
+                        <span v-if="inquiryCreated.year_from == 0 && inquiryCreated.year_to == 0">-</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-6">Стоимость:</div>
                     <div class="col-lg-6">
-                        <span v-if="inquiryCreated.price_from">от @{{ inquiryCreated.price_from_formatted }} ₽</span>
-                        <span v-if="inquiryCreated.price_to">до @{{ inquiryCreated.price_to_formatted }} ₽</span>
-                        <span v-if="! inquiryCreated.price_from && ! inquiryCreated.price_to">-</span>
+                        <span v-if="inquiryCreated.price_from > 0">от @{{ inquiryCreated.price_from_formatted }} ₽</span>
+                        <span v-if="inquiryCreated.price_to > 0">до @{{ inquiryCreated.price_to_formatted }} ₽</span>
+                        <span v-if="inquiryCreated.price_from == 0 && inquiryCreated.price_to == 0">-</span>
                     </div>
                 </div>
                 <div class="row">
