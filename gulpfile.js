@@ -20,6 +20,7 @@ elixir(function(mix) {
         '../../../node_modules/select2/dist/css/select2.min.css',
         '../../../node_modules/animate.css/animate.min.css',
         '../../../node_modules/tablesorter/dist/css/theme.bootstrap.min.css',
+        '../../../node_modules/sweetalert/dist/sweetalert.css',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
     ], 'public/css/app.bundle.css');
 
@@ -35,6 +36,7 @@ elixir(function(mix) {
         '../../../node_modules/tablesorter/dist/js/jquery.tablesorter.widgets.min.js',
         '../../../node_modules/numeral/min/numeral.min.js',
         '../../../node_modules/numeral/min/languages/ru.min.js',
+        '../../../node_modules/sweetalert/dist/sweetalert.min.js',
         '../../../bower_components/moment/min/moment-with-locales.min.js',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',

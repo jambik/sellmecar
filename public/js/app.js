@@ -12,6 +12,11 @@ function initializeSelect2()
             }
         }
     });
+
+    $(".select2-car").select2({
+        placeholder: "- Марка автомобиля -",
+        allowClear: true
+    });
 }
 
 var DisqusReset = function (newIdentifier, newUrl, newTitle)
@@ -121,7 +126,35 @@ $(document).ready(function() {
 
             selectCar: function(e, id)
             {
+                e.preventDefault();
                 var element = e.target;
+
+                var isOn = $(element).hasClass('active');
+
+                if (isOn)
+                {
+                    console.log($("#car_id").val());
+                    id = '' + id;
+                    var values = $.grep($("#car_id").val(), function(value) {
+                        return value != id;
+                    });
+
+                    $("#car_id").val(values.join(','));
+
+                    $(element).removeClass('active');
+                }
+                else
+                {
+                    var values = $("#car_id").val() ? $("#car_id").val() : null;
+                    values = values ? values + ',' + id : '' + id;
+                    $("#car_id").val(values.split(','));
+                    //$("#car_id").val(values);
+                    $(element).addClass('active');
+                }
+
+                initializeSelect2();
+
+                /*var element = e.target;
 
                 var checkbox = id ? true : false;
                 var carId    = checkbox ? id : $(element).val();
@@ -157,7 +190,7 @@ $(document).ready(function() {
                     }.bind(this));
 
                     console.log(this.modelsOptions);
-                }
+                }*/
             },
 
             inquirySearchSuccess: function (data)
@@ -660,7 +693,7 @@ $(document).ready(function() {
                 animationSpeed: 200,         // Animation speed (ms)
                 scrollTrigger: false,        // Set a custom triggering element. Can be an HTML string or jQuery object
                 scrollTarget: false,         // Set a custom target element for scrolling to. Can be element or number
-                scrollText: 'Наверх', // Text for element, can contain HTML
+                scrollText: 'Главная',       // Text for element, can contain HTML
                 scrollTitle: false,          // Set a custom <a> title if required.
                 scrollImg: false,            // Set true to use image
                 activeOverlay: false,        // Set CSS color to display scrollUp active point, e.g '#00FFFF'

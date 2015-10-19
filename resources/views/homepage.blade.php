@@ -482,9 +482,9 @@
             <div class="row brands hidden-xs">
                 @for ($i = 0; ($i < config('vars.cars_per_page') && $i < $cars->count()); $i++)
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
-                        <label>
+                        <label v-on="click: selectCar($event, {{ $cars[$i]->id }})">
                             <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
-                            <div class="brand-name"><input type="checkbox" name="car_id[]" v-on="change: selectCar($event, {{ $cars[$i]->id }})" value="{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
+                            <div class="brand-name"><input type="checkbox" name="car_icon[]" v-on="change: selectCar($event, {{ $cars[$i]->id }})" value="{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
                         </label>
                     </div>
                 @endfor
@@ -493,9 +493,9 @@
                     <div class="brands-hidden">
                         @for ($i = config('vars.cars_per_page'); ($i < $cars->count()); $i++)
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
-                                <label>
+                                <label v-on="click: selectCar($event, {{ $cars[$i]->id }})">
                                     <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
-                                    <div class="brand-name"><input type="checkbox" name="car_id[]" v-on="change: selectCar($event, {{ $cars[$i]->id }})" value="{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
+                                    <div class="brand-name"><input type="checkbox" name="car_icon[]" value="{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
                                 </label>
                             </div>
                         @endfor
@@ -518,9 +518,8 @@
 
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="form-group visible-xs-block">
-                        <select name="car_id[]" placeholder="- Марка автомобиля -" class="form-control" v-on="change: selectCar($event)">
-                            <option value="">- Марка автомобиля -</option>
+                    <div class="form-group">
+                        <select name="car_id" id="car_id" class="form-control select2-car" multiple>
                             @foreach ($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
