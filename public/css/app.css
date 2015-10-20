@@ -57,8 +57,9 @@ nav .user-links img { height: 30px; width: 30px; border-radius: 3px; }
 #section_search { background: linear-gradient(to bottom,rgba(173,192,206,1) 0%,rgba(255,255,255,1) 50%,rgba(173,192,206,1) 100%); }
 .brands { margin: 20px 0 10px 0; }
 .brands .car-image { width: 50px; height: 50px; display: inline-block; }
-.brands .brand-item { text-align: center; margin: 0 0 40px 0; }
-.brands .brand-name { font-weight: bolder; font-size: 12.5px; height: 24px; overflow: hidden; margin-left: -14px; }
+.brands .brand-item { text-align: center; margin: 0 0 40px 0; cursor: pointer; }
+.brands .active .brand-icon { background: #fff; border-radius: 5px; }
+.brands .brand-name { font-weight: bolder; font-size: 12.5px; height: 24px; overflow: hidden; }
 .brands label { cursor: pointer; }
 .brands span { color: #c7254e; }
 .brands-hidden { display: none; }

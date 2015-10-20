@@ -481,22 +481,22 @@
 
             <div class="row brands hidden-xs">
                 @for ($i = 0; ($i < config('vars.cars_per_page') && $i < $cars->count()); $i++)
-                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
-                        <label v-on="click: selectCar($event, {{ $cars[$i]->id }})">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item" v-on="click: selectCar({{ $cars[$i]->id }})" id="brand_icon_{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}">
+                        <div class="brand-icon">
                             <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
-                            <div class="brand-name"><input type="checkbox" name="car_icon[]" v-on="change: selectCar($event, {{ $cars[$i]->id }})" value="{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
-                        </label>
+                            <div class="brand-name">{{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
+                        </div>
                     </div>
                 @endfor
 
                 @if (config('vars.cars_per_page') < $cars->count())
                     <div class="brands-hidden">
                         @for ($i = config('vars.cars_per_page'); ($i < $cars->count()); $i++)
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item">
-                                <label v-on="click: selectCar($event, {{ $cars[$i]->id }})">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item" v-on="click: selectCar({{ $cars[$i]->id }})" id="brand_icon_{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}">
+                                <div class="brand-icon">
                                     <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
-                                    <div class="brand-name"><input type="checkbox" name="car_icon[]" value="{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}"> {{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
-                                </label>
+                                    <div class="brand-name">{{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
+                                </div>
                             </div>
                         @endfor
                     </div>

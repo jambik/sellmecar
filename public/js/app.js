@@ -124,32 +124,63 @@ $(document).ready(function() {
                 });
             },
 
-            selectCar: function(e, id)
+            changeCars: function(e)
             {
                 e.preventDefault();
                 var element = e.target;
 
-                var isOn = $(element).hasClass('active');
+                var values = $(element).val();
+                console.log(values);
+            },
 
-                if (isOn)
+            selectCar: function(id, select2)
+            {
+                var element = $("#brand_icon_"+id);
+
+                var checked  = $(element).hasClass('active');
+                var carName  = $(element).data('carName');
+                var isSelect = select2 ? true : false;
+
+                if (checked)
                 {
-                    console.log($("#car_id").val());
                     id = '' + id;
-                    var values = $.grep($("#car_id").val(), function(value) {
-                        return value != id;
-                    });
+                    var values = [];
+                    if ($("#car_id").val()) {
+                        var values = $.grep($("#car_id").val(), function (value) {
+                            return value != id;
+                        });
+                    }
 
-                    $("#car_id").val(values.join(','));
+                    $("#car_id").val(values);
+                    $(element).closest('.brand-item').removeClass('active');
 
-                    $(element).removeClass('active');
+                    $.each(this.modelsOptions, function(index, value) {
+                        if (value.label == carName) {
+                            this.modelsOptions.splice(index, 1);
+                            return false;
+                        }
+                    }.bind(this));
                 }
                 else
                 {
                     var values = $("#car_id").val() ? $("#car_id").val() : null;
-                    values = values ? values + ',' + id : '' + id;
-                    $("#car_id").val(values.split(','));
-                    //$("#car_id").val(values);
-                    $(element).addClass('active');
+                    values = values ? ( isSelect ? values : values + ',' + id ) : '' + id;
+
+                    $("#car_id").val(Array.isArray(values) ? values : values.split(','));
+                    $(element).closest('.brand-item').addClass('active');
+
+                    $.get("/carmodels/" + id, function (data) {
+                        var carOptions = [];
+
+                        $.each(data, function (index, value) {
+                            carOptions.push(value.name);
+                        }.bind(this));
+
+                        if (carOptions.length) this.modelsOptions.push({label: carName, options: carOptions});
+                    }.bind(this))
+                    .fail(function () {
+                        alert("Ошибка при запросе");
+                    });
                 }
 
                 initializeSelect2();
@@ -587,7 +618,6 @@ $(document).ready(function() {
                 if ( ! this.vars)
                 {
                     $.get("/vars", function (data) {
-                        console.log(data);
                         this.vars = data;
                     }.bind(this))
                     .fail(function () {
@@ -652,8 +682,17 @@ $(document).ready(function() {
             // Инициализируем плагин select2
             if ($('.select2').length) $('.select2').select2({language: "ru"});
 
+            // Инициализируем компонент select2
             initializeSelect2();
 
+            var eventSelect = $("#car_id");
+
+            eventSelect.on("select2:select", function (e) {
+                this.selectCar(e.params.data.id, true);
+            }.bind(this));
+            eventSelect.on("select2:unselect", function (e) {
+                this.selectCar(e.params.data.id, true);
+            }.bind(this));
 
             // Инициализируем выбор годов автомобиля
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
