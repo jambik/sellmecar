@@ -474,7 +474,7 @@
         <div class="hidden-xs">&nbsp;</div>
         <div class="text-dark text-xxl text-uppercase text-center">Как продать свой автомобиль</div>
         <div>&nbsp;</div>
-        <p class="text-center">Сначала выберите марку Вашего автомобиля (лей)</p>
+        <p class="text-center">Сначала выберите марку Вашего автомобиля</p>
         <div class="hidden-xs">&nbsp;</div>
         <form action="{{ route('inquirySearch') }}" accept-charset="UTF-8" method="POST" id="form_inquiry_search" class="form-ajax" v-on="submit: ajaxFormSubmit($event, inquirySearchSuccess)">
             <div class="form-status"></div>

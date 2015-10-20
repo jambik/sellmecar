@@ -19,7 +19,7 @@ class InquiriesController extends Controller
      */
     public function index()
     {
-        $inquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiriesPerPage'));
+        $inquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiries_per_page'));
 
         return response()->json($inquiries);
     }

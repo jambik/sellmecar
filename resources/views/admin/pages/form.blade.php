@@ -5,7 +5,7 @@
 
 <div class="form-group">
     {!! Form::label('text', 'Текст страницы:') !!}
-    {!! Form::textarea('text', null, ['class' => 'form-control', 'rows' => 3]) !!}
+    {!! Form::textarea('text', null, ['class' => 'form-control input-html', 'rows' => 3]) !!}
 </div>
 
 <div class="form-group">

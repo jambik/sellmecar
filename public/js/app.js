@@ -108,7 +108,7 @@ $(document).ready(function() {
                         }
                         else
                         {
-                            alert('Возникла ошибка во время запроса.')
+                            sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                         }
 
                         return false;
@@ -179,7 +179,7 @@ $(document).ready(function() {
                         if (carOptions.length) this.modelsOptions.push({label: carName, options: carOptions});
                     }.bind(this))
                     .fail(function () {
-                        alert("Ошибка при запросе");
+                        sweetAlert("Ошибка при запросе к серсеру", 'error')
                     });
                 }
 
@@ -208,7 +208,7 @@ $(document).ready(function() {
                         console.log(this.modelsOptions);
                     }.bind(this))
                     .fail(function () {
-                        alert("Ошибка при запросе");
+                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     });
                 }
                 else
@@ -344,7 +344,7 @@ $(document).ready(function() {
                     $("#pageShowModal").modal('show');
                 }.bind(this))
                 .fail(function() {
-                    alert("Ошибка при запросе");
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },
 
@@ -408,7 +408,7 @@ $(document).ready(function() {
                     $('#disqus_thread').show();
                 }.bind(this))
                 .fail(function() {
-                    alert("Ошибка при запросе");
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },
 
@@ -427,7 +427,7 @@ $(document).ready(function() {
                     DisqusReset('inquiry-'+this.inquiryShow.id, url.attr('base') + url.attr('path') + "#!inquiry="+this.inquiryShow.id, 'Объявление №: '+this.inquiryShow.id);
                 }.bind(this))
                 .fail(function() {
-                    alert("Ошибка при запросе");
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },
 
@@ -480,7 +480,7 @@ $(document).ready(function() {
                     this.user = data.user;
                 }.bind(this))
                 .fail(function() {
-                    alert("Ошибка при запросе");
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },
 
@@ -516,7 +516,7 @@ $(document).ready(function() {
                     this.inquiries = data.inquiries ? data.inquiries : false;
                 }.bind(this))
                 .fail(function() {
-                    alert("Ошибка при запросе");
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },
 
@@ -530,7 +530,7 @@ $(document).ready(function() {
                         console.log(data);
                     }.bind(this))
                     .fail(function () {
-                        alert("Ошибка при запросе");
+                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     });
                 }
             },
@@ -550,7 +550,7 @@ $(document).ready(function() {
                         }.bind(this));
                     }.bind(this))
                     .fail(function () {
-                        alert("Ошибка при запросе");
+                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     });
                 }
 
@@ -572,7 +572,7 @@ $(document).ready(function() {
                         setTimeout("$(\"select[name='metro']\").select2({language: 'ru', allowClear: true, placeholder: '- Ближайшее метро -'})", 1);
                     }.bind(this))
                     .fail(function () {
-                        alert("Ошибка при запросе");
+                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     });
                 }
 
@@ -598,7 +598,7 @@ $(document).ready(function() {
                     this.autocomplete.addListener('place_changed', this.fillInAddress);
                 }.bind(this))
                 .fail(function() {
-                    alert("Ошибка при запросе");
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },
 
@@ -621,7 +621,7 @@ $(document).ready(function() {
                         this.vars = data;
                     }.bind(this))
                     .fail(function () {
-                        alert("Ошибка при запросе");
+                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     });
                 }
             }
@@ -753,7 +753,7 @@ $(document).ready(function() {
             $("#inquiryShowModal").modal('show');
         }.bind(this))
         .fail(function() {
-            alert("Ошибка при запросе");
+            sweetAlert("", "Ошибка при запросе к серсеру", 'error');
         });
     }
 

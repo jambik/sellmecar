@@ -20,7 +20,7 @@
 				<tr>
 					<td>{{ $item->id }}</td>
 					<td>{{ $item->title }}</td>
-					<td>{{ $item->text }}</td>
+					<td>{{ str_limit(strip_tags($item->text), 300) }}</td>
 					<td><a href="{{ route('admin.pages.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
 					<td>
 						{!! Form::open(['url' => route('admin.pages.destroy', $item->id), 'method' => 'DELETE']) !!}
