@@ -14,7 +14,7 @@ function initializeSelect2()
     });
 
     $(".select2-car").select2({
-        placeholder: "- Марка автомобиля -",
+        placeholder: $(this).data('placeholder') ? $(this).data('placeholder') : '',
         allowClear: true
     });
 }
@@ -133,25 +133,18 @@ $(document).ready(function() {
                 console.log(values);
             },
 
-            selectCar: function(id, select2)
+            selectCar: function(id)
             {
                 var element = $("#brand_icon_"+id);
 
                 var checked  = $(element).hasClass('active');
                 var carName  = $(element).data('carName');
-                var isSelect = select2 ? true : false;
 
                 if (checked)
                 {
-                    id = '' + id;
-                    var values = [];
-                    if ($("#car_id").val()) {
-                        var values = $.grep($("#car_id").val(), function (value) {
-                            return value != id;
-                        });
-                    }
+                    $("#car_id option[value='"+id+"']").prop('selected', false);
+                    $("#car_id").trigger('change');
 
-                    $("#car_id").val(values);
                     $(element).closest('.brand-item').removeClass('active');
 
                     $.each(this.modelsOptions, function(index, value) {
@@ -163,10 +156,9 @@ $(document).ready(function() {
                 }
                 else
                 {
-                    var values = $("#car_id").val() ? $("#car_id").val() : null;
-                    values = values ? ( isSelect ? values : values + ',' + id ) : '' + id;
+                    $("#car_id option[value='"+id+"']").prop('selected', true);
+                    $("#car_id").trigger('change');
 
-                    $("#car_id").val(Array.isArray(values) ? values : values.split(','));
                     $(element).closest('.brand-item').addClass('active');
 
                     $.get("/carmodels/" + id, function (data) {
@@ -179,49 +171,9 @@ $(document).ready(function() {
                         if (carOptions.length) this.modelsOptions.push({label: carName, options: carOptions});
                     }.bind(this))
                     .fail(function () {
-                        sweetAlert("Ошибка при запросе к серсеру", 'error')
+                        sweetAlert("", "Ошибка при запросе к серсеру", 'error')
                     });
                 }
-
-                initializeSelect2();
-
-                /*var element = e.target;
-
-                var checkbox = id ? true : false;
-                var carId    = checkbox ? id : $(element).val();
-                var carName  = checkbox ? $(element).data('carName') : $(element).find("option:selected").text();
-                var checked  = checkbox ? $(element).is(':checked') : true;
-
-                if ( ! checkbox) this.modelsOptions = [{ text: '- Любая модель- ', value: 0 }];
-
-                if (checked)
-                {
-                    $.get("/carmodels/" + carId, function (data) {
-                        var carOptions = [];
-
-                        $.each(data, function (index, value) {
-                            carOptions.push(value.name);
-                        }.bind(this));
-
-                        if (carOptions.length) this.modelsOptions.push({label: carName, options: carOptions});
-
-                        console.log(this.modelsOptions);
-                    }.bind(this))
-                    .fail(function () {
-                        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
-                    });
-                }
-                else
-                {
-                    $.each(this.modelsOptions, function(index, value) {
-                        if (value.label == carName) {
-                            this.modelsOptions.splice(index, 1);
-                            return false;
-                        }
-                    }.bind(this));
-
-                    console.log(this.modelsOptions);
-                }*/
             },
 
             inquirySearchSuccess: function (data)
@@ -680,7 +632,9 @@ $(document).ready(function() {
             }
 
             // Инициализируем плагин select2
-            if ($('.select2').length) $('.select2').select2({language: "ru"});
+            if ($('.select2').length) $('.select2').each(function(index){
+                $(this).select2( {language: "ru", placeholder: $(this).data('placeholder') ? $(this).data('placeholder') : ''} );
+            });
 
             // Инициализируем компонент select2
             initializeSelect2();
@@ -688,10 +642,10 @@ $(document).ready(function() {
             var eventSelect = $("#car_id");
 
             eventSelect.on("select2:select", function (e) {
-                this.selectCar(e.params.data.id, true);
+                this.selectCar(e.params.data.id);
             }.bind(this));
             eventSelect.on("select2:unselect", function (e) {
-                this.selectCar(e.params.data.id, true);
+                this.selectCar(e.params.data.id);
             }.bind(this));
 
             // Инициализируем выбор годов автомобиля

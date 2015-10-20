@@ -203,7 +203,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
                     <div class="form-group has-feedback">
                         <label>Автомобиль:</label>
-                        <select name="car_id" placeholder="- Выберите марку автомобиля -" class="form-control" aria-describedby="carRequired" v-model="car" v-on="change: changeCar">
+                        <select name="car_id" class="form-control" aria-describedby="carRequired" v-model="car" v-on="change: changeCar">
                             <option value="">- Выберите марку автомобиля -</option>
                             @foreach($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
@@ -243,7 +243,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="form-group has-feedback">
                         <label>Город:</label>
-                        <select name="city_id" placeholder="- Выберите город -" class="form-control" aria-describedby="cityRequired" v-model="city" v-on="change: changeCity">
+                        <select name="city_id" class="form-control" aria-describedby="cityRequired" v-model="city" v-on="change: changeCity">
                             <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
@@ -303,7 +303,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[gear]" placeholder="- Привод -" class="form-control">
+                            <select name="carinfo[gear]" class="form-control">
                                 <option value="0">- Привод -</option>
                                 @foreach (config('vars.car_info.gear') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -311,7 +311,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[transmission]" placeholder="- Трансмиссия -" class="form-control">
+                            <select name="carinfo[transmission]" class="form-control">
                                 <option value="0">- Трансмиссия -</option>
                                 @foreach (config('vars.car_info.transmission') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -322,7 +322,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[engine]" placeholder="- Тип двигателя -" class="form-control">
+                            <select name="carinfo[engine]" class="form-control">
                                 <option value="0">- Тип двигателя -</option>
                                 @foreach (config('vars.car_info.engine') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -330,7 +330,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[rudder]" placeholder="- Руль -" class="form-control">
+                            <select name="carinfo[rudder]" class="form-control">
                                 <option value="0">- Руль -</option>
                                 @foreach (config('vars.car_info.rudder') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -341,7 +341,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[color]" placeholder="- Цвет -" class="form-control select2-color">
+                            <select name="carinfo[color]" class="form-control select2-color">
                                 <option value="0">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
@@ -357,7 +357,7 @@
                 <div class="col-lg-5 col-md-5 col-sm-5">
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[capacity_from]" placeholder="- Объем двигателя от, л. -" class="form-control">
+                            <select name="carinfo[capacity_from]" class="form-control">
                                 <option value="0">- Объем двигателя от, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -365,7 +365,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[capacity_to]" placeholder="- Объем двигателя до, л. -" class="form-control">
+                            <select name="carinfo[capacity_to]" class="form-control">
                                 <option value="0">- Объем двигателя до, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -376,7 +376,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[state]" placeholder="- Состояние авто -" class="form-control">
+                            <select name="carinfo[state]" class="form-control">
                                 <option value="0">- Состояние авто -</option>
                                 @foreach (config('vars.car_info.state') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -384,7 +384,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
-                            <select name="carinfo[owners]" placeholder="- Количество хозяев по ПТС -" class="form-control">
+                            <select name="carinfo[owners]" class="form-control">
                                 <option value="0">- Количество хозяев по ПТС -</option>
                                 @foreach (config('vars.car_info.owners') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -519,14 +519,14 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                        <select name="car_id" id="car_id" class="form-control select2-car" multiple>
+                        <select name="car_id" id="car_id" data-placeholder="- Марка автомобиля -" class="form-control select2-car" multiple>
                             @foreach ($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group">
-                        <select name="model" placeholder="- Модель автомобиля -" class="form-control select2" multiple v-model="models" options="modelsOptions">
+                        <select name="model" data-placeholder="- Модель автомобиля -" class="form-control select2" multiple v-model="models" options="modelsOptions">
                         </select>
                     </div>
                     <div class="row">
@@ -540,7 +540,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                        <select name="city_id" placeholder="Выберите город" class="form-control" v-model="city" v-on="change: changeCity">
+                        <select name="city_id" class="form-control" v-model="city" v-on="change: changeCity">
                             <option value="">- Выберите город -</option>
                             @foreach($cities as $key => $value)
                                 <option value="{{ $key }}">{{ $value }}</option>
@@ -568,7 +568,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="gear" placeholder="- Привод -" class="form-control">
+                            <select name="gear" class="form-control">
                                 <option value="">- Привод -</option>
                                 @foreach (config('vars.car_info.gear') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -576,7 +576,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="transmission" placeholder="- Трансмиссия -" class="form-control">
+                            <select name="transmission" class="form-control">
                                 <option value="">- Трансмиссия -</option>
                                 @foreach (config('vars.car_info.transmission') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -587,7 +587,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="engine" placeholder="- Тип двигателя -" class="form-control">
+                            <select name="engine" class="form-control">
                                 <option value="">- Тип двигателя -</option>
                                 @foreach (config('vars.car_info.engine') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -595,7 +595,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="rudder" placeholder="- Руль -" class="form-control">
+                            <select name="rudder" class="form-control">
                                 <option value="">- Руль -</option>
                                 @foreach (config('vars.car_info.rudder') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -608,7 +608,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="color" placeholder="- Цвет -" class="form-control select2-color">
+                            <select name="color" class="form-control select2-color">
                                 <option value="">- Цвет -</option>
                                 @foreach (config('vars.car_info.color') as $value)
                                     <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
@@ -622,7 +622,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="capacity_from" placeholder="- Объем двигателя от, л. -" class="form-control">
+                            <select name="capacity_from" class="form-control">
                                 <option value="">- Объем двигателя от, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -630,7 +630,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="capacity_to" placeholder="- Объем двигателя до, л. -" class="form-control">
+                            <select name="capacity_to" class="form-control">
                                 <option value="">- Объем двигателя до, л. -</option>
                                 @foreach (config('vars.car_info.capacity') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }} л.</option>
@@ -641,7 +641,7 @@
 
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="state" placeholder="- Состояние авто -" class="form-control">
+                            <select name="state" class="form-control">
                                 <option value="">- Состояние авто -</option>
                                 @foreach (config('vars.car_info.state') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
@@ -649,7 +649,7 @@
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <select name="owners" placeholder="- Количество хозяев по ПТС -" class="form-control">
+                            <select name="owners" class="form-control">
                                 <option value="">- Количество хозяев по ПТС -</option>
                                 @foreach (config('vars.car_info.owners') as $key => $value)
                                     <option value="{{ $key }}">{{ $value }}</option>
