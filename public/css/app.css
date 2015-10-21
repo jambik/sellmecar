@@ -58,7 +58,8 @@ nav .user-links img { height: 30px; width: 30px; border-radius: 3px; }
 .brands { margin: 20px 0 10px 0; }
 .brands .car-image { width: 50px; height: 50px; display: inline-block; }
 .brands .brand-item { text-align: center; margin: 0 0 40px 0; cursor: pointer; }
-.brands .active .brand-icon { background: #fff; border-radius: 5px; }
+.brands .brand-icon { border: 1px solid rgba(0, 0, 0, 0); }
+.brands .active .brand-icon { background: #ffb; border-radius: 5px; border: 1px solid #bbb; }
 .brands .brand-name { font-weight: bolder; font-size: 12.5px; height: 24px; overflow: hidden; }
 .brands label { cursor: pointer; }
 .brands span { color: #c7254e; }
@@ -104,26 +105,28 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 /* image -  #scrollUp{bottom:20px;right:20px;width:38px;height:38px;background:url("../img/top.png") no-repeat}*/
 /* pill */
 #scrollUp {
-    top: 10px;
+    bottom: 10px;
     left: 10px;
     background: #1F4661;
-    border: 1px solid #fff;
+    border: 1px solid #aaa;
     color:#fff;
     font-size:12px;
     font-family:sans-serif;
     text-decoration:none;
     opacity:.9;
-    padding:10px 20px;
-    -webkit-border-radius:16px;
-    -moz-border-radius:16px;
-    border-radius:16px;
+    padding:8px 16px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
     -webkit-transition:background 200ms linear;
     -moz-transition:background 200ms linear;
-    transition:background 200ms linear }
+    transition:background 200ms linear
+}
 #scrollUp:hover {
-    background:#000 }
+    background:#000
+}
 
-
+#placement-bottom { display: none; }
 
 
 
@@ -136,7 +139,6 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     .text-about { padding: 0 5%; }
     #section_apply .container { min-height: auto; }
-    .modal-footer { text-align: center; }
     .text-xxl { font-size: 22px; }
 }
 
@@ -147,7 +149,6 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .user-links { padding-left: 15px; }
     .text-about { padding: 0 5%; }
     #section_apply .container { min-height: auto; }
-    .modal-footer { text-align: center; }
 }
 
 /* Small devices (tablets, 768px and up) */

@@ -4,9 +4,9 @@ return [
 
     'cars_per_page' => 18,
 
-    'inquiries_per_page' => 16,
+    'inquiries_per_page' => 12,
 
-    'news_per_page' => 12,
+    'news_per_page' => 8,
 
     'car_info' => [
 

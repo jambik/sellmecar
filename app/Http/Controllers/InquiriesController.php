@@ -129,12 +129,15 @@ class InquiriesController extends Controller
             [
                 'car_id' => 'required',
                 'city_id' => 'required',
-                'name' => 'required'
+                'name' => 'required',
+                'phone' => 'required|min:7',
             ],
             [
                 'car_id.required' => 'Выберите марку автомобиля',
                 'city_id.required' => 'Выберите город',
                 'name.required' => 'Укажите свое имя',
+                'phone.required' => 'Укажите свой номер телефона',
+                'phone.min' => 'Укажите свой номер телефона',
             ]
         );
 
