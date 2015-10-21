@@ -105,6 +105,7 @@ $(document).ready(function() {
 
                             formStatusText += "</ul></div>";
                             formStatus.html(formStatusText);
+                            $('body').scrollTo(formStatus, 500);
                         }
                         else
                         {
@@ -320,7 +321,7 @@ $(document).ready(function() {
                     var id = $(element).closest('div.news-item').data('newsId');
                 }
                 else if (newsId) {
-                    var element = $('div.news-item[data-news-id="' + newsId + '"]');
+                    var element = $('div.news-item[data-news-id="' + newsId + '"]').length ? $('div.news-item[data-news-id="' + newsId + '"]') : false;
                     var id = newsId;
                 }
 
@@ -330,8 +331,8 @@ $(document).ready(function() {
 
                 $("#newsShowModal").modal('show');
 
-                var hasPrev = $(element).closest('div.news-item').prev().length;
-                var hasNext = $(element).closest('div.news-item').next().length;
+                var hasPrev = element ? $(element).closest('div.news-item').prev().length : false;
+                var hasNext = element ? $(element).closest('div.news-item').next().length : false;
 
                 if (hasPrev) {
                     $("#newsShowModal .pager .previous").show();
@@ -364,11 +365,16 @@ $(document).ready(function() {
                 });
             },
 
-            showInquiry: function(e) // Отображение объявления
+            showInquiry: function(e, inquiryId) // Отображение объявления
             {
-                e.preventDefault();
-                var element = e.target;
-                var id = $(element).closest('.inquiry-item').data('inquiryId');
+                if (e) {
+                    e.preventDefault();
+                    var element = e.target;
+                    var id = $(element).closest('.inquiry-item').data('inquiryId');
+                }
+                else if (inquiryId) {
+                    var id = inquiryId;
+                }
 
                 $.get('/inquiry/show/' + id, function(data) {
                     console.log(data);
@@ -576,14 +582,34 @@ $(document).ready(function() {
                         sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                     });
                 }
-            }
+            },
+
+            checkUrlFragment: function()
+            {
+                var url = $.url();
+
+                if (url.data.attr.fragment)
+                {
+                    if (url.data.attr.fragment.indexOf("!news=") >= 0)
+                    {
+                        var id = url.data.attr.fragment.substr( url.data.attr.fragment.indexOf("=") + 1 );
+                        this.showNews(false, id);
+                    }
+                    else if (url.data.attr.fragment.indexOf("!inquiry=") >= 0)
+                    {
+                        var id = url.data.attr.fragment.substr( url.data.attr.fragment.indexOf("=") + 1 );
+                        this.showInquiry(false, id);
+                    }
+                }
+            },
         },
 
         ready: function()
         {
             this.varsLoad();
             this.changeCar();
-            //this.changeCity();
+
+            this.checkUrlFragment();
 
             $.tablesorter.themes.bootstrap = {
                 table        : 'table table-striped',
