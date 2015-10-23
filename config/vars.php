@@ -6,7 +6,7 @@ return [
 
     'inquiries_per_page' => 12,
 
-    'news_per_page' => 8,
+    'news_per_page' => 4,
 
     'car_info' => [
 

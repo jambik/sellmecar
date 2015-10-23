@@ -81,14 +81,13 @@ ul.search-filters li span { color: #80001c; border-bottom: 1px dashed }
 .inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 290px; }
 .inquiry-block .car-image { height: 50px; text-align: center; }
 .block-line { margin: 0 0 2px 0; }
-.block-line .value { color: #c7254e; height: 18px; overflow: hidden; }
+.block-line .value { color: #c7254e; }
 
 #section_news {}
 .news-block { border-radius: 131px; margin-bottom: 30px; min-height: 262.5px; background: #ddd; text-align: center; }
 .news-date { padding: 20px 0 0 0; color: #333; }
 .news-title { padding: 8px 0 0 0; line-height: 20px; font-size: 17px; margin: 0 30px; max-height: 50px; overflow: hidden; }
 .news-icon img { margin: 20px 0 0 0; border-radius: 60px; }
-.news-hidden { display: none; }
 
 footer { background: #7e7564 url("../img/section-3.jpg") top center no-repeat; }
 footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
@@ -142,6 +141,16 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     #section_apply .container { min-height: 50px; }
     .text-xxl { font-size: 22px; }
     .info-link { margin-top: 0; }
+    .inquiry-block { text-align: center; border-radius: 10px; padding: 10px; margin: 0 0 15px 0; background: rgba(255,255,255,0.8); min-height: 50px; }
+    .inquiry-block .car-image { height: 40px; float: right; }
+    .inquiry-block .text-l { text-align: left; }
+    .inquiry-block .block-line { text-align: left; }
+    .inquiry-block .block-line .value { display: inline-block; }
+    .inquiry-block .btn { margin-top: 5px; }
+    .news-block { border-radius: 131px; margin-bottom: 15px; min-height: 100px; background: #ddd; text-align: center; }
+    .news-date { padding: 5px 0 0 0; color: #333; }
+    .news-title { padding: 8px 0 0 0; line-height: normal; font-size: 15px; margin: 0 30px; max-height: none; }
+    .news-icon img { margin: 10px 0 10px 0; height: 60px; border-radius: 30px; }
 }
 
 /* mobile - 480 and up */
@@ -152,6 +161,12 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     .text-about { padding: 0 5%; }
     #section_apply .container { min-height: 50px; }
     .info-link { margin-top: 0; }
+    .inquiry-block { text-align: center; border-radius: 10px; padding: 10px; margin: 0 0 15px 0; background: rgba(255,255,255,0.8); min-height: 50px; }
+    .inquiry-block .car-image { height: 40px; float: right; }
+    .inquiry-block .text-l { text-align: left; }
+    .inquiry-block .block-line { text-align: left; }
+    .inquiry-block .block-line .value { display: inline-block; }
+    .inquiry-block .btn { margin-top: 5px; }
 }
 
 /* Small devices (tablets, 768px and up) */

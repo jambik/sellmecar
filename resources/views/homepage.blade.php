@@ -741,19 +741,19 @@
 
         <div class="row">
             @foreach ($lastInquiries as $item)
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="inquiry-block inquiry-item" data-inquiry-id="{{ $item->id }}">
                         @if($item->car->image)<div class="car-image"><img src='{{ $item->car->img_url.$item->car->image.$item->car->img_size['xs'] }}'></div>@endif
                         <div class="text-uppercase text-l">Куплю:</div>
                         <div class="block-line">автомобиль: <div class="value">{{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}</div></div>
                         <div class="block-line">года: <div class="value">{{ $item->year_from ? 'с '.$item->year_from.'г. ' : '' }}{{ $item->year_to ? 'по '.$item->year_to.'г. ' : '' }}{{ $item->year_from && $item->year_to ? '' : '-' }}</div></div>
                         <div class="block-line">город: <div class="value">{{ $item->city->name }}</div></div>
-                        <div>&nbsp;</div>
-                        <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                        <div class="hidden-xs">&nbsp;</div>
+                        <a href="#" class="btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
                 <div class="inquiry-block inquiry-item" data-inquiry-id="@{{ item.id }}">
                     <div class="car-image" v-if="item.car.image"><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></div>
                     <div class="text-uppercase text-l">Куплю:</div>
@@ -798,7 +798,7 @@
 
         <div class="row">
             @foreach ($lastNews as $item)
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 news-item" data-news-id="{{ $item->id }}">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 news-item" data-news-id="{{ $item->id }}">
                     <div class="news-block">
                         <div class="news-date">{{ $item->published_at->diffForHumans() }}</div>
                         <div class="news-title"><a href="#" v-on="click: showNews($event)">{{ $item->title }}</a></div>
@@ -806,7 +806,7 @@
                     </div>
                 </div>
             @endforeach
-            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 news-item" data-news-id="@{{ item.id }}" v-repeat="item in newsLoaded" v-transition="bounceIn">
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news-item" data-news-id="@{{ item.id }}" v-repeat="item in newsLoaded" v-transition="bounceIn">
                 <div class="news-block">
                     <div class="news-date">@{{ item.published_at }}</div>
                     <div class="news-title"><a href="#" v-on="click: showNews($event)">@{{ item.title }}</a></div>
