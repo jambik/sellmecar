@@ -167,6 +167,10 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     .inquiry-block .block-line { text-align: left; }
     .inquiry-block .block-line .value { display: inline-block; }
     .inquiry-block .btn { margin-top: 5px; }
+    .news-block { border-radius: 131px; margin-bottom: 15px; min-height: 100px; background: #ddd; text-align: center; }
+    .news-date { padding: 5px 0 0 0; color: #333; }
+    .news-title { padding: 8px 0 0 0; line-height: normal; font-size: 15px; margin: 0 30px; max-height: none; }
+    .news-icon img { margin: 10px 0 10px 0; height: 60px; border-radius: 30px; }
 }
 
 /* Small devices (tablets, 768px and up) */
