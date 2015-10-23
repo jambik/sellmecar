@@ -55,7 +55,6 @@ class InquiriesController extends Controller
         $search['metro']       = $request->has('metro') && $request->get('metro') ? $request->get('metro') : false;
         $search['search_info'] = $request->get('search_info');
 
-        if ($search['car_id'])    foreach($search['car_id'] as $key => $value) if ( ! $value) unset($search['car_id'][$key]);
         if ($search['car_id'])    $inquiries->whereIn('car_id', $search['car_id']);
         if ($search['model'])     $inquiries->where('model', $search['model']);
         if ($search['year_from']) $inquiries->where('year_from', '>=', $search['year_from']);

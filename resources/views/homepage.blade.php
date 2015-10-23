@@ -518,7 +518,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                        <select name="car_id" id="car_id" data-placeholder="- Марка автомобиля -" class="form-control select2-car" multiple>
+                        <select name="car_id[]" id="car_id" data-placeholder="- Марка автомобиля -" class="form-control select2-car" multiple>
                             @foreach ($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
