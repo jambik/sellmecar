@@ -275,9 +275,11 @@
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <div class="form-group">
+                            <div class="form-group has-feedback">
                                 <label for="phone">Телефон:</label>
-                                <input type="text" name="phone" class="form-control" v-model="user.phone ? user.phone : '+7'">
+                                <input type="text" name="phone" class="form-control"  aria-describedby="phoneRequired" v-attr="value: user.phone ? user.phone : '+7'">
+                                <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
+                                <span id="phoneRequired" class="sr-only">(обязательно)</span>
                             </div>
                         </div>
                     </div>
@@ -285,14 +287,11 @@
                         {!! Form::label('information', 'Дополнительная информация:') !!}
                         {!! Form::textarea('information', null, ['class' => 'form-control', 'rows' => 4, 'style' => 'height: 100px;', 'placeholder' => 'Например: хочу машину белого цвета, не битую']) !!}
                     </div>
-                    <div class="visible-xs-block">&nbsp;</div>
-                    <div class="visible-xs-block">&nbsp;</div>
-                    <div class="visible-xs-block">&nbsp;</div>
                 </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1" style="margin-top: -60px;">
-                    <div class="text-center info-link">
-                        <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="text-center info-link col-lg-5 col-md-5 col-sm-5 col-lg-offset-1 col-md-offset-1 col-sm-offset-1">
+                    <a href="#" v-on="click: showAdditional($event)">Ввести дополнительные данные</a>
                 </div>
             </div>
 

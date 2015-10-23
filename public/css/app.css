@@ -52,6 +52,7 @@ nav .user-links img { height: 30px; width: 30px; border-radius: 3px; }
 .select2-container--default .select2-selection--single .select2-selection__rendered { line-height: 34px; }
 .select2-container--default .select2-selection--single .select2-selection__arrow { height: 34px; }
 
+.info-link { margin-top: -60px; }
 .info-link a { color: #ff0; text-decoration: none; border-bottom: 1px dashed #ff0; }
 
 #section_search { background: linear-gradient(to bottom,rgba(173,192,206,1) 0%,rgba(255,255,255,1) 50%,rgba(173,192,206,1) 100%); }
@@ -138,8 +139,9 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .navbar-brand { max-width: 200px; height: 68px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     .text-about { padding: 0 5%; }
-    #section_apply .container { min-height: auto; }
+    #section_apply .container { min-height: 50px; }
     .text-xxl { font-size: 22px; }
+    .info-link { margin-top: 0; }
 }
 
 /* mobile - 480 and up */
@@ -148,7 +150,8 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     nav .user-links { padding-left: 15px; }
     .text-about { padding: 0 5%; }
-    #section_apply .container { min-height: auto; }
+    #section_apply .container { min-height: 50px; }
+    .info-link { margin-top: 0; }
 }
 
 /* Small devices (tablets, 768px and up) */
@@ -156,6 +159,7 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .navbar-brand { max-width: 200px; height: 68px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     nav .navbar-nav>li>a { font-size: 12px; padding-left: 8px; padding-right: 8px; }
+    .info-link { margin-top: 0; }
 }
 
 /* Medium devices (desktops, 992px and up) */
