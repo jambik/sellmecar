@@ -9,6 +9,7 @@ use Auth;
 use Flash;
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Validator;
 
 class InquiriesController extends Controller
 {
@@ -125,21 +126,40 @@ class InquiriesController extends Controller
     {
         $user = User::find(Auth::user()->id);
 
-        $this->validate($request,
-            [
-                'car_id' => 'required',
-                'city_id' => 'required',
-                'name' => 'required',
-                'phone' => 'required|min:7',
-            ],
-            [
-                'car_id.required' => 'Выберите марку автомобиля',
-                'city_id.required' => 'Выберите город',
-                'name.required' => 'Укажите свое имя',
-                'phone.required' => 'Укажите свой номер телефона',
-                'phone.min' => 'Укажите свой номер телефона',
-            ]
-        );
+        $rules = [
+            'car_id' => 'required',
+            'city_id' => 'required',
+            'name' => 'required',
+            'phone' => 'required|min:7',
+        ];
+
+        $messages = [
+            'car_id.required' => 'Выберите марку автомобиля',
+            'city_id.required' => 'Выберите город',
+            'name.required' => 'Укажите свое имя',
+            'phone.required' => 'Укажите свой номер телефона',
+            'phone.min' => 'Укажите свой номер телефона',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        $validator->after(function($validator) use ($request)
+        {
+            if ($request->get('price_from') > $request->get('price_to'))
+            {
+                $validator->errors()->add('price_invalid', 'Значение "Цена, от" не может быть больше значения "Цена, до"');
+            }
+
+            if ($request->get('year_from') > $request->get('year_to'))
+            {
+                $validator->errors()->add('year_invalid', 'Значение "Год выпуска, от" не может быть больше значения "Год выпуска, до"');
+            }
+        });
+
+        if ($validator->fails())
+        {
+            $this->throwValidationException($request, $validator);
+        }
 
         $item = Inquiry::create($request->all() + ['user_id' => $user->id]);
 

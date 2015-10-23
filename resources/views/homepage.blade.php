@@ -222,21 +222,21 @@
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Цена, от:</label>
-                            <input type="text" name="price_from" class="form-control mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="цена от">
+                            <input type="text" name="price_from" class="form-control mask-price" placeholder="цена от">
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
                             <label>до:</label>
-                            <input type="text" name="price_to" class="form-control mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="цена до">
+                            <input type="text" name="price_to" class="form-control mask-price" placeholder="цена до">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6">
                             <label>Год выпуска, от:</label>
-                            <input type="text" name="year_from" class="form-control input-year" onblur="console.log(parseInt($(this).parent().next().find('input').val())); if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="год от">
+                            <input type="text" name="year_from" class="form-control input-year" placeholder="год от">
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
                             <label>до:</label>
-                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="год до">
+                            <input type="text" name="year_to" class="form-control input-year" placeholder="год до">
                         </div>
                     </div>
                 </div>
