@@ -20,7 +20,7 @@ class InquiriesController extends Controller
      */
     public function index()
     {
-        $items = Inquiry::with('car', 'city')->orderBy('created_at', 'desc')->get();
+        $items = Inquiry::with('car', 'city', 'carinfo')->orderBy('created_at', 'desc')->get();
 
         return view('admin.inquiries.index', compact('items'));
     }
@@ -59,13 +59,9 @@ class InquiriesController extends Controller
             foreach($request->get('carinfo') as $value) if ($value) { $carinfoFilled = true; break; }
             if ($carinfoFilled)
             {
-                $carinfo = Carinfo::where('inquiry_id', $item->id)->first() ?: new Carinfo;
+                $carinfo = new Carinfo;
                 $carinfo->fill($request->get('carinfo'));
                 $item->carinfo()->save($carinfo);
-            }
-            else
-            {
-                $item->carinfo()->delete();
             }
         }
 
