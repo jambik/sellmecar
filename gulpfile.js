@@ -18,8 +18,8 @@ elixir(function(mix) {
         '../../../node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
         '../../../node_modules/font-awesome/css/font-awesome.min.css',
         '../../../node_modules/select2/dist/css/select2.min.css',
-        '../../../node_modules/animate.css/animate.min.css',
         '../../../node_modules/tablesorter/dist/css/theme.bootstrap.min.css',
+        '../../../node_modules/animate.css/animate.min.css',
         '../../../node_modules/sweetalert/dist/sweetalert.css',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css'
     ], 'public/css/app.bundle.css');
@@ -63,6 +63,7 @@ elixir(function(mix) {
         '../../../node_modules/bootstrap/dist/css/bootstrap-theme.min.css',
         '../../../node_modules/font-awesome/css/font-awesome.min.css',
         '../../../node_modules/select2/dist/css/select2.min.css',
+        '../../../node_modules/tablesorter/dist/css/theme.bootstrap.min.css',
         '../../../node_modules/animate.css/animate.min.css',
         '../../../node_modules/codemirror/lib/codemirror.css',
         '../../../node_modules/codemirror/theme/monokai.css',
@@ -78,6 +79,9 @@ elixir(function(mix) {
         '../../../node_modules/select2/dist/js/select2.min.js',
         '../../../node_modules/select2/dist/js/i18n/ru.js',
         '../../../node_modules/noty/js/noty/packaged/jquery.noty.packaged.min.js',
+        '../../../node_modules/tablesorter/dist/js/jquery.tablesorter.min.js',
+        '../../../node_modules/tablesorter/dist/js/jquery.tablesorter.widgets.min.js',
+        '../../../node_modules/tablesorter/dist/js/widgets/widget-pager.min.js',
         '../../../node_modules/codemirror/lib/codemirror.js',
         '../../../node_modules/codemirror/mode/xml/xml.js',
         '../../../node_modules/summernote/dist/summernote.min.js',

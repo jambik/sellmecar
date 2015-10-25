@@ -5,7 +5,7 @@
 	<p>
 		<a href="{{ route('admin.inquiries.create') }}" class="btn btn-success"><i class="fa fa-plus"></i> Добавить</a>
 	</p>
-	<table class="table table-responsive table-striped table-bordered" id="table_items">
+	<table class="table table-responsive table-striped table-bordered" id="table_items2" data-sortlist="[[0,0]]">
 		<thead>
 			<tr>
 				<th>Id</th>
@@ -16,8 +16,8 @@
 				<th>Контакты</th>
                 <th>Доп. информация</th>
 				<th class="order-default order-direction-desc">Дата объявления</th>
-				<th class="td-edit"><i class="fa fa-edit text-primary"></i></th>
-				<th class="td-delete"><i class="fa fa-remove text-danger"></i></th>
+				<th class="td-edit" data-sorter="false"><i class="fa fa-edit text-primary"></i></th>
+				<th class="td-delete" data-sorter="false"><i class="fa fa-remove text-danger"></i></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -41,4 +41,20 @@
 			@endforeach
 		</tbody>
 	</table>
+
+    <div id="pager" class="pager">
+        <form>
+            <input type="button" value="&lt;&lt;" class="first" />
+            <input type="button" value="&lt;" class="prev" />
+            <input type="text" class="pagedisplay"/>
+            <input type="button" value="&gt;" class="next" />
+            <input type="button" value="&gt;&gt;" class="last" />
+            <select class="pagesize">
+                <option selected="selected" value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+            </select>
+        </form>
+    </div>
 @endsection
