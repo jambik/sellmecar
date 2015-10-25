@@ -2,3 +2,5 @@
 .td-delete { width: 34px !important; padding: 8px 10px !important; }
 
 .tablesorter-filter.disabled { display: none; }
+
+.tablesorter-pager select { width: auto; display: inline-block; }

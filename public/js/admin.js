@@ -1,41 +1,47 @@
 $(document).ready(function () {
 
-    // Применять плагин jquery.datatables к таблицам
-    var tableItems = $('#table_items').DataTable({
-        language: { url: "/js/dataTables.ru.json" }
-    });
-    // Сортировка таблиц
-    var orderDefault = $(tableItems.table().header()).find('tr .order-default').index();
-    var orderDirection = $(tableItems.table().header()).find('tr .order-direction-desc').get(0) ? 'desc' : 'asc';
-    if(orderDefault > -1) tableItems.order([orderDefault, orderDirection]);
-
     // Применять плагин tablesorter к таблицам
     $.tablesorter.themes.bootstrap = {
-        table        : 'table table-striped',
+        // these classes are added to the table. To see other table classes available
+        table        : 'table table-bordered table-striped',
         caption      : 'caption',
-        header       : 'bootstrap-header',
-        iconSortNone : 'bootstrap-icon-unsorted',
-        iconSortAsc  : 'glyphicon glyphicon-chevron-up',
-        iconSortDesc : 'glyphicon glyphicon-chevron-down',
+        // header class names
+        header       : 'bootstrap-header', // give the header a gradient background (theme.bootstrap_2.css)
+        sortNone     : '',
+        sortAsc      : '',
+        sortDesc     : '',
+        active       : '', // applied when column is sorted
+        hover        : '', // custom css required - a defined bootstrap style may not override other classes
+        // icon class names
+        icons        : '', // add "icon-white" to make them white; this icon class is added to the <i> in the header
+        iconSortNone : 'bootstrap-icon-unsorted', // class name added to icon when column is not sorted
+        iconSortAsc  : 'glyphicon glyphicon-chevron-up', // class name added to icon when column has ascending sort
+        iconSortDesc : 'glyphicon glyphicon-chevron-down', // class name added to icon when column has descending sort
+        filterRow    : '', // filter row class; use widgetOptions.filter_cssFilter for the input/select element
+        footerRow    : '',
+        footerCells  : '',
+        even         : '', // even row zebra striping
+        odd          : ''  // odd row zebra striping
     };
 
-    $('#table_items2').tablesorter({
-        /*debug          : true,*/
+    $('#table_items').tablesorter({
         theme          : "bootstrap",
         sortReset      : true,
         sortRestart    : true,
         widthFixed     : true,
         headerTemplate : '{content} {icon}',
-        widgets        : [ "uitheme", "filter", "pager", "stickyHeaders" ],
+        widgets        : [ "uitheme", "filter", "pager", "zebra", "stickyHeaders" ],
         widgetOptions: {
-            // pager
-            pager_output     : '{startRow} - {endRow} / {filteredRows} ({totalRows})',
-            pager_removeRows : false,
-
             // filter
             filter_cssFilter   : 'form-control input-sm',
-            filter_searchDelay : 0
+            filter_searchDelay : 0,
+
+            // zebra
+            zebra : ["even", "odd"]
         }
+    }).tablesorterPager({
+        container: $(".pager"),
+        output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
     });
 
     // Применять плагин к полям типа datetime
