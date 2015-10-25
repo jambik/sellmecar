@@ -678,7 +678,7 @@ $(document).ready(function() {
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
-            // Добавляем маску полю, типа - цена
+            /*// Добавляем маску полю, типа - цена
             $('input.mask-price').inputmask({
                 alias: 'numeric',
                 groupSeparator: ' ',
@@ -689,6 +689,23 @@ $(document).ready(function() {
                 rightAlign: false,
                 autoUnmask: true
             });
+
+            // Добавляем маску полю, типа - км
+            $('input.mask-km').inputmask({
+                alias: 'numeric',
+                groupSeparator: ' ',
+                autoGroup: true,
+                digits: 0,
+                digitsOptional: false,
+                suffix: ' км.',
+                rightAlign: false,
+                autoUnmask: true
+            });*/
+
+            // Добавляем маску полю, типа - цена
+            //$('input.mask-price').mask('# ##0 ₽', {reverse: true});
+            // Добавляем маску полю, типа - км
+            //$('input.mask-km').mask('# ##0 км.', {reverse: true});
 
             // Добавляем маску полю, типа - км
             $('input.mask-km').inputmask({

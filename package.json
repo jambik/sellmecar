@@ -8,6 +8,7 @@
     "gulp": "^3.8.8",
     "gulp-watch": "^4.3.5",
     "jquery": "^2.0.0",
+    "jquery-mask-plugin": "^1.13.4",
     "jquery.scrollto": "2.1.1",
     "noty": "^2.3.6",
     "numeral": "^1.5.3",
