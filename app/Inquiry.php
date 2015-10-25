@@ -70,4 +70,14 @@ class Inquiry extends Model
         return $this->price_to ? number_format(floatval($this->price_to), 0, '.', ' ') : 0;
     }
 
+    public function setPriceFromAttribute($value)
+    {
+        $this->attributes['price_from'] = preg_replace('/[^0-9]/', '', $value);
+    }
+
+    public function setPriceToAttribute($value)
+    {
+        $this->attributes['price_to'] = preg_replace('/[^0-9]/', '', $value);
+    }
+
 }

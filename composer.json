@@ -28,8 +28,7 @@
     "socialiteproviders/yandex": "^1.1",
     "jhaoda/socialite-odnoklassniki": "^1.1",
     "zizaco/entrust": "dev-laravel-5",
-    "ckeditor/ckeditor": "^4.5.3",
-    "robinherbots/jquery.inputmask": "^3.2.0"
+    "ckeditor/ckeditor": "^4.5.3"
   },
   "autoload": {
     "classmap": [

@@ -703,21 +703,10 @@ $(document).ready(function() {
             });*/
 
             // Добавляем маску полю, типа - цена
-            //$('input.mask-price').mask('# ##0 ₽', {reverse: true});
-            // Добавляем маску полю, типа - км
-            //$('input.mask-km').mask('# ##0 км.', {reverse: true});
+            $('input.mask-price').mask('# ##0 руб.', {reverse: true});
 
             // Добавляем маску полю, типа - км
-            $('input.mask-km').inputmask({
-                alias: 'numeric',
-                groupSeparator: ' ',
-                autoGroup: true,
-                digits: 0,
-                digitsOptional: false,
-                suffix: ' км.',
-                rightAlign: false,
-                autoUnmask: true
-            });
+            $('input.mask-km').mask('# ##0 км.', {reverse: true});
 
             $.scrollUp({
                 scrollName: 'scrollUp',      // Element ID

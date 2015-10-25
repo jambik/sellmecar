@@ -15,4 +15,9 @@ class Carinfo extends Model
         return $this->belongsTo('App\Inquiry');
     }
 
+    public function setRunAttribute($value)
+    {
+        $this->attributes['run'] = preg_replace('/[^0-9]/', '', $value);
+    }
+
 }

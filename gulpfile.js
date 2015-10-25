@@ -37,13 +37,13 @@ elixir(function(mix) {
         '../../../node_modules/numeral/min/languages/ru.min.js',
         '../../../node_modules/sweetalert/dist/sweetalert.min.js',
         '../../../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
+        '../../../node_modules/jquery.inputmask/dist/jquery.inputmask.bundle.js',
         '../../../bower_components/moment/min/moment-with-locales.min.js',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect-slide.min.js',
         '../../../bower_components/purl/purl.js',
-        '../../../bower_components/scrollup/dist/jquery.scrollUp.min.js',
-        '../../../vendor/robinherbots/jquery.inputmask/dist/jquery.inputmask.bundle.js',
+        '../../../bower_components/scrollup/dist/jquery.scrollUp.min.js'
     ], 'public/js/app.bundle.js');
 
     mix.copy([
