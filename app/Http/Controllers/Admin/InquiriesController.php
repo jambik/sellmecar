@@ -78,7 +78,7 @@ class InquiriesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inquiry::with('city', 'car', 'user', 'carinfo')->findOrFail($id);
     }
 
     /**
