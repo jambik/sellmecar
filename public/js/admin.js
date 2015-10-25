@@ -44,6 +44,12 @@ $(document).ready(function () {
         output: '{startRow} - {endRow} / {filteredRows} ({totalRows})'
     });
 
+    $('.tablesorter-childRow td').hide();
+    $('#table_items').delegate('.toggle', 'click' ,function(){
+        $(this).closest('tr').nextUntil('tr:not(.tablesorter-childRow)').find('td').toggle();
+        return false;
+    });
+
     // Применять плагин к полям типа datetime
     if ($('.input-datetime').length) $('.input-datetime').datetimepicker({
         locale: "ru",

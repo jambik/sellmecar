@@ -22,7 +22,7 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th colspan="10" class="pager">
+                    <th colspan="10" class="pager form-inline">
                         <button type="button" class="btn first"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
                         <button type="button" class="btn prev"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
                         <span class="pagedisplay"></span> <!-- this can be any element, including an input -->
@@ -47,7 +47,12 @@
                         <td>{{ $item->price_from ? 'от '.$item->price_from_formatted.'руб. ' : '' }}{{ $item->price_to ? 'до '.$item->price_to_formatted.'руб. ' : '' }}{{ !$item->price_from && !$item->price_to ? '-' : '' }}</td>
                         <td>г. {{ $item->city->name }}{{ $item->metro ? ', метро '.$item->metro : '' }}{{ $item->street ? ', '.$item->street : '' }}</td>
                         <td>{{ $item->name }}{{ $item->email ? ', email - '.$item->email : '' }}{{ $item->phone ? ', телефон - '.$item->phone : '' }}</td>
-                        <td>{{ $item->information ?: '-' }}</td>
+                        <td{{ $item->carinfo ? ' rowspan="2"' : '' }}>
+                            {{ $item->information ?: '-' }}
+                            @if ($item->carinfo)
+                                <div><a href="#" class="toggle">дополниельные характеристики</a></div>
+                            @endif
+                        </td>
                         <td>{{ $item->created_at }}</td>
                         <td><a href="{{ route('admin.inquiries.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
                         <td>
@@ -56,6 +61,11 @@
                             {!! Form::close() !!}
                         </td>
                     </tr>
+                    @if ($item->carinfo)
+                        <tr class="tablesorter-childRow">
+                            <td colspan="10">{{ $item->carinfo }}</td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
