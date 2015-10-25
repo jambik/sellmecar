@@ -144,12 +144,12 @@ class InquiriesController extends Controller
 
         $validator->after(function($validator) use ($request)
         {
-            if ($request->get('price_from') > $request->get('price_to'))
+            if ($request->get('price_to') && $request->get('price_from') > $request->get('price_to'))
             {
                 $validator->errors()->add('price_invalid', 'Значение "Цена, от" не может быть больше значения "Цена, до"');
             }
 
-            if ($request->get('year_from') > $request->get('year_to'))
+            if ($request->get('year_to') && $request->get('year_from') > $request->get('year_to'))
             {
                 $validator->errors()->add('year_invalid', 'Значение "Год выпуска, от" не может быть больше значения "Год выпуска, до"');
             }
