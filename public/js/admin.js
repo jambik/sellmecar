@@ -29,11 +29,12 @@ $(document).ready(function () {
         widgets        : [ "uitheme", "filter", "pager", "stickyHeaders" ],
         widgetOptions: {
             // pager
-            pager_output: '{startRow} - {endRow} / {filteredRows} ({totalRows})',
-            pager_removeRows: false,
+            pager_output     : '{startRow} - {endRow} / {filteredRows} ({totalRows})',
+            pager_removeRows : false,
 
             // filter
-            filter_cssFilter  : 'form-control input-sm'
+            filter_cssFilter   : 'form-control input-sm',
+            filter_searchDelay : 0
         }
     });
 

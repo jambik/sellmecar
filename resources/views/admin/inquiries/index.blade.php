@@ -16,8 +16,8 @@
 				<th>Контакты</th>
                 <th>Доп. информация</th>
 				<th class="order-default order-direction-desc">Дата объявления</th>
-				<th class="td-edit" data-sorter="false"><i class="fa fa-edit text-primary"></i></th>
-				<th class="td-delete" data-sorter="false"><i class="fa fa-remove text-danger"></i></th>
+				<th class="td-edit filter-false" data-sorter="false"><i class="fa fa-edit text-primary"></i></th>
+				<th class="td-delete filter-false" data-sorter="false"><i class="fa fa-remove text-danger"></i></th>
 			</tr>
 		</thead>
 		<tbody>
