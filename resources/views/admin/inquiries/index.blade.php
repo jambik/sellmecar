@@ -47,10 +47,11 @@
                         <td>{{ $item->price_from ? 'от '.$item->price_from_formatted.'руб. ' : '' }}{{ $item->price_to ? 'до '.$item->price_to_formatted.'руб. ' : '' }}{{ !$item->price_from && !$item->price_to ? '-' : '' }}</td>
                         <td>г. {{ $item->city->name }}{{ $item->metro ? ', метро '.$item->metro : '' }}{{ $item->street ? ', '.$item->street : '' }}</td>
                         <td>{{ $item->name }}{{ $item->email ? ', email - '.$item->email : '' }}{{ $item->phone ? ', телефон - '.$item->phone : '' }}</td>
-                        <td{{ $item->carinfo ? ' rowspan="2"' : '' }}>
+                        <td{!! $item->carinfo ? ' rowspan="2"' : '' !!}>
                             {{ $item->information ?: '-' }}
                             @if ($item->carinfo)
-                                <div><a href="#" class="toggle">дополниельные характеристики</a></div>
+                                <div>&nbsp;</div>
+                                <div><a href="#" class="toggle"><i class="fa fa-bars"></i> характеристики</a></div>
                             @endif
                         </td>
                         <td>{{ $item->created_at }}</td>
@@ -62,8 +63,22 @@
                         </td>
                     </tr>
                     @if ($item->carinfo)
-                        <tr class="tablesorter-childRow">
-                            <td colspan="10">{{ $item->carinfo }}</td>
+                        <tr class="tablesorter-childRow carinfo">
+                            <td colspan="6">
+                                <p class="lead"><i class="fa fa-bars"></i> Дополнительные характеристики авто:</p>
+                                <ul>
+                                    {!! $item->carinfo->gear ? '<li>Привод: <span>'.config('vars.car_info.gear')[$item->carinfo->gear].'</span></li>' : '' !!}
+                                    {!! $item->carinfo->transmission ? '<li>Трансмиссия: <span>'.config('vars.car_info.transmission')[$item->carinfo->transmission].'</span></li>' : '' !!}
+                                    {!! $item->carinfo->engine ? '<li>Тип двигателя: <span>'.config('vars.car_info.engine')[$item->carinfo->engine].'</span></li>' : '' !!}
+                                    {!! $item->carinfo->rudder ? '<li>Руль: <span>'.config('vars.car_info.rudder')[$item->carinfo->rudder].'</span></li>' : '' !!}
+                                    {!! $item->carinfo->color ? '<li>Цвет: <span>'.config('vars.car_info.color')[$item->carinfo->color]['name'].'</span></li>' : '' !!}
+                                    {!! $item->carinfo->run ? '<li>Пробег: <span>'.number_format($item->carinfo->run, 0, '.', ' ').' км.</span></li>' : '' !!}
+                                    {!! $item->carinfo->capacity_from || $item->carinfo->capacity_to ? '<li>Объем двигателя: <span>'.( $item->carinfo->capacity_from ? 'от '.config('vars.car_info.capacity')[$item->carinfo->capacity_from].' л. ' : '' ).( $item->carinfo->capacity_to ? 'до '.config('vars.car_info.capacity')[$item->carinfo->capacity_to].' л. ' : '' ).'</span></li>' : '' !!}
+                                    {!! $item->carinfo->state ? '<li>Состояние авто: <span>'.config('vars.car_info.state')[$item->carinfo->state].'</span></li>' : '' !!}
+                                    {!! $item->carinfo->owners ? '<li>Количество хозяев по ПТС: <span>'.config('vars.car_info.owners')[$item->carinfo->owners].'</span></li>' : '' !!}
+                                </ul>
+                            </td>
+                            <td colspan="3">&nbsp;</td>
                         </tr>
                     @endif
                 @endforeach

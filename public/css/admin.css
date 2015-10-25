@@ -3,4 +3,5 @@
 
 .tablesorter-filter.disabled { display: none; }
 
-
+.carinfo ul { margin: 0; padding: 0; list-style: none; }
+.carinfo ul span { padding: 2px 4px; color: #c7254e; background-color: #f9f2f4; border-radius: 4px; }

@@ -21,6 +21,7 @@ class CreateCarinfoTable extends Migration
             $table->integer('engine')->default(0);
             $table->integer('rudder')->default(0);
             $table->integer('color')->default(0);
+            $table->integer('run')->default(0);
             $table->integer('capacity_from')->default(0);
             $table->integer('capacity_to')->default(0);
             $table->integer('state')->default(0);

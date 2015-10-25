@@ -16,7 +16,7 @@
             </thead>
             <tfoot>
                 <tr>
-                    <th colspan="4" class="pager">
+                    <th colspan="4" class="pager form-inline">
                         <button type="button" class="btn first"><i class="icon-step-backward glyphicon glyphicon-step-backward"></i></button>
                         <button type="button" class="btn prev"><i class="icon-arrow-left glyphicon glyphicon-backward"></i></button>
                         <span class="pagedisplay"></span> <!-- this can be any element, including an input -->

@@ -342,13 +342,13 @@
                         <div class="form-group col-lg-6 col-md-6">
                             <select name="carinfo[color]" class="form-control select2-color">
                                 <option value="0">- Цвет -</option>
-                                @foreach (config('vars.car_info.color') as $value)
-                                    <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
+                                @foreach (config('vars.car_info.color') as $key => $value)
+                                    <option value="{{ $key }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6">
-                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control mask-km">
+                            <input type="text" name="carinfo[run]" placeholder="Пробег до, км" class="form-control mask-km_">
                         </div>
                     </div>
                 </div>
@@ -609,13 +609,13 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <select name="color" class="form-control select2-color">
                                 <option value="">- Цвет -</option>
-                                @foreach (config('vars.car_info.color') as $value)
-                                    <option value="{{ $value['name'] }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
+                                @foreach (config('vars.car_info.color') as $key => $value)
+                                    <option value="{{ $key }}" data-hex="{{ $value['hex'] }}">{{ $value['name'] }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control mask-km">
+                            <input type="text" name="run" placeholder="Пробег до, км" class="form-control mask-km_">
                         </div>
                     </div>
 
