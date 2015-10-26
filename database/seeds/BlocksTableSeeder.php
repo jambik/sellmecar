@@ -19,7 +19,7 @@ class BlocksTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('carinfo')->delete();
+        DB::table('blocks')->delete();
 
         for($i=0; $i<count($this->items); $i++)
         {

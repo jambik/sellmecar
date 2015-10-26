@@ -119,6 +119,7 @@ Route::group(['prefix' => 'admin'], function()
         Route::resource('pages', 'Admin\PagesController');
         Route::resource('blocks', 'Admin\BlocksController');
         Route::resource('news', 'Admin\NewsController');
+        Route::resource('faq', 'Admin\FaqController');
         Route::resource('cars', 'Admin\CarsController');
         Route::resource('carmodels', 'Admin\CarmodelsController');
         Route::resource('cities', 'Admin\CitiesController');

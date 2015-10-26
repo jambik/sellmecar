@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlocksTable extends Migration
+class CreateFaqTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateBlocksTable extends Migration
      */
     public function up()
     {
-        Schema::create('blocks', function (Blueprint $table) {
+        Schema::create('faq', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('alias');
-            $table->string('title')->default('');
-            $table->text('text')->default('');
+            $table->string('question');
+            $table->text('answer')->default('');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateBlocksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('blocks');
+        Schema::drop('faq');
     }
 }
