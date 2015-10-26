@@ -16,7 +16,7 @@ class CreateBlocksTable extends Migration
             $table->increments('id');
             $table->string('alias');
             $table->string('title')->default('');
-            $table->text('text')->default('');
+            $table->mediumText('text')->default('');
             $table->timestamps();
         });
     }

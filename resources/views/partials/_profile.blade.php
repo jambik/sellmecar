@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary form-button" id="btn_profile_save">Сохранить</button>
+                    <button type="submit" class="btn btn-primary form-button">Сохранить</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
                 </div>
                 {!! Form::token() !!}

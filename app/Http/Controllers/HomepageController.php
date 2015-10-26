@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Block;
 use App\Car;
-use App\Carinfo;
 use App\City;
+use App\Faq;
 use App\Inquiry;
 use App\News;
 use Auth;
@@ -12,6 +13,8 @@ use App\Http\Requests;
 use Carbon\Carbon;
 use Flash;
 use Illuminate\Http\Request;
+use Mail;
+use Validator;
 
 class HomepageController extends Controller
 {
@@ -33,7 +36,10 @@ class HomepageController extends Controller
 
         $cities = City::lists('name', 'id')->all();
 
-        return view('homepage', compact('user', 'cars', 'carsList', 'lastInquiries', 'lastNews', 'cities'));
+        $blocks = Block::all()->keyBy('alias');
+        $faq = Faq::all();
+
+        return view('homepage', compact('user', 'cars', 'carsList', 'lastInquiries', 'lastNews', 'cities', 'blocks', 'faq'));
     }
 
     public function profile(Request $request)
@@ -67,7 +73,48 @@ class HomepageController extends Controller
         return redirect('/');
     }
 
-    public function vars(Request $request)
+    public function feedbackSave(Request $request)
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required_if:phone,""',
+            'phone' => 'required_if:email,""',
+            'message' => 'required',
+        ];
+
+        $messages = [
+            'name.required' => 'Введите Ваше имя. Мы же должны как-то к Вам обращаться :)',
+            'email.required_if' => 'А где же ваш email для обратной связи?',
+            'phone.required_if' => 'Укажите пожалуйста Ваш телефончик для обратной связи',
+            'message.required' => 'А где собственно сообщение?',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails())
+        {
+            $this->throwValidationException($request, $validator);
+        }
+
+        $data = $request->all();
+        Mail::queue(['text' => 'emails.feedback'], ['data' => $data], function ($message) use($data) {
+            $message->to('jambik@gmail.com');
+            $message->subject('Обратная связь');
+        });
+
+        if($request->ajax())
+        {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Сообщение отправлено'
+            ]);
+        }
+
+        Flash::success("Сообщение отправлено");
+        return redirect('/');
+    }
+
+    public function vars()
     {
         return config('vars');
     }

@@ -117,7 +117,9 @@
 
         <div>&nbsp;</div>
 
-        <p class="text-shadow text-light text-about">Уникальность нашего сайта состоит в том, что покупатель выставляет свое объявление, а продавец автомобиля  ищет именно то, объявление, где есть сходство с его автомобилем!</p>
+        <div class="text-shadow text-light text-about">
+            {!! $blocks['description']->text !!}
+        </div>
 
         <div class="hidden-xs">&nbsp;</div>
         <div>&nbsp;</div>
@@ -834,11 +836,9 @@
             <div>&nbsp;</div>
             <div class="row">
                 <div class="col-lg-7 col-md-6 col-sm-7 text-light text-justify">
-                    <p>Открытое акционерное общество Страховая компания «РОСНО‑МС» — страховая медицинская организация, специализирующаяся на обязательном и добровольном медицинском страховании.</p>
-                    <p>ОАО «РОСНО‑МС» зарегистрировано 18 ноября 1994 г. Уставный капитал компании полностью оплачен и составляет 600 млн. рублей. С 2001 года ОАО «РОСНО-МС» входит в состав страховой Группы Allianz – одного из крупнейших финансово-страховых концернов, который уже более 120 лет обеспечивает надежной страховой защитой миллионы клиентов по всему миру.</p>
-                    <p>Открытое акционерное общество Страховая компания «РОСНО‑МС» — страховая медицинская организация, специализирующаяся на обязательном и добровольном медицинском страховании.</p>
-                    <p>© Сервис предоставляется компанией Me Car</p>
-                    <div>&nbsp;</div>
+                    <div class="faq-link"><a href="#" data-toggle="modal" data-target="#faqModal"><i class="fa fa-comments-o"></i> Вопросы / Ответы</a></div>
+                    <div class="feedback-link"><a href="#" data-toggle="modal" data-target="#feedbackModal"><i class="fa fa-envelope-o"></i> Обратная связь</a></div>
+                    {!! $blocks['footer']->text !!}
                 </div>
                 <div class="col-lg-5 col-md-6 col-sm-5">
                     <div class="text-light text-xl text-shadow text-center">Мы в социальных сетях</div>
@@ -865,5 +865,7 @@
     @include('partials._inquiries_table')
     @include('partials._page_show')
     @include('partials._news_show')
+    @include('partials._faq')
+    @include('partials._feedback')
     @include('partials._footer')
 </div>

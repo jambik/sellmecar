@@ -96,6 +96,16 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
 
 .has-feedback .form-control-feedback { font-size: 8px; color: #ed0000; }
 
+.faq-link { font-size: 16px; margin: 0 0 30px 0; }
+.faq-link a { color: #AEDEF4; }
+#faq { margin: 0; }
+#faq li.question { margin: 0 0 20px 0; font-size: 16px; }
+#faq li.question a { color: #80001c; text-decoration: none; border-bottom: 1px solid #80001c; }
+#faq li.answer { margin: 0 0 40px 0; list-style: none; }
+
+.feedback-link { font-size: 16px; margin: 0 0 30px 0; }
+.feedback-link a { color: #AEDEF4; }
+
 .table-inquiries-found thead th { font-size: 13px; }
 .table-inquiries-found tbody tr { cursor: pointer; }
 .table-inquiries-found tbody tr:hover td { background: #FFFFB6; }

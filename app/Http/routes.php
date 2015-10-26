@@ -13,6 +13,7 @@
 
 Route::get('/', ['as' => 'homepage', 'uses' => 'HomepageController@homepage']);
 Route::get('/vars', ['as' => 'vars', 'uses' => 'HomepageController@vars']);
+Route::post('/feedback', ['as' => 'feedbackSave', 'uses' => 'HomepageController@feedbackSave']);
 
 Route::get('/profile', ['as' => 'profile', 'uses' => 'HomepageController@profile']);
 Route::post('/profile/save', ['as' => 'profileSave', 'uses' => 'HomepageController@profileSave']);

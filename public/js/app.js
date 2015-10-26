@@ -455,6 +455,19 @@ $(document).ready(function() {
                 }
             },
 
+            feedbackSaveSuccess: function (data) // Функция обработчик успешной отправки обратной связи
+            {
+                console.log(data);
+
+                if(data.status == "success")
+                {
+                    var formStatusText = "<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>";
+                    formStatusText += data.message;
+                    formStatusText += "</div>";
+                    $('#form_feedback').find('.form-status').html(formStatusText);
+                }
+            },
+
             inquiryCreateSuccess: function (data) // Обработчик добавления объявления
             {
                 console.log(data);
@@ -708,6 +721,13 @@ $(document).ready(function() {
             // Добавляем маску полю, типа - км
             $('input.mask-km').mask('# ##0 км.', {reverse: true});
 
+            // Обработчик ссылок Faq
+            $('#faq a').on('click', function(e){
+                e.preventDefault();
+                $(this).parent().next().toggle();
+            });
+
+            // Создаем кнопочку наверху, которая появляется при прокрутке сайта вниз
             $.scrollUp({
                 scrollName: 'scrollUp',      // Element ID
                 scrollDistance: 300,         // Distance from top/bottom before showing element (px)
