@@ -151,12 +151,13 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     #section_apply .container { min-height: 50px; }
     .text-xxl { font-size: 22px; }
     .info-link { margin-top: 0; }
-    .inquiry-block { text-align: center; border-radius: 10px; padding: 10px; margin: 0 0 15px 0; background: rgba(255,255,255,0.8); min-height: 50px; }
+    .inquiry-block { text-align: left; border-radius: 10px; padding: 10px; margin: 0 0 15px 0; background: rgba(255,255,255,0.8); min-height: 50px; }
     .inquiry-block .car-image { height: 40px; float: right; }
-    .inquiry-block .text-l { text-align: left; }
-    .inquiry-block .block-line { text-align: left; }
-    .inquiry-block .block-line .value { display: inline-block; }
+    .inquiry-block .text-l { text-align: left; font-size: 14px; display: inline; }
+    .inquiry-block .block-line { text-align: left; display: inline; }
+    .inquiry-block .block-line .value { display: inline; font-weight: bolder; }
     .inquiry-block .btn { margin-top: 5px; }
+    .inquiry-block .link-open { text-decoration: underline; white-space: nowrap; }
     .news-block { border-radius: 131px; margin-bottom: 15px; min-height: 100px; background: #ddd; text-align: center; }
     .news-date { padding: 5px 0 0 0; color: #333; }
     .news-title { padding: 8px 0 0 0; line-height: normal; font-size: 15px; margin: 0 30px; max-height: none; }

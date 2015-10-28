@@ -47,7 +47,7 @@ class InquiriesController extends Controller
     {
         $inquiries = Inquiry::query();
 
-        $search['car_id']      = $request->has('car_id') ? $request->get('car_id') : false;
+        $search['car_id']      = $request->has('car_id') && $request->get('car_id') ? $request->get('car_id') : false;
         $search['model']       = $request->get('model');
         $search['year_from']   = $request->get('year_from');
         $search['year_to']     = $request->get('year_to');
@@ -55,7 +55,11 @@ class InquiriesController extends Controller
         $search['metro']       = $request->has('metro') && $request->get('metro') ? $request->get('metro') : false;
         $search['search_info'] = $request->get('search_info');
 
-        if ($search['car_id'])    $inquiries->whereIn('car_id', $search['car_id']);
+        if ($search['car_id'])
+        {
+            foreach ($search['car_id'] as $key => $value) if ( ! $value) unset($search['car_id'][$key]);
+            if ($search['car_id']) $inquiries->whereIn('car_id', $search['car_id']);
+        }
         if ($search['model'])     $inquiries->where('model', $search['model']);
         if ($search['year_from']) $inquiries->where('year_from', '>=', $search['year_from']);
         if ($search['year_to'])   $inquiries->where('year_to', '<=', $search['year_to']);

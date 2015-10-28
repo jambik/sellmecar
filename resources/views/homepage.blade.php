@@ -521,6 +521,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
                         <select name="car_id[]" id="car_id" data-placeholder="- Марка автомобиля -" class="form-control select2-car" multiple>
+                            <option value="0">- Любой автомобиль -</option>
                             @foreach ($cars as $value)
                                 <option value="{{ $value->id }}">{{ $value->name }}</option>
                             @endforeach
@@ -751,7 +752,9 @@
                         <div class="block-line">года: <div class="value">{{ $item->year_from ? 'с '.$item->year_from.'г. ' : '' }}{{ $item->year_to ? 'по '.$item->year_to.'г. ' : '' }}{{ $item->year_from && $item->year_to ? '' : '-' }}</div></div>
                         <div class="block-line">город: <div class="value">{{ $item->city->name }}</div></div>
                         <div class="hidden-xs">&nbsp;</div>
-                        <a href="#" class="btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                        <div class="visible-xs-block"></div>
+                        <a href="#" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                        <a href="#" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
                     </div>
                 </div>
             @endforeach
