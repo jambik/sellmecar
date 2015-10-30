@@ -111,8 +111,6 @@ $(document).ready(function() {
                         {
                             sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                         }
-
-                        return false;
                     },
                     complete: function (jqXHR, textStatus)
                     {
@@ -123,15 +121,6 @@ $(document).ready(function() {
                         }
                     }
                 });
-            },
-
-            changeCars: function(e)
-            {
-                e.preventDefault();
-                var element = e.target;
-
-                var values = $(element).val();
-                console.log(values);
             },
 
             selectCar: function(id)
