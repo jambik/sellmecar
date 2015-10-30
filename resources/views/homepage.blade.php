@@ -870,5 +870,5 @@
     @include('partials._news_show')
     @include('partials._faq')
     @include('partials._feedback')
-    @include('partials._footer')
 </div>
+@include('partials._footer')
