@@ -9,7 +9,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('published_at', 'Текст новости:') !!}
+    {!! Form::label('published_at', 'Дата публикации:') !!}
     {!! Form::text('published_at', null, ['class' => 'form-control input-datetime', 'rows' => 3]) !!}
 </div>
 
