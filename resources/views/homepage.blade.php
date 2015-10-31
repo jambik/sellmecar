@@ -484,7 +484,7 @@
                 @for ($i = 0; ($i < config('vars.cars_per_page') && $i < $cars->count()); $i++)
                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item" v-on="click: selectCar({{ $cars[$i]->id }})" id="brand_icon_{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}">
                         <div class="brand-icon">
-                            <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
+                            <div class="car-image">@if($cars[$i]->image) <img src='/images/xsmall/{{ $cars[$i]->img_url.$cars[$i]->image }}'> @endif</div>
                             <div class="brand-name">{{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
                         </div>
                     </div>
@@ -495,7 +495,7 @@
                         @for ($i = config('vars.cars_per_page'); ($i < $cars->count()); $i++)
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 brand-item" v-on="click: selectCar({{ $cars[$i]->id }})" id="brand_icon_{{ $cars[$i]->id }}" data-car-name="{{ $cars[$i]->name }}">
                                 <div class="brand-icon">
-                                    <div class="car-image">@if($cars[$i]->image) <img src='{{ $cars[$i]->img_url.$cars[$i]->image.$cars[$i]->img_size['xs'] }}'> @endif</div>
+                                    <div class="car-image">@if($cars[$i]->image) <img src='/images/xsmall/{{ $cars[$i]->img_url.$cars[$i]->image }}'> @endif</div>
                                     <div class="brand-name">{{ $cars[$i]->name }} <span>{{ $cars[$i]->inquiriesCount ? "(".$cars[$i]->inquiriesCount.")" : '' }}</span></div>
                                 </div>
                             </div>
@@ -705,7 +705,7 @@
                 <tbody>
                     <tr v-repeat="item in inquiriesSearch.found" class="inquiry-item" data-inquiry-id="@{{ item.id }}"  v-on="click: showInquiry($event)">
                         <td>№ @{{ item.id }}</td>
-                        <td><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></td>
+                        <td><img v-attr='src: "/images/xsmall/" + item.car.img_url + item.car.image'></td>
                         <td>@{{ item.car.name }}</td>
                         <td>@{{ item.model }}</td>
                         <td>
@@ -746,7 +746,7 @@
             @foreach ($lastInquiries as $item)
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="inquiry-block inquiry-item" data-inquiry-id="{{ $item->id }}">
-                        @if($item->car->image)<div class="car-image"><img src='{{ $item->car->img_url.$item->car->image.$item->car->img_size['xs'] }}'></div>@endif
+                        @if($item->car->image)<div class="car-image"><img src='/images/xsmall/{{ $item->car->img_url.$item->car->image }}'></div>@endif
                         <div class="text-uppercase text-l">Куплю:</div>
                         <div class="block-line">автомобиль: <div class="value">{{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}</div></div>
                         <div class="block-line">года: <div class="value">{{ $item->year_from ? 'с '.$item->year_from.'г. ' : '' }}{{ $item->year_to ? 'по '.$item->year_to.'г. ' : '' }}{{ $item->year_from && $item->year_to ? '' : '-' }}</div></div>
@@ -760,7 +760,7 @@
             @endforeach
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
                 <div class="inquiry-block inquiry-item" data-inquiry-id="@{{ item.id }}">
-                    <div class="car-image" v-if="item.car.image"><img v-attr='src: item.car.img_url + item.car.image + item.car.img_size["xs"]'></div>
+                    <div class="car-image" v-if="item.car.image"><img v-attr='src: "/images/xsmall/" + item.car.img_url + item.car.image'></div>
                     <div class="text-uppercase text-l">Куплю:</div>
                     <div class="block-line">
                         автомобиль:
@@ -807,7 +807,7 @@
                     <div class="news-block">
                         <div class="news-date">{{ $item->published_at->diffForHumans() }}</div>
                         <div class="news-title"><a href="#" v-on="click: showNews($event)">{{ $item->title }}</a></div>
-                        <div class="news-icon">@if($item->image) <img src='{{ $item->img_url.$item->image.$item->img_size['icon'] }}'> @else <img src='/img/noimg.png'> @endif</div>
+                        <div class="news-icon">@if($item->image) <img src='/images/small/{{ $item->img_url.$item->image }}'> @else <img src='/img/noimg.png'> @endif</div>
                     </div>
                 </div>
             @endforeach
@@ -815,7 +815,7 @@
                 <div class="news-block">
                     <div class="news-date">@{{ item.published_at }}</div>
                     <div class="news-title"><a href="#" v-on="click: showNews($event)">@{{ item.title }}</a></div>
-                    <div class="news-icon"><img v-attr="src: item.img_url + item.image + item.img_size['icon']"></div>
+                    <div class="news-icon"><img v-attr='src: "/images/small/" + item.img_url + item.image'></div>
                 </div>
             </div>
         </div>

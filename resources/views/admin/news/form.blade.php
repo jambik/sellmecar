@@ -19,7 +19,7 @@
 </div>
 
 @if (isset($item) && $item->image)
-    <img src="{{ $item->img_url.$item->image.$item->img_size['thumb'] }}" alt="" />
+    <img src="/images/medium/{{ $item->img_url.$item->image }}" alt="" />
     <p>&nbsp;</p>
 @endif
 
