@@ -21,6 +21,9 @@
                         <textarea class="form-control" name="message" placeholder="Сообщение" cols="5" style="min-height: 100px;"></textarea>
                     </div>
                     <div class="form-group">
+                        <div class="g-recaptcha" data-sitekey="{{ env('GOOGLE_RECAPTCHA_KEY') }}"></div>
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-success btn-block form-button">Отправить сообщение</button>
                     </div>
                     {!! Form::token() !!}

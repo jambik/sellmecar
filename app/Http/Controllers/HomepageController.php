@@ -91,6 +91,17 @@ class HomepageController extends Controller
 
         $validator = Validator::make($request->all(), $rules, $messages);
 
+        $validator->after(function($validator) use ($request)
+        {
+            $recaptcha = new ReCaptcha(env('GOOGLE_RECAPTCHA_SECRET'));
+            $resp = $recaptcha->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
+
+            if ( ! $resp->isSuccess())
+            {
+                $validator->errors()->add('google_recaptcha_error', 'Ошибка reCAPTCHA: '.implode(', ', $resp->getErrorCodes()));
+            }
+        });
+
         if ($validator->fails())
         {
             $this->throwValidationException($request, $validator);

@@ -10,6 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     <link href="{{ asset('/css/app.bundle.css') }}" type="text/css" rel="stylesheet" />
     <link href="{{ asset('/css/app.css') }}" type="text/css" rel="stylesheet" />
+    <script src='https://www.google.com/recaptcha/api.js?hl=ru'></script>
     <script src="{{ asset('/js/app.bundle.js') }}" type="text/javascript"></script>
     <script src="{{ asset('/js/app.js') }}" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPWHLr4_9wTreEUPAtgWiEsZ5KFXBEfUc&amp;libraries=places&amp;language=ru" type="text/javascript"></script>
