@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Flash;
 use Illuminate\Http\Request;
 use Mail;
+use ReCaptcha\ReCaptcha;
 use Validator;
 
 class HomepageController extends Controller
