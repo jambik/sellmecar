@@ -9,7 +9,7 @@
                     @include('partials._errors')
                     @include('partials._status')
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
+                    <form class="form-horizontal" role="form" method="POST" id="form_register" action="{{ url('/auth/register') }}">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
@@ -32,7 +32,17 @@
                             <label class="col-md-4 control-label">Пароль</label>
 
                             <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control zxcvbn" name="password">
+                            </div>
+                        </div>
+
+                        <div class="form-group" id="progress" style="display: none;">
+                            <label class="col-md-4 control-label"></label>
+
+                            <div class="col-md-6">
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                                </div>
                             </div>
                         </div>
 

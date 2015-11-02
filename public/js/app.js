@@ -33,6 +33,21 @@ var DisqusReset = function (newIdentifier, newUrl, newTitle)
 
 $(document).ready(function() {
 
+    if ($('#form_register .zxcvbn'))
+    {
+        $('#form_register .zxcvbn').on('keyup', function() {
+            var scoreClasses = new Array('progress-bar-danger', 'progress-bar-warning', 'progress-bar-info', 'progress-bar-success', 'progress-bar-success');
+            var scoreText    = new Array('очень слабый пароль', 'слабый пароль', 'нормальный пароль', 'хороший пароль', 'очень хороший пароль');
+
+            $('#progress').show();
+            $('#progress .progress-bar').removeClass('progress-bar-danger progress-bar-warning progress-bar-info progress-bar-success');
+            var result = zxcvbn($(this).val());
+
+            $('#progress .progress-bar').addClass(scoreClasses[result.score]);
+            $('#progress .progress-bar').html(scoreText[result.score]);
+        });
+    }
+
     var vm = new Vue({
 
         el: "#body",

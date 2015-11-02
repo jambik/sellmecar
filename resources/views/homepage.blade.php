@@ -154,9 +154,14 @@
                         <span id="emailRequired" class="sr-only">(обязательно)</span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" name="password" placeholder="Пароль" class="form-control" aria-describedby="passwordRequired">
+                        <input type="password" name="password" placeholder="Пароль" class="form-control zxcvbn" aria-describedby="passwordRequired">
                         <span class="glyphicon glyphicon-asterisk form-control-feedback" aria-hidden="true"></span>
                         <span id="passwordRequired" class="sr-only">(обязательно)</span>
+                    </div>
+                    <div class="form-group" id="progress" style="display: none;">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
                     </div>
                     <div class="form-group has-feedback">
                         <input type="password" name="password_confirmation" placeholder="Пароль еще раз" class="form-control" aria-describedby="passwordConfirmationRequired">
@@ -871,4 +876,5 @@
     @include('partials._faq')
     @include('partials._feedback')
 </div>
+@include('partials._footer_scripts')
 @include('partials._footer')

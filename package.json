@@ -1,6 +1,8 @@
 {
   "private": true,
-  "devDependencies": {
+  "dependencies": {
+    "laravel-elixir": "^3.0.0",
+    "bootstrap": "^3.0.0",
     "animate.css": "^3.4.0",
     "bootswatch": "^3.3.5",
     "codemirror": "^5.7.0",
@@ -17,10 +19,7 @@
     "summernote": "^0.6.16",
     "sweetalert": "^1.1.0",
     "tablesorter": "^2.23.5",
-    "vue": "^0.12.14"
-  },
-  "dependencies": {
-    "laravel-elixir": "^3.0.0",
-    "bootstrap": "^3.0.0"
+    "vue": "^0.12.14",
+    "zxcvbn": "^4.1.1"
   }
 }

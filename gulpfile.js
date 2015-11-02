@@ -38,6 +38,7 @@ elixir(function(mix) {
         '../../../node_modules/sweetalert/dist/sweetalert.min.js',
         '../../../node_modules/jquery-mask-plugin/dist/jquery.mask.min.js',
         '../../../node_modules/jquery.inputmask/dist/jquery.inputmask.bundle.js',
+        '../../../node_modules/zxcvbn/dist/zxcvbn.js',
         '../../../bower_components/moment/min/moment-with-locales.min.js',
         '../../../bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         '../../../bower_components/jquery-ui/ui/minified/effect.min.js',

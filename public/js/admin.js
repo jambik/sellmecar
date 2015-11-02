@@ -35,6 +35,7 @@ $(document).ready(function () {
             // filter
             filter_cssFilter   : 'form-control input-sm',
             filter_searchDelay : 0,
+            filter_hideFilters : true,
 
             // zebra
             zebra : ["even", "odd"]
