@@ -16,5 +16,9 @@
 </ul>
 
 <ul class="list-group">
+    <li class="list-group-item"><a href="{{ route('admin.settings') }}"><i class="fa fa-cog"></i> Настройки</a></li>
+</ul>
+
+<ul class="list-group">
     <li class="list-group-item"><a href="{{ route('admin.administrators.index') }}"><i class="fa fa-user-secret"></i> Администраторы</a></li>
 </ul>

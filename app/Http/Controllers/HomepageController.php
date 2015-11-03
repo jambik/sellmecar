@@ -8,6 +8,7 @@ use App\City;
 use App\Faq;
 use App\Inquiry;
 use App\News;
+use App\Settings;
 use Auth;
 use App\Http\Requests;
 use Carbon\Carbon;
@@ -94,12 +95,14 @@ class HomepageController extends Controller
 
         $validator->after(function($validator) use ($request)
         {
-            $recaptcha = new ReCaptcha(env('GOOGLE_RECAPTCHA_SECRET'));
-            $resp = $recaptcha->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
-
-            if ( ! $resp->isSuccess())
+            if (app()->environment() == 'production')
             {
-                $validator->errors()->add('google_recaptcha_error', 'Ошибка reCAPTCHA: '.implode(', ', $resp->getErrorCodes()));
+                $recaptcha = new ReCaptcha(env('GOOGLE_RECAPTCHA_SECRET'));
+                $resp = $recaptcha->verify($request->get('g-recaptcha-response'), $_SERVER['REMOTE_ADDR']);
+
+                if (!$resp->isSuccess()) {
+                    $validator->errors()->add('google_recaptcha_error', 'Ошибка reCAPTCHA: ' . implode(', ', $resp->getErrorCodes()));
+                }
             }
         });
 
@@ -109,8 +112,11 @@ class HomepageController extends Controller
         }
 
         $data = $request->all();
-        Mail::queue(['text' => 'emails.feedback'], ['data' => $data], function ($message) use($data) {
-            $message->to('jambik@gmail.com');
+        $settings = Settings::find(1);
+
+        Mail::queue(['text' => 'emails.feedback'], ['data' => $data], function ($message) use($data, $settings) {
+            $message->from(env('MAIL_ADDRESS'), env('MAIL_NAME'));
+            $message->to(isset($settings->email) ? $settings->email : env('MAIL_ADDRESS'));
             $message->subject('Обратная связь');
         });
 

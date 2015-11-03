@@ -1,15 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
+/* Application routes ----------------------------------------------------------------------------------------------- */
 
 Route::get('/', ['as' => 'homepage', 'uses' => 'HomepageController@homepage']);
 Route::get('/vars', ['as' => 'vars', 'uses' => 'HomepageController@vars']);
@@ -37,15 +28,7 @@ Route::get('carmodels/{id}', 'CarmodelsController@car');
 
 
 
-
-
-
-
-
-
-
-
-## Authentication routes...
+/* Authentication routes -------------------------------------------------------------------------------------------- */
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
@@ -65,12 +48,7 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 
 
 
-
-
-
-
-
-## Social routes
+/* Social routes ---------------------------------------------------------------------------------------------------- */
 Route::get('auth/github', 'Auth\Social\GitHubAuthController@redirectToProvider');
 Route::get('auth/github/callback', 'Auth\Social\GitHubAuthController@handleProviderCallback');
 
@@ -95,15 +73,7 @@ Route::get('auth/google/callback', 'Auth\Social\GoogleAuthController@handleProvi
 
 
 
-
-
-
-
-
-
-
-
-## Admin routes
+/* Admin routes ----------------------------------------------------------------------------------------------------- */
 Route::group(['prefix' => 'admin'], function()
 {
     ## Auth routes
@@ -111,10 +81,13 @@ Route::group(['prefix' => 'admin'], function()
     Route::post('login', 'Admin\Auth\AuthController@postLogin');
     Route::get('logout', ['as' => 'admin.logout', 'uses' =>'Admin\Auth\AuthController@getLogout']);
 
-    ## Admin Models
+    ## Models routes
     Route::group(['middleware' => 'admin'], function()
     {
         Route::get('/', ['as' => 'admin', 'uses' =>'Admin\IndexController@index']);
+
+        Route::get('settings', ['as' => 'admin.settings', 'uses' =>'Admin\SettingsController@index']);
+        Route::post('settings', ['as' => 'admin.settings.save', 'uses' =>'Admin\SettingsController@save']);
 
         Route::resource('inquiries', 'Admin\InquiriesController');
         Route::resource('pages', 'Admin\PagesController');

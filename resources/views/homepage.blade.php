@@ -782,8 +782,10 @@
                         </div>
                     </div>
                     <div class="block-line">город: <div class="value">@{{ item.city.name }}</div></div>
-                    <div>&nbsp;</div>
-                    <a href="#" class="btn btn-block btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                    <div class="hidden-xs">&nbsp;</div>
+                    <div class="visible-xs-block"></div>
+                    <a href="#" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                    <a href="#" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
                 </div>
             </div>
         </div>
