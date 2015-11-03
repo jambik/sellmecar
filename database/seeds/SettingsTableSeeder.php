@@ -16,7 +16,7 @@ class SettingsTableSeeder extends Seeder
 
         $settings = new Settings();
         $settings->email       = 'jambik@gmail.com';
-        $settings->description = 'Описание сайта';
+        $settings->description = 'Уникальность нашего сайта состоит в том, что покупатель выставляет свое объявление, а продавец автомобиля ищет именно то, объявление, где есть сходство с его автомобилем!';
         $settings->save();
     }
 }
