@@ -54,9 +54,9 @@
                                 <div><a href="#" class="toggle"><i class="fa fa-bars"></i> характеристики</a></div>
                             @endif
                         </td>
-                        <td>{{ $item->created_at }}</td>
-                        <td><a href="{{ route('admin.inquiries.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
-                        <td>
+                        <td{!! $item->carinfo ? ' rowspan="2"' : '' !!}>{{ $item->created_at }}</td>
+                        <td{!! $item->carinfo ? ' rowspan="2"' : '' !!}><a href="{{ route('admin.inquiries.edit', $item->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a></td>
+                        <td{!! $item->carinfo ? ' rowspan="2"' : '' !!}>
                             {!! Form::open(['url' => route('admin.inquiries.destroy', $item->id), 'method' => 'DELETE']) !!}
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Вы действительно хотите удалить запись #{{ $item->id }}');"><i class="fa fa-remove"></i></button>
                             {!! Form::close() !!}
@@ -78,7 +78,6 @@
                                     {!! $item->carinfo->owners ? '<li>Количество хозяев по ПТС: <span>'.config('vars.car_info.owners')[$item->carinfo->owners].'</span></li>' : '' !!}
                                 </ul>
                             </td>
-                            <td colspan="3">&nbsp;</td>
                         </tr>
                     @endif
                 @endforeach
