@@ -21,10 +21,10 @@
                             <label>E-mail:</label>
                             <input type="email" name="email" class="form-control" v-model="user.email">
                         </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6">
+                        {{--<div class="form-group col-lg-6 col-md-6 col-sm-6">
                             <label>Аватарка:</label>
                             <input type="file" name="avatar" class="form-control">
-                        </div>
+                        </div>--}}
                     </div>
                 </div>
                 <div class="modal-footer">
