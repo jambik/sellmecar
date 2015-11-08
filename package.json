@@ -20,6 +20,7 @@
     "sweetalert": "^1.1.0",
     "tablesorter": "^2.23.5",
     "vue": "^0.12.14",
-    "zxcvbn": "^4.1.1"
+    "zxcvbn": "^4.1.1",
+    "cropper": "^1.0.0"
   }
 }

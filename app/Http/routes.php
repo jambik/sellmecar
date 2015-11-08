@@ -67,6 +67,9 @@ Route::get('auth/yandex/callback', 'Auth\Social\YandexAuthController@handleProvi
 Route::get('auth/odnoklassniki', 'Auth\Social\OdnoklassnikiAuthController@redirectToProvider');
 Route::get('auth/odnoklassniki/callback', 'Auth\Social\OdnoklassnikiAuthController@handleProviderCallback');
 
+Route::get('auth/mailru', 'Auth\Social\MailRuAuthController@redirectToProvider');
+Route::get('auth/mailru/callback', 'Auth\Social\MailRuAuthController@handleProviderCallback');
+
 Route::get('auth/google', 'Auth\Social\GoogleAuthController@redirectToProvider');
 Route::get('auth/google/callback', 'Auth\Social\GoogleAuthController@handleProviderCallback');
 
