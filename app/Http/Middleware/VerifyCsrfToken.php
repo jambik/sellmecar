@@ -15,10 +15,11 @@ class VerifyCsrfToken extends BaseVerifier
         '/',
         '/vars',
         '/profile/*',
+        '/avatar/*',
         '/inquiry/*',
         '/news/*',
         '/page/*',
-        'metro/*',
-        'carmodels/*',
+        '/metro/*',
+        '/carmodels/*',
     ];
 }

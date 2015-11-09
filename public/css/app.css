@@ -29,6 +29,15 @@ nav .user-links { padding: 8px 0 0 15px; }
 nav .user-links img { height: 30px; width: 30px; border-radius: 3px; }
 .navbar-default .navbar-toggle .icon-bar { background-color: #0055aa; }
 
+.avatar-wrapper { height: 300px; width: 100%; margin-top: 15px; box-shadow: inset 0 0 5px rgba(0,0,0,.25); background-color: #fcfcfc; overflow: hidden; }
+.avatar-wrapper img { display: block; height: auto; max-width: 100%; }
+.avatar-preview { margin-top: 15px; border: 1px solid #eee; border-radius: 4px; background-color: #fff; overflow: hidden; }
+.avatar-preview:hover { border-color: #ccf; box-shadow: 0 0 5px rgba(0,0,0,.15); }
+.avatar-preview img { width: 100%; }
+.preview-lg { height: 164px; width: 164px; margin-top: 15px; }
+.preview-md { height: 100px; width: 100px; }
+.preview-sm { height: 50px; width: 50px; }
+
 #section_apply { background: #323e65 url("../img/section-1.jpg") top center no-repeat; }
 #section_apply .container { background: rgba(73,131,178,0.7); border-radius: 10px; min-height: 520px; }
 #section_apply label { color: #fff; text-shadow: 1px 1px 2px #555; }

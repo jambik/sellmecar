@@ -14,6 +14,7 @@ use App\Http\Requests;
 use Carbon\Carbon;
 use Flash;
 use Illuminate\Http\Request;
+use Image;
 use Mail;
 use ReCaptcha\ReCaptcha;
 use Validator;
@@ -72,6 +73,52 @@ class HomepageController extends Controller
         }
 
         Flash::success("Профиль сохранён");
+        return redirect('/');
+    }
+
+    public function avatarSave(Request $request)
+    {
+        $user = Auth::user();
+
+        if ($request->hasFile('avatar_file'))
+        {
+            $imageName = strtolower(class_basename($user)) . '-' . $user->id;
+            $imageExtension = strtolower($request->file('avatar_file')->getClientOriginalExtension());
+
+            $file = $request->file('avatar_file')->move($user->imagePath(), $imageName . "." . $imageExtension);
+            $img = Image::make($file);
+
+            $data = $request->has('avatar_data') ? json_decode(stripslashes($request->input('avatar_data'))) : false;
+
+            if ($data)
+            {
+                $img->crop(intval($data->width), intval($data->height), intval($data->x), intval($data->y))->resize(100, 100)->save();
+            }
+
+            $user->avatar = "/images/original/users/".$img->basename;
+            $user->save();
+
+            if($request->ajax())
+            {
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'Аватарка сохранена',
+                    'avatar' => $user->avatar
+                ]);
+            }
+
+            Flash::success("Аватарка сохранена");
+            return redirect('/');
+        }
+
+        if($request->ajax())
+        {
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Аватарка не загружена'
+            ]);
+        }
+
         return redirect('/');
     }
 

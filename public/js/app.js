@@ -138,6 +138,110 @@ $(document).ready(function() {
                 });
             },
 
+            avatarSelect: function()
+            {
+                $('#avatar_file').click();
+            },
+
+            avatarSelected: function()
+            {
+                var file = $('#avatar_file').get(0).files[0];
+
+                URL.revokeObjectURL(file.url); // Revoke the old one
+                this.startCropper(file);
+
+                $('#avatar_cropper').show();
+                $('#avatar_current').hide();
+            },
+
+            cancelAvatarUpload: function()
+            {
+                URL.revokeObjectURL($('#avatar_file').get(0).files[0].url); // Revoke the old one
+
+                $('#avatar_cropper').hide();
+                $('#avatar_current').show();
+            },
+
+            avatarUpload: function()
+            {
+                var uploadStatus = $('#form_profile').find('.upload-status');
+                var uploadButton = $('#form_profile').find('.upload-button');
+
+                var data = new FormData();
+                data.append("avatar_data", $('#avatar_data').val());
+                data.append("avatar_file", $('#avatar_file').get(0).files[0]);
+                data.append("_token", $('#form_profile input[name=_token]').val());
+
+                $.ajax({
+                    url: $('#avatar_cropper').data('uploadUrl'),
+                    type: 'post',
+                    data: data,
+                    dataType: 'json',
+                    processData: false,
+                    contentType: false,
+
+                    beforeSend: function ()
+                    {
+                        console.log('before send');
+                        if (uploadStatus.length) uploadStatus.html('');
+                        if (uploadButton.length) uploadButton.append(' <i class="fa fa-spinner fa-spin"></i>').prop('disabled', true);
+                    },
+                    success: function (data)
+                    {
+                        console.log('success');
+                        console.log(data);
+                        if (data.status == 'success')
+                        {
+                            $('#avatar_current .avatar-view img').prop('src', data.avatar + '?' + moment().format('x'));
+                            if (uploadStatus.length) uploadStatus.html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + data.message + "</div>");
+                        }
+                        else
+                        {
+                            if (uploadStatus.length) uploadStatus.html("<div class='alert alert-danger'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + data.message + "</div>");
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown)
+                    {
+                        console.log(textStatus);
+                        console.log(errorThrown);
+                    },
+                    complete: function ()
+                    {
+                        console.log('complete');
+
+                        URL.revokeObjectURL($('#avatar_file').get(0).files[0].url); // Revoke the old one
+
+                        uploadButton.prop('disabled', false).find('i.fa-spin').remove();
+
+                        $('#avatar_cropper').hide();
+                        $('#avatar_current').show();
+                    }
+                });
+            },
+
+            startCropper: function(file)
+            {
+                var $img = $('<img src="' + URL.createObjectURL(file) + '">');
+                $('#avatar_wrapper').empty().html($img);
+
+                $img.cropper({
+                    aspectRatio: 1,
+                    preview: $('.avatar-preview').selector,
+                    strict: true,
+                    guides: false,
+                    crop: function (e) {
+                        var json = [
+                            '{"x":' + e.x,
+                            '"y":' + e.y,
+                            '"height":' + e.height,
+                            '"width":' + e.width,
+                            '"rotate":' + e.rotate + '}'
+                        ].join();
+                        $('#avatar_data').val(json);
+                    }
+                });
+            },
+
             selectCar: function(id)
             {
                 var element = $("#brand_icon_"+id);

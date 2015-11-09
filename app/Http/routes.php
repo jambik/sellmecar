@@ -8,6 +8,7 @@ Route::post('/feedback', ['as' => 'feedbackSave', 'uses' => 'HomepageController@
 
 Route::get('/profile', ['as' => 'profile', 'uses' => 'HomepageController@profile']);
 Route::post('/profile/save', ['as' => 'profileSave', 'uses' => 'HomepageController@profileSave']);
+Route::post('/avatar/save', ['as' => 'avatarSave', 'uses' => 'HomepageController@avatarSave']);
 
 Route::get('/inquiry/index', ['as' => 'inquiries', 'uses' => 'InquiriesController@index']);
 Route::get('/inquiry/private', ['as' => 'inquiriesPrivate', 'uses' => 'InquiriesController@privateIndex']);

@@ -76,4 +76,10 @@ class User extends Model implements AuthenticatableContract,
             $user->save();
         }
     }
+
+    public function imagePath()
+    {
+        return storage_path('images').DIRECTORY_SEPARATOR.$this->getTable();
+    }
+
 }
