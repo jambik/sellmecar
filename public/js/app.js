@@ -193,6 +193,7 @@ $(document).ready(function() {
                         if (data.status == 'success')
                         {
                             $('#avatar_current .avatar-view img').prop('src', data.avatar + '?' + moment().format('x'));
+                            $('#dropdownUser img').prop('src', data.avatar + '?' + moment().format('x'));
                             if (uploadStatus.length) uploadStatus.html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + data.message + "</div>");
                         }
                         else
@@ -553,6 +554,8 @@ $(document).ready(function() {
             profileSaveSuccess: function (data) // Функция обработчик успешного обновления профиля
             {
                 console.log(data);
+
+                if ( $('#avatar_file').get(0).files[0].url ) $('#form_profile .upload-button').click();
 
                 if(data.status == "success")
                 {
