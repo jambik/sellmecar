@@ -164,16 +164,16 @@ $(document).ready(function() {
 
             avatarUpload: function()
             {
-                var uploadStatus = $('#form_profile').find('.upload-status');
-                var uploadButton = $('#form_profile').find('.upload-button');
+                var uploadStatus = $('#form_avatar').find('.form-status');
+                var uploadButton = $('#form_avatar').find('.form-button');
 
                 var data = new FormData();
                 data.append("avatar_data", $('#avatar_data').val());
                 data.append("avatar_file", $('#avatar_file').get(0).files[0]);
-                data.append("_token", $('#form_profile input[name=_token]').val());
+                data.append("_token", $('#form_avatar input[name=_token]').val());
 
                 $.ajax({
-                    url: $('#avatar_cropper').data('uploadUrl'),
+                    url: $('#form_avatar').prop('action'),
                     type: 'post',
                     data: data,
                     dataType: 'json',
@@ -554,8 +554,6 @@ $(document).ready(function() {
             profileSaveSuccess: function (data) // Функция обработчик успешного обновления профиля
             {
                 console.log(data);
-
-                if ( $('#avatar_file').get(0).files[0].url ) $('#form_profile .upload-button').click();
 
                 if(data.status == "success")
                 {
