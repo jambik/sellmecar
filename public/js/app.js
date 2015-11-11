@@ -145,10 +145,7 @@ $(document).ready(function() {
 
             avatarSelected: function()
             {
-                var file = $('#avatar_file').get(0).files[0];
-
-                URL.revokeObjectURL(file.url); // Revoke the old one
-                this.startCropper(file);
+                this.startCropper($('#avatar_file').get(0).files[0]);
 
                 $('#avatar_cropper').show();
                 $('#avatar_current').hide();
@@ -195,6 +192,7 @@ $(document).ready(function() {
                             $('#avatar_current .avatar-view img').prop('src', data.avatar + '?' + moment().format('x'));
                             $('#dropdownUser img').prop('src', data.avatar + '?' + moment().format('x'));
                             if (uploadStatus.length) uploadStatus.html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>" + data.message + "</div>");
+                            URL.revokeObjectURL($('#avatar_file').get(0).files[0].url); // Revoke the old one
                         }
                         else
                         {
