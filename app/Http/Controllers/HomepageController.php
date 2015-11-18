@@ -42,6 +42,7 @@ class HomepageController extends Controller
         $blocks = Block::all()->keyBy('alias');
         $faq = Faq::all();
 
+
         return view('homepage', compact('user', 'cars', 'carsList', 'lastInquiries', 'lastNews', 'cities', 'blocks', 'faq'));
     }
 
