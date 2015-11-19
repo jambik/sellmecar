@@ -15,7 +15,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::paginate(config('vars.news_per_page'));
+        $news = News::orderBy('published_at', 'desc')->paginate(config('vars.news_per_page'));
 
         return response()->json($news);
     }

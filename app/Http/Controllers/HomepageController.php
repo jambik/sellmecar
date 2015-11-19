@@ -29,11 +29,11 @@ class HomepageController extends Controller
         $cars = $cars1->merge($cars2);
         $carsList = $cars->lists('name', 'id')->toArray();
 
-        $lastInquiries = Inquiry::with('car', 'city')->paginate(config('vars.inquiries_per_page'));
+        $lastInquiries = Inquiry::with('car', 'city')->orderBy('created_at', 'desc')->paginate(config('vars.inquiries_per_page'));
         $lastInquiries->setPath('inquiry/index');
 
         Carbon::setLocale(config('app.locale'));
-        $lastNews = News::paginate(config('vars.news_per_page'));
+        $lastNews = News::orderBy('published_at', 'desc')->paginate(config('vars.news_per_page'));
         $lastNews->setPath('news/index');
 
         $cities = City::lists('name', 'id')->all();

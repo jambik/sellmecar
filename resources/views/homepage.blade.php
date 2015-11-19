@@ -758,8 +758,8 @@
                         <div class="block-line">город: <div class="value">{{ $item->city->name }}</div></div>
                         <div class="hidden-xs">&nbsp;</div>
                         <div class="visible-xs-block"></div>
-                        <a href="#" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
-                        <a href="#" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
+                        <a href="#!inquiry={{ $item->id }}" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                        <a href="#!inquiry={{ $item->id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
                     </div>
                 </div>
             @endforeach
@@ -784,8 +784,8 @@
                     <div class="block-line">город: <div class="value">@{{ item.city.name }}</div></div>
                     <div class="hidden-xs">&nbsp;</div>
                     <div class="visible-xs-block"></div>
-                    <a href="#" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
-                    <a href="#" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
+                    <a href="#!inquiry=@{{ item.id }}" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
+                    <a href="#!inquiry=@{{ item.id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
                 </div>
             </div>
         </div>
@@ -813,7 +813,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 news-item" data-news-id="{{ $item->id }}">
                     <div class="news-block">
                         <div class="news-date">{{ $item->published_at->diffForHumans() }}</div>
-                        <div class="news-title"><a href="#" v-on="click: showNews($event)">{{ $item->title }}</a></div>
+                        <div class="news-title"><a href="#!news={{ $item->id }}" v-on="click: showNews($event)">{{ $item->title }}</a></div>
                         <div class="news-icon">@if($item->image) <img src='/images/small/{{ $item->img_url.$item->image }}'> @else <img src='/img/noimg.png'> @endif</div>
                     </div>
                 </div>
@@ -821,7 +821,7 @@
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 news-item" data-news-id="@{{ item.id }}" v-repeat="item in newsLoaded" v-transition="bounceIn">
                 <div class="news-block">
                     <div class="news-date">@{{ item.published_at }}</div>
-                    <div class="news-title"><a href="#" v-on="click: showNews($event)">@{{ item.title }}</a></div>
+                    <div class="news-title"><a href="#!news=@{{ item.id }}" v-on="click: showNews($event)">@{{ item.title }}</a></div>
                     <div class="news-icon"><img v-attr='src: "/images/small/" + item.img_url + item.image'></div>
                 </div>
             </div>

@@ -7,7 +7,8 @@
             </div>
             <div class="modal-body">
                 <div class="inquiry-show">
-                    <p class="text-uppercase text-center text-l">Параметры автомобиля:</p>
+                    <p class="lead text-center">Куплю Автомобиль</p>
+                    <p class="text-uppercase text-center">Параметры автомобиля:</p>
                     <dl class="dl-horizontal">
                         <dt>Марка</dt>
                         <dd>@{{ inquiryShow.car.name }}</dd>
@@ -28,6 +29,9 @@
                             <span v-if="inquiryShow.price_to > 0">до @{{ inquiryShow.price_to_formatted }} ₽</span>
                             <span v-if="inquiryShow.price_from == 0 && inquiryShow.price_to == 0">-</span>
                         </dd>
+
+                        <dt v-if="inquiryShow.information">Пожелания</dt>
+                        <dd v-if="inquiryShow.information"><span>@{{ inquiryShow.information }}</span></dd>
 
                         <div v-if="inquiryShow.carinfo">
                             <div>&nbsp;</div>
@@ -65,7 +69,7 @@
                         </div>
                     </dl>
                     <hr>
-                    <p class="text-uppercase text-center text-l">Пользователь:</p>
+                    <p class="text-uppercase text-center">Пользователь:</p>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <img v-attr="src: inquiryShow.user.avatar" class="data-avatar">
