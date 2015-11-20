@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="inquiryShowModalLabel"><i class="fa fa-list"></i> Объявление номер: @{{ inquiryShow.id }}</h4>
+                <h4 class="modal-title" id="inquiryShowModalLabel"><i class="fa fa-list"></i> Объявление #@{{ inquiryShow.id }} на покупку автомобиля </h4>
             </div>
             <div class="modal-body">
                 <div class="inquiry-show">
@@ -72,12 +72,12 @@
                     <p class="text-uppercase text-center">Пользователь:</p>
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-sm-6">
-                            <img v-attr="src: inquiryShow.user.avatar" class="data-avatar">
+                            <img v-attr="src: inquiryShow.user.avatar ? inquiryShow.user.avatar : '/img/avatar.png'" class="data-avatar">
                             <span>@{{ inquiryShow.user.name }}</span>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div v-if="inquiryShow.user.email"><i class="fa fa-envelope"></i> : @{{ inquiryShow.user.email }}</div>
-                            <div v-if="inquiryShow.user.phone"><i class="fa fa-phone"></i> : @{{ inquiryShow.user.phone }}</div>
+                            <div v-if="inquiryShow.phone || inquiryShow.user.phone"><i class="fa fa-phone"></i> : @{{ inquiryShow.phone ? inquiryShow.phone : inquiryShow.user.phone }}</div>
                             <div>
                                 <i class="fa fa-globe"></i> : @{{ inquiryShow.city.name }}<span v-if="inquiryShow.metro">, метро @{{ inquiryShow.metro }}</span><span v-if="inquiryShow.street">, ул. @{{ inquiryShow.street }}</span>
                             </div>

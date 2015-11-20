@@ -60,7 +60,7 @@ nav .user-links img { height: 30px; width: 30px; border-radius: 3px; }
 .brands .car-image { width: 50px; height: 50px; display: inline-block; }
 .brands .brand-item { text-align: center; margin: 0 0 40px 0; cursor: pointer; }
 .brands .brand-icon { border: 1px solid rgba(0, 0, 0, 0); }
-.brands .active .brand-icon { background: #ffb; border-radius: 5px; border: 1px solid #bbb; }
+.brands .active .brand-icon { background: #fff; border-radius: 5px; border: 1px solid #ccc; box-shadow: 2px 2px 3px 1px #7294A5; }
 .brands .brand-name { font-weight: bolder; font-size: 12.5px; height: 24px; overflow: hidden; }
 .brands label { cursor: pointer; }
 .brands span { color: #c7254e; }
