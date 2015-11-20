@@ -703,7 +703,7 @@ $(document).ready(function() {
                 digits: 0,
                 digitsOptional: false,
                 suffix: ' ₽',
-                /*rightAlign: false,*/
+                rightAlign: false,
                 autoUnmask: true
             });
 

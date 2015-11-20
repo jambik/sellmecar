@@ -750,7 +750,7 @@
         <div class="row">
             @foreach ($lastInquiries as $item)
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                    <div class="inquiry-block inquiry-item" data-inquiry-id="{{ $item->id }}">
+                    <div class="inquiry-block inquiry-item" data-inquiry-id="{{ $item->id }}" v-on="click: showInquiry($event)">
                         @if($item->car->image)<div class="car-image"><img src='/images/xsmall/{{ $item->car->img_url.$item->car->image }}'></div>@endif
                         <div class="text-uppercase text-l">Куплю:</div>
                         <div class="block-line">автомобиль: <div class="value">{{ $item->car->name }}{{ $item->model ? ', '.$item->model : '' }}</div></div>
@@ -758,13 +758,13 @@
                         <div class="block-line">город: <div class="value">{{ $item->city->name }}</div></div>
                         <div class="hidden-xs">&nbsp;</div>
                         <div class="visible-xs-block"></div>
-                        <a href="#!inquiry={{ $item->id }}" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
-                        <a href="#!inquiry={{ $item->id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
+                        <a href="#!inquiry={{ $item->id }}" class="hidden-xs btn btn-success">Подробнее</a>
+                        {{--<a href="#!inquiry={{ $item->id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>--}}
                     </div>
                 </div>
             @endforeach
             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" v-repeat="item in inquiriesLoaded" v-transition="bounceIn">
-                <div class="inquiry-block inquiry-item" data-inquiry-id="@{{ item.id }}">
+                <div class="inquiry-block inquiry-item" data-inquiry-id="@{{ item.id }}" v-on="click: showInquiry($event)">
                     <div class="car-image" v-if="item.car.image"><img v-attr='src: "/images/xsmall/" + item.car.img_url + item.car.image'></div>
                     <div class="text-uppercase text-l">Куплю:</div>
                     <div class="block-line">
@@ -784,8 +784,8 @@
                     <div class="block-line">город: <div class="value">@{{ item.city.name }}</div></div>
                     <div class="hidden-xs">&nbsp;</div>
                     <div class="visible-xs-block"></div>
-                    <a href="#!inquiry=@{{ item.id }}" class="hidden-xs btn btn-success" v-on="click: showInquiry($event)">Подробнее</a>
-                    <a href="#!inquiry=@{{ item.id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>
+                    <a href="#!inquiry=@{{ item.id }}" class="hidden-xs btn btn-success">Подробнее</a>
+                    {{--<a href="#!inquiry=@{{ item.id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>--}}
                 </div>
             </div>
         </div>

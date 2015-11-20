@@ -78,7 +78,7 @@ ul.search-filters li span { color: #80001c; border-bottom: 1px dashed }
 
 #section_inquiries { background: #262628 url("../img/section-2.jpg") top center no-repeat; }
 #section_inquiries .container { background: rgba(73,131,178,0.7); border-radius: 10px; }
-.inquiry-block { text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 290px; }
+.inquiry-block { cursor: pointer; text-align: center; border-radius: 10px; padding: 20px; margin: 0 0 30px 0; background: rgba(255,255,255,0.8); min-height: 290px; }
 .inquiry-block .car-image { height: 50px; text-align: center; }
 .block-line { margin: 0 0 2px 0; }
 .block-line .value { color: #c7254e; }
