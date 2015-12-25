@@ -148,6 +148,7 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .navbar-brand { max-width: 200px; height: 68px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     .text-about { padding: 0 5%; }
+    .card-inner { min-height: auto; background-image: none; text-align: left; }
     #section_apply .container { min-height: 50px; }
     .text-xxl { font-size: 22px; }
     .info-link { margin-top: 0; }
@@ -170,6 +171,7 @@ footer .footer-inner { background: rgba(17,45,59,0.7); border-radius: 10px; }
     nav .slogan { font-size: 11px; margin-top: 5px; }
     nav .user-links { padding-left: 15px; }
     .text-about { padding: 0 5%; }
+    .card-inner { min-height: auto; background-image: none; text-align: left; }
     #section_apply .container { min-height: 50px; }
     .info-link { margin-top: 0; }
     .inquiry-block { text-align: left; border-radius: 10px; padding: 10px; margin: 0 0 15px 0; background: rgba(255,255,255,0.8); min-height: 50px; }

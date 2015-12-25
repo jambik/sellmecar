@@ -14,6 +14,7 @@
                             <th>Цена</th>
                             <th>Доп. информация</th>
                             <th>&nbsp;</th>
+                            <th>&nbsp;</th>
                         </tr>
                         <tr v-repeat="item in inquiries">
                             <td>
@@ -35,7 +36,10 @@
                                 <span v-if="! item.information">-</span>
                             </td>
                             <td>
-                                <button class="btn btn-danger btn-sm" v-on="click: inquiryDelete(item)"><i class="fa fa-trash"></i></button>
+                                <button class="btn btn-primary btn-sm" title="Редактировать объявление" v-on="click: inquiryDelete(item)"><i class="fa fa-pencil-square-o"></i></button>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" title="Удалить объявление" v-on="click: inquiryDelete(item)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     </table>

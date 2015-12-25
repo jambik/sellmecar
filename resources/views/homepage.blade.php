@@ -80,36 +80,36 @@
 
     {{--Шаг 0: Баннер--}}
     <div class="container" id="container_step0" style="display: {{ !Request::has('step') || Request::get('step') == 0 ? 'block' : 'none' }};">
+        <div>&nbsp;</div>
+        <div class="text-light text-xl text-shadow text-center text-uppercase">Как дать объявление на покупку автомобиля</div>
+        <div>&nbsp;</div>
         <div class="hidden-xs">&nbsp;</div>
-        <div class="text-light text-xl text-shadow text-center hidden-xs text-uppercase">Как дать объявление на покупку автомобиля</div>
-        <div class="hidden-xs">&nbsp;</div>
-        <div class="hidden-xs">&nbsp;</div>
-        <div class="row hidden-xs">
+        <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="card" v-on="click: showCard(1)">
                     <div class="card-inner step-1">
-                        <div>Регистрация на сайте</div>
+                        <div><strong class="visible-xs-block">Шаг 1. </strong>Регистрация на сайте</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="card" v-on="click: showCard(2)">
                     <div class="card-inner step-2">
-                        <div>Какое авто хочу купить</div>
+                        <div><strong class="visible-xs-block">Шаг 2. </strong>Какое авто хочу купить</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="card" v-on="click: showCard(3)">
                     <div class="card-inner step-3">
-                        <div>Продавец авто приедет к вам сам на осмотр</div>
+                        <div><strong class="visible-xs-block">Шаг 3. </strong>Продавец авто приедет к вам сам на осмотр</div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="card" v-on="click: showCard(4)">
                     <div class="card-inner step-4">
-                        <div>Вы новый хозяин авто</div>
+                        <div><strong class="visible-xs-block">Шаг 4. </strong>Вы новый хозяин авто</div>
                     </div>
                 </div>
             </div>
