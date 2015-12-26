@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Car;
 use App\Carinfo;
+use App\City;
 use App\Inquiry;
 use App\User;
 use Auth;
@@ -209,6 +211,16 @@ class InquiriesController extends Controller
         return $inquiry;
     }
 
+    public function form($id, Request $request)
+    {
+        $item = Inquiry::with('carinfo')->findOrFail($id);
+        $cars = Car::lists('name', 'id')->all();
+        $cities = City::lists('name', 'id')->all();
+        foreach (config('vars.car_info.color') as $key => $value) $colors[$key] = $value['name'];
+
+        return view('partials._inquiry_form', compact('item', 'cars', 'cities', 'colors'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -229,7 +241,75 @@ class InquiriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'car_id' => 'required',
+            'city_id' => 'required',
+            'name' => 'required',
+            'phone' => 'required|min:7',
+        ];
+
+        $messages = [
+            'car_id.required' => 'Выберите марку автомобиля',
+            'city_id.required' => 'Выберите город',
+            'name.required' => 'Укажите свое имя',
+            'phone.required' => 'Укажите свой номер телефона',
+            'phone.min' => 'Укажите свой номер телефона',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        $validator->after(function($validator) use ($request)
+        {
+            if ($request->get('price_to') && $request->get('price_from') > $request->get('price_to'))
+            {
+                $validator->errors()->add('price_invalid', 'Значение "Цена, от" не может быть больше значения "Цена, до"');
+            }
+
+            if ($request->get('year_to') && $request->get('year_from') > $request->get('year_to'))
+            {
+                $validator->errors()->add('year_invalid', 'Значение "Год выпуска, от" не может быть больше значения "Год выпуска, до"');
+            }
+        });
+
+        if ($validator->fails())
+        {
+            $this->throwValidationException($request, $validator);
+        }
+
+        $item = Inquiry::findOrFail($id);
+
+        $item->update($request->all());
+
+        if ($request->has('carinfo'))
+        {
+            $carinfoFilled = false;
+            foreach($request->get('carinfo') as $value) if ($value) { $carinfoFilled = true; break; }
+            if ($carinfoFilled)
+            {
+                $carinfo = Carinfo::where('inquiry_id', $id)->first() ?: new Carinfo;
+                $carinfo->fill($request->get('carinfo'));
+                $item->carinfo()->save($carinfo);
+            }
+            else
+            {
+                $item->carinfo()->delete();
+            }
+        }
+
+        if($request->ajax())
+        {
+            $inquiry = Inquiry::with('car', 'carinfo', 'city')->findOrFail($item->id);
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Объявление сохранено',
+                'inquiry' => $inquiry
+            ]);
+        }
+
+        Flash::success("Запись - {$id} обновлена");
+
+        return redirect()->back();
     }
 
     /**

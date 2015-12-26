@@ -1,0 +1,145 @@
+{!! Form::model($item, ['url' => route('inquiryFormUpdate', $item->id), 'method' => 'PUT', 'files' => true]) !!}
+    <div class="form-status" data-error-text="Объявление не может быть обновлено, из-за следующих ошибок:"></div>
+    <h3 class="text-center">Объявление #{{ $item->id }}</h3>
+    <div>&nbsp;</div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('car_id', 'Автомобиль:') !!}
+                {!! Form::select('car_id', $cars, null, ['class' => 'form-control']) !!}
+            </div>
+            <div class="form-group">
+                {!! Form::label('model', 'Модель:') !!}
+                {!! Form::text('model', null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('year_from', 'Год - c:') !!}
+                    {!! Form::text('year_from', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('year_to', 'Год - по:') !!}
+                    {!! Form::text('year_to', null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('price_from', 'Цена - от:') !!}
+                    {!! Form::text('price_from', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('price_to', 'Цена - до:') !!}
+                    {!! Form::text('price_to', null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="form-group">
+                {!! Form::label('city_id', 'Город:') !!}
+                {!! Form::select('city_id', $cities, null, ['class' => 'form-control']) !!}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('metro', 'Метро:') !!}
+                    {!! Form::text('metro', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('street', 'Улица:') !!}
+                    {!! Form::text('street', null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('name', 'Имя:') !!}
+                    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('phone', 'Телефон:') !!}
+                    {!! Form::text('phone', null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('information', 'Дополнительная информация:') !!}
+                {!! Form::textarea('information', null, ['class' => 'form-control', 'rows' => 3]) !!}
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <h4 class="text-center">Расришенная информация</h4>
+    <div>&nbsp;</div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[gear]', 'Привод:') !!}
+                    {!! Form::select('carinfo[gear]', ['0' => '- Привод -'] + config('vars.car_info.gear'), null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[transmission]', 'Трансмиссия:') !!}
+                    {!! Form::select('carinfo[transmission]', ['0' => '- Трансмиссия -'] + config('vars.car_info.transmission'), null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[engine]', 'Тип двигателя:') !!}
+                    {!! Form::select('carinfo[engine]', ['0' => '- Тип двигателя -'] + config('vars.car_info.engine'), null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[rudder]', 'Руль:') !!}
+                    {!! Form::select('carinfo[rudder]', ['0' => '- Руль -'] + config('vars.car_info.rudder'), null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[color]', 'Цвет:') !!}
+                    {!! Form::select('carinfo[color]', ['0' => '- Цвет -'] + $colors, null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[run]', 'Пробег до, км:') !!}
+                    {!! Form::text('carinfo[run]', null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[capacity_from]', 'Объем двигателя от, л.:') !!}
+                    {!! Form::select('carinfo[capacity_from]', ['0' => '- Объем двигателя от -'] + config('vars.car_info.capacity'), null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[capacity_to]', 'Объем двигателя до, л.:') !!}
+                    {!! Form::select('carinfo[capacity_to]', ['0' => '- Объем двигателя до -'] + config('vars.car_info.capacity'), null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[state]', 'Состояние авто:') !!}
+                    {!! Form::select('carinfo[state]', ['0' => '- Состояние авто -'] + config('vars.car_info.state'), null, ['class' => 'form-control']) !!}
+                </div>
+                <div class="form-group col-lg-6">
+                    {!! Form::label('carinfo[owners]', 'Количество хозяев по ПТС:') !!}
+                    {!! Form::select('carinfo[owners]', ['0' => '- Привод -'] + config('vars.car_info.owners'), null, ['class' => 'form-control']) !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <div class="row">
+        <div class="form-group text-center">
+            <button class="btn btn-primary form-button">Сохранить</button>
+            <button class="btn btn-default" onclick="event.preventDefault(); hideInquiryForm()">Отмена</button>
+        </div>
+    </div>
+{!! Form::close() !!}

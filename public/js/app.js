@@ -19,6 +19,12 @@ function initializeSelect2()
     });
 }
 
+function hideInquiryForm()
+{
+    $('#inquiry_form_block').html('');
+    $("#table_inquiries").effect('slide', { direction: 'right', mode: 'show' }, 300);
+}
+
 var DisqusReset = function (newIdentifier, newUrl, newTitle)
 {
     DISQUS.reset({
@@ -491,6 +497,29 @@ $(document).ready(function() {
                     this.inquiries = data.inquiries ? data.inquiries : false;
                 }.bind(this))
                 .fail(function() {
+                    sweetAlert("", "Ошибка при запросе к серсеру", 'error');
+                });
+            },
+
+            inquiryFormSave: function(data)
+            {
+                $('#inquiry_form_block').html('');
+                $("#table_inquiries").effect('slide', { direction: 'right', mode: 'show' }, 300);
+                $('#inquiriesModal .table-status').html("<div class='alert alert-success'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button><div>Обхъявление #" + data.inquiry.id + " обновлено</div><ul>");
+            },
+
+            // Функция обработчик редактирования объявления
+            inquiryForm: function (inquiry)
+            {
+                $.get('/inquiry/form/' + inquiry.id, function (data) {
+                    $("#table_inquiries").effect('slide', { direction: 'left', mode: 'hide' }, 300, function() {
+                        $('#inquiry_form_block').html(data);
+                        $('#inquiry_form_block form').on('submit', function(e) {
+                            this.ajaxFormSubmit(e, this.inquiryFormSave);
+                        }.bind(this));
+                    }.bind(this));
+                }.bind(this))
+                .fail(function () {
                     sweetAlert("", "Ошибка при запросе к серсеру", 'error');
                 });
             },

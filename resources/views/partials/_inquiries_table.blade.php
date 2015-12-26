@@ -6,9 +6,11 @@
                 <h4 class="modal-title" id="inquiriesModalLabel"><i class="fa fa-list"></i> Ваши объявления</h4>
             </div>
             <div class="modal-body">
-                <div class="table-responsive">
+                <div class="table-status"></div>
+                <div class="table-responsive" id="table_inquiries">
                     <table class="table table-bordered table-condensed table-striped" v-if="inquiries.length">
                         <tr>
+                            <th>#</th>
                             <th>Автомобиль</th>
                             <th>Года</th>
                             <th>Цена</th>
@@ -17,6 +19,9 @@
                             <th>&nbsp;</th>
                         </tr>
                         <tr v-repeat="item in inquiries">
+                            <td>
+                                <span>@{{ item.id }}</span>
+                            </td>
                             <td>
                                 <span>@{{ item.car.name }}</span>
                                 <span v-if="item.model">, @{{ item.model }}</span>
@@ -36,13 +41,16 @@
                                 <span v-if="! item.information">-</span>
                             </td>
                             <td>
-                                <button class="btn btn-primary btn-sm" title="Редактировать объявление" v-on="click: inquiryDelete(item)"><i class="fa fa-pencil-square-o"></i></button>
+                                <button class="btn btn-primary btn-sm" title="Редактировать объявление" v-on="click: inquiryForm(item)"><i class="fa fa-pencil-square-o"></i></button>
                             </td>
                             <td>
                                 <button class="btn btn-danger btn-sm" title="Удалить объявление" v-on="click: inquiryDelete(item)"><i class="fa fa-trash"></i></button>
                             </td>
                         </tr>
                     </table>
+                </div>
+                <div id="inquiry_form_block">
+
                 </div>
                 <p v-if="! inquiries.length">У вас нет объявлений</p>
             </div>

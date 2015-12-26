@@ -12,6 +12,8 @@ Route::post('/profile/save', ['as' => 'profileSave', 'uses' => 'HomepageControll
 Route::get('/inquiry/index', ['as' => 'inquiries', 'uses' => 'InquiriesController@index']);
 Route::get('/inquiry/private', ['as' => 'inquiriesPrivate', 'uses' => 'InquiriesController@privateIndex']);
 Route::get('/inquiry/show/{id}', ['as' => 'inquiryShow', 'uses' => 'InquiriesController@show']);
+Route::get('/inquiry/form/{id}', ['as' => 'inquiryForm', 'uses' => 'InquiriesController@form']);
+Route::put('/inquiry/{id}', ['as' => 'inquiryFormUpdate', 'uses' => 'InquiriesController@update']);
 Route::post('/inquiry/store', ['as' => 'inquiryStore', 'uses' => 'InquiriesController@store']);
 Route::match(['get', 'post'], '/inquiry/search', ['as' => 'inquirySearch', 'uses' => 'InquiriesController@search']);
 Route::get('/inquiry/delete/{id}', ['as' => 'inquiriesDestroy', 'uses' => 'InquiriesController@destroy']);

@@ -39,13 +39,13 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('name', 'Имя:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    {!! Form::label('street', 'Улица:') !!}
+    {!! Form::text('street', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
-    {!! Form::label('email', 'Email:') !!}
-    {!! Form::text('email', null, ['class' => 'form-control']) !!}
+    {!! Form::label('name', 'Имя:') !!}
+    {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
@@ -85,6 +85,11 @@
 <div class="form-group">
     {!! Form::label('carinfo[color]', 'Цвет:') !!}
     {!! Form::select('carinfo[color]', ['0' => '- Цвет -'] + $colors, null, ['class' => 'form-control']) !!}
+</div>
+
+<div class="form-group">
+    {!! Form::label('carinfo[run]', 'Пробег до, км:') !!}
+    {!! Form::text('carinfo[run]', null, ['class' => 'form-control']) !!}
 </div>
 
 <div class="form-group">
