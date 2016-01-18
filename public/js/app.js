@@ -725,7 +725,7 @@ $(document).ready(function() {
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
             // Добавляем маску полю, типа - цена
-            $('input.mask-price2').inputmask({
+            $('input.mask-price').inputmask({
                 alias: 'numeric',
                 groupSeparator: ' ',
                 autoGroup: true,
@@ -737,7 +737,7 @@ $(document).ready(function() {
             });
 
             // Добавляем маску полю, типа - км
-            $('input.mask-km2').inputmask({
+            $('input.mask-km').inputmask({
                 alias: 'numeric',
                 groupSeparator: ' ',
                 autoGroup: true,
