@@ -538,10 +538,10 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="year_from" class="form-control input-year" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="Год, с">
+                            <input type="text" name="year_from" class="form-control input-year" placeholder="Год, с">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="year_to" class="form-control input-year" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="Год, по">
+                            <input type="text" name="year_to" class="form-control input-year" placeholder="Год, по">
                         </div>
                     </div>
                 </div>
@@ -566,10 +566,10 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="price_from" class="form-control mask-price" onblur="if( parseInt($(this).parent().next().find('input').val()) && parseInt($(this).parent().next().find('input').val()) < parseInt($(this).val()) ) $(this).parent().next().find('input').val( $(this).val() ); $(this).parent().next().find('input').addClass('animated jello');" placeholder="Цена, от">
+                            <input type="text" name="price_from" class="form-control mask-price" placeholder="Цена, от">
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6">
-                            <input type="text" name="price_to" class="form-control mask-price" onblur="if( parseInt($(this).parent().prev().find('input').val()) && parseInt($(this).parent().prev().find('input').val()) > parseInt($(this).val()) ) $(this).parent().prev().find('input').val( $(this).val() ); $(this).parent().prev().find('input').addClass('animated jello');" placeholder="Цена, до">
+                            <input type="text" name="price_to" class="form-control mask-price" placeholder="Цена, до">
                         </div>
                     </div>
 
@@ -759,7 +759,6 @@
                         <div class="hidden-xs">&nbsp;</div>
                         <div class="visible-xs-block"></div>
                         <a href="#!inquiry={{ $item->id }}" class="hidden-xs btn btn-success">Подробнее</a>
-                        {{--<a href="#!inquiry={{ $item->id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>--}}
                     </div>
                 </div>
             @endforeach
@@ -785,7 +784,6 @@
                     <div class="hidden-xs">&nbsp;</div>
                     <div class="visible-xs-block"></div>
                     <a href="#!inquiry=@{{ item.id }}" class="hidden-xs btn btn-success">Подробнее</a>
-                    {{--<a href="#!inquiry=@{{ item.id }}" class="visible-xs-inline link-open" v-on="click: showInquiry($event)">Подробнее <i class="fa fa-external-link-square"></i></a>--}}
                 </div>
             </div>
         </div>
