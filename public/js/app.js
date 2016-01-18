@@ -725,7 +725,8 @@ $(document).ready(function() {
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
             var md = new MobileDetect(window.navigator.userAgent);
-            alert(md.os());
+            var isAndroidOs = md.os() == "AndroidOs";
+            alert(md.userAgent());
 
             var is_android = false;
 
