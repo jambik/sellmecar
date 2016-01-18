@@ -724,13 +724,13 @@ $(document).ready(function() {
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
-            var nua = navigator.userAgent.toLowerCase();
-            var is_android = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1);
-            alert(nua);
+            var ua = navigator.userAgent;
+            var is_native_android = ((ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('Android ') > -1 && ua.indexOf('AppleWebKit') > -1) && (ua.indexOf('Version') > -1));
+            alert(is_native_android);
 
-            var is_android = false;
+            var is_native_android = false;
 
-            if ( ! is_android) {
+            if ( ! is_native_android) {
                 // Добавляем маску полю, типа - цена
                 $('input.mask-price').inputmask({
                     alias: 'numeric',
