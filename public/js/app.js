@@ -726,7 +726,7 @@ $(document).ready(function() {
 
             var nua = navigator.userAgent.toLowerCase();
             var is_android = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1);
-            alert(is_android);
+            alert(nua);
 
             var is_android = false;
 
