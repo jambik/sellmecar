@@ -144,7 +144,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
+        Clockwork\Support\Laravel\ClockworkServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -209,7 +209,7 @@ return [
         'Entrust'    => Zizaco\Entrust\EntrustFacade::class,
         'Image'      => Intervention\Image\Facades\Image::class,
         'Socialite'  => Laravel\Socialite\Facades\Socialite::class,
-        'Debugbar'   => Barryvdh\Debugbar\Facade::class,
+        'Clockwork' => Clockwork\Support\Laravel\Facade::class,
 
     ],
 
