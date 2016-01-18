@@ -724,8 +724,10 @@ $(document).ready(function() {
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
-            var nua = navigator.userAgent.toLowerCase();
-            var is_android = ((nua.indexOf('mozilla/5.0') > -1 && nua.indexOf('android ') > -1 && nua.indexOf('applewebkit') > -1) && !(nua.indexOf('chrome') > -1));
+            var md = new MobileDetect(window.navigator.userAgent);
+            alert(JSON.stringify(md));
+
+            var is_android = false;
 
             if ( ! is_android) {
                 // Добавляем маску полю, типа - цена
