@@ -724,9 +724,9 @@ $(document).ready(function() {
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
-            var md = new MobileDetect(window.navigator.userAgent);
-            var isAndroidOs = md.os() == "AndroidOs";
-            alert(md.userAgent());
+            var nua = navigator.userAgent.toLowerCase();
+            var is_android = ((nua.indexOf('mozilla/5.0') > -1 && nua.indexOf('android ') > -1 && nua.indexOf('applewebkit') > -1) && !(nua.indexOf('chrome') > -1));
+            alert(is_android);
 
             var is_android = false;
 
