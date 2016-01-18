@@ -724,35 +724,40 @@ $(document).ready(function() {
             $("input[name='year_from']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
             $("input[name='year_to']").datetimepicker({ locale: "ru", viewMode: 'years', format: 'YYYY', minDate: moment().subtract(50, 'years'), maxDate: moment() });
 
-            // Добавляем маску полю, типа - цена
-            $('input.mask-price').inputmask({
-                alias: 'numeric',
-                groupSeparator: ' ',
-                autoGroup: true,
-                digits: 0,
-                digitsOptional: false,
-                suffix: ' ₽',
-                rightAlign: false,
-                autoUnmask: true
-            });
+            var nua = navigator.userAgent.toLowerCase();
+            var is_android = ((nua.indexOf('mozilla/5.0') > -1 && nua.indexOf('android ') > -1 && nua.indexOf('applewebkit') > -1) && !(nua.indexOf('chrome') > -1));
 
-            // Добавляем маску полю, типа - км
-            $('input.mask-km').inputmask({
-                alias: 'numeric',
-                groupSeparator: ' ',
-                autoGroup: true,
-                digits: 0,
-                digitsOptional: false,
-                suffix: ' км.',
-                rightAlign: false,
-                autoUnmask: true
-            });
+            if ( ! is_android) {
+                // Добавляем маску полю, типа - цена
+                $('input.mask-price').inputmask({
+                    alias: 'numeric',
+                    groupSeparator: ' ',
+                    autoGroup: true,
+                    digits: 0,
+                    digitsOptional: false,
+                    suffix: ' ₽',
+                    rightAlign: false,
+                    autoUnmask: true
+                });
 
-            /*// Добавляем маску полю, типа - цена
-            $('input.mask-price').mask('# ##0 руб.', {reverse: true});
+                // Добавляем маску полю, типа - км
+                $('input.mask-km').inputmask({
+                    alias: 'numeric',
+                    groupSeparator: ' ',
+                    autoGroup: true,
+                    digits: 0,
+                    digitsOptional: false,
+                    suffix: ' км.',
+                    rightAlign: false,
+                    autoUnmask: true
+                });
 
-            // Добавляем маску полю, типа - км
-            $('input.mask-km').mask('# ##0 км.', {reverse: true});*/
+                // Добавляем маску полю, типа - цена
+                //$('input.mask-price').mask('# ##0 руб.', {reverse: true});
+
+                // Добавляем маску полю, типа - км
+                //$('input.mask-km').mask('# ##0 км.', {reverse: true});
+            }
 
             // Обработчик ссылок Faq
             $('#faq a').on('click', function(e){
