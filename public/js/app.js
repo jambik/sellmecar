@@ -726,9 +726,6 @@ $(document).ready(function() {
 
             var ua = navigator.userAgent;
             var is_native_android = ((ua.indexOf('Mozilla/5.0') > -1 && ua.indexOf('Android ') > -1 && ua.indexOf('AppleWebKit') > -1) && (ua.indexOf('Version') > -1));
-            alert(is_native_android);
-
-            var is_native_android = false;
 
             if ( ! is_native_android) {
                 // Добавляем маску полю, типа - цена
