@@ -585,14 +585,14 @@ $(document).ready(function() {
 
             initAutocomplete: function () // Инициализация Google Autocomplete
             {
-                $('#form_inquiry').on('keyup keypress', function(e)
+                /*$('#form_inquiry').on('keyup keypress', function(e)
                 {
                     var code = e.keyCode || e.which;
                     if (code == 13) {
                         e.preventDefault();
                         return false;
                     }
-                });
+                });*/
 
                 $.get("https://maps.googleapis.com/maps/api/geocode/json?address=г. " + $( "#city option:selected" ).text() + "&key=" + this.API_KEY + "&language=ru", function(data) {
                     var northEast = new google.maps.LatLng( data.results[0].geometry.bounds.northeast.lat, data.results[0].geometry.bounds.northeast.lng );

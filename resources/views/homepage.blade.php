@@ -102,7 +102,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="card" v-on="click: showCard(3)">
                     <div class="card-inner step-3">
-                        <div><strong class="visible-xs-block">Шаг 3. </strong>Продавец авто приедет к вам сам на осмотр</div>
+                        <div><strong class="visible-xs-block">Шаг 3. </strong>Продавец авто сам приедет к вам на осмотр</div>
                     </div>
                 </div>
             </div>
